@@ -1,8 +1,9 @@
 package com.recodepro.enxametech.model;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
-public class Usuario {
+public abstract class Usuario {
     private String CPF_usuario;
     private String nome;
     private String sobrenome;
@@ -17,22 +18,6 @@ public class Usuario {
     private String cidade;
     private String UF;
     private String CEP;
-
-    public Usuario(String CPF_usuario, String nome, String sobrenome, LocalDate data_nascimento, String email, String senha, String telefone, String rua, String numero, String bairro, String cidade, String UF, String CEP) {
-        this.CPF_usuario = CPF_usuario;
-        this.nome = nome;
-        this.sobrenome = sobrenome;
-        this.data_nascimento = data_nascimento;
-        this.email = email;
-        this.senha = senha;
-        this.telefone = telefone;
-        this.rua = rua;
-        this.numero = numero;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.UF = UF;
-        this.CEP = CEP;
-    }
 
     public String getCPF_usuario() {
         return CPF_usuario;
@@ -123,5 +108,36 @@ public class Usuario {
     }
     public void setCEP(String CEP) {
         this.CEP = CEP;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Usuario usuario)) return false;
+        return Objects.equals(getCPF_usuario(), usuario.getCPF_usuario()) && Objects.equals(getNome(), usuario.getNome()) && Objects.equals(getSobrenome(), usuario.getSobrenome()) && Objects.equals(getData_nascimento(), usuario.getData_nascimento()) && Objects.equals(getEmail(), usuario.getEmail()) && Objects.equals(getSenha(), usuario.getSenha()) && Objects.equals(getTelefone(), usuario.getTelefone()) && Objects.equals(getRua(), usuario.getRua()) && Objects.equals(getNumero(), usuario.getNumero()) && Objects.equals(getBairro(), usuario.getBairro()) && Objects.equals(getCidade(), usuario.getCidade()) && Objects.equals(getUF(), usuario.getUF()) && Objects.equals(getCEP(), usuario.getCEP());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCPF_usuario(), getNome(), getSobrenome(), getData_nascimento(), getEmail(), getSenha(), getTelefone(), getRua(), getNumero(), getBairro(), getCidade(), getUF(), getCEP());
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "CPF_usuario='" + CPF_usuario + '\'' +
+                ", nome='" + nome + '\'' +
+                ", sobrenome='" + sobrenome + '\'' +
+                ", data_nascimento=" + data_nascimento +
+                ", email='" + email + '\'' +
+                ", senha='" + senha + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", rua='" + rua + '\'' +
+                ", numero='" + numero + '\'' +
+                ", bairro='" + bairro + '\'' +
+                ", cidade='" + cidade + '\'' +
+                ", UF='" + UF + '\'' +
+                ", CEP='" + CEP + '\'' +
+                '}';
     }
 }
