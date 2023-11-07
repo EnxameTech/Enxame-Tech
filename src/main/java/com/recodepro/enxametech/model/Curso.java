@@ -1,6 +1,7 @@
 package com.recodepro.enxametech.model;
 
 import java.sql.Date;
+import java.util.Objects;
 
 public class Curso {
 
@@ -63,4 +64,16 @@ public class Curso {
         this.dataFinal_incricao = dataFinal_incricao;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Curso curso = (Curso) o;
+        return id_curso == curso.id_curso;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id_curso);
+    }
 }
