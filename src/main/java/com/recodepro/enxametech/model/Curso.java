@@ -1,22 +1,38 @@
 package com.recodepro.enxametech.model;
 
+import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.sql.Date;
 import java.util.Objects;
 
+
+@Entity
 public class Curso {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_curso;
-    private String titulo;
-    private String nome_empresa;
-    private String descricao;
-    private Date dataFinal_incricao;
 
-    public Curso(int id_curso, String titulo, String nome_empresa, String descricao, Date dataFinal_incricao) {
+    @Column(name="titulo", nullable = false)
+    private String titulo;
+
+    @Column(name="nome_empresa", nullable = false)
+    private String nome_empresa;
+
+    @Column(name="descricao", nullable = false)
+    private String descricao;
+
+    @Column(name="dataFinal_inscricao")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private Date dataFinal_inscricao;
+
+    public Curso(int id_curso, String titulo, String nome_empresa, String descricao, Date dataFinal_inscricao) {
         this.id_curso = id_curso;
         this.titulo = titulo;
         this.nome_empresa = nome_empresa;
         this.descricao = descricao;
-        this.dataFinal_incricao = dataFinal_incricao;
+        this.dataFinal_inscricao = dataFinal_inscricao;
     }
 
     public Curso() {
@@ -39,8 +55,8 @@ public class Curso {
         return descricao;
     }
 
-    public Date getDataFinal_incricao() {
-        return dataFinal_incricao;
+    public Date getDataFinal_inscricao() {
+        return dataFinal_inscricao;
     }
 
     // SETTERS
@@ -60,8 +76,8 @@ public class Curso {
         this.descricao = descricao;
     }
 
-    public void setDataFinal_incricao(Date dataFinal_incricao) {
-        this.dataFinal_incricao = dataFinal_incricao;
+    public void setDataFinal_inscricao(Date dataFinal_inscricao) {
+        this.dataFinal_inscricao = dataFinal_inscricao;
     }
 
     @Override

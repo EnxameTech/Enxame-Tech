@@ -15,7 +15,8 @@ create table usuario(
     numero varchar(6),
     bairro varchar(30),
     cidade varchar (50),
-    UF char(2),
+    UF ENUM('AC','AL','AM','BA','CE','DF','ES','GO','MA','MT','MS','MG','PA','PB',
+    'PR','PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO'),
     CEP varchar(8)
     );
     

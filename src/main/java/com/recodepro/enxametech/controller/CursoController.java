@@ -24,7 +24,7 @@ public class CursoController {
 
     @GetMapping("/cursos")
     public ModelAndView todosCursos() {
-        ModelAndView mv = new ModelAndView(cursos/lista_cursos);
+        ModelAndView mv = new ModelAndView("cursos/lista_cursos");
 
         mv.addObject("curso", cursoRepository.findAll());
         return mv;
@@ -32,7 +32,7 @@ public class CursoController {
 
     @GetMapping("/cursos/{id}")
     public ModelAndView detalhesCurso(@PathVariable Long id) {
-        ModelAndView mv = new ModelAndView(cursos/detalhes);
+        ModelAndView mv = new ModelAndView("cursos/detalhes");
 
         Optional<Curso> cursoOptional = cursoRepository.findById(id);
 

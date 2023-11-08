@@ -1,12 +1,30 @@
 package com.recodepro.enxametech.model;
 
+import jakarta.persistence.*;
+
+@Entity
 public class FaleConosco {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_contato;
+
+    @Column(name="nome", nullable = false)
     private String nome;
+
+    @Column(name="sobrenome", nullable = false)
     private String sobrenome;
+
+    @Column(name="CPF", nullable = false)
     private String CPF;
+
+    @Column(name="email", nullable = false)
     private String email;
+
+    @Column(name="telefone", nullable = false)
     private String telefone;
+
+    @Column(name="mensagem", nullable = false)
     private String mensagem;
 
     public FaleConosco(int id_contato, String nome, String sobrenome, String CPF, String email, String telefone, String mensagem) {
@@ -17,6 +35,10 @@ public class FaleConosco {
         this.email = email;
         this.telefone = telefone;
         this.mensagem = mensagem;
+    }
+
+    public FaleConosco() {
+
     }
 
     public int getId_contato() {
@@ -67,4 +89,6 @@ public class FaleConosco {
     public void setMensagem(String mensagem) {
         this.mensagem = mensagem;
     }
+
+
 }

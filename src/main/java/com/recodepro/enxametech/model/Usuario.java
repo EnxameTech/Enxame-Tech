@@ -1,29 +1,69 @@
 package com.recodepro.enxametech.model;
 
-import java.time.LocalDate;
-import java.util.Objects;
+import com.recodepro.enxametech.enums.Genero;
+import com.recodepro.enxametech.enums.UF;
+import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
+
+@MappedSuperclass
 public abstract class Usuario {
-    private String CPF_usuario;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name="nome", nullable = false)
     private String nome;
+
+    @Column(name="sobrenome", nullable = false)
     private String sobrenome;
+
+    @Column(name = "data_nascimento", nullable = false)
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate data_nascimento;
+
+    @Column(name="email", nullable = false, unique = true)
     private String email;
+
+    @Column(name="senha", nullable = false)
     private String senha;
-    //private enum genero
+
+    @Column(name="genero", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Genero genero;
+
+    @Column(name="telefone", nullable = false)
     private String telefone;
+
+    @Column(name="rua", nullable = false)
     private String rua;
+
+    @Column(name="numero", nullable = false)
     private String numero;
+
+    @Column(name="bairro", nullable = false)
     private String bairro;
+
+    @Column(name="cidade", nullable = false)
     private String cidade;
-    private String UF;
+
+    @Column(name="UF", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private UF UF;
+
+    @Column(name="CEP", nullable = false)
     private String CEP;
 
-    public String getCPF_usuario() {
-        return CPF_usuario;
+    @Column(name="CPF", nullable = false, unique = true)
+    private String CPF;
+
+    public int getId() {
+        return id;
     }
-    public void setCPF_usuario(String CPF_usuario) {
-        this.CPF_usuario = CPF_usuario;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -61,6 +101,13 @@ public abstract class Usuario {
         this.senha = senha;
     }
 
+    public Genero getGenero() {
+        return genero;
+    }
+    public void setGenero(Genero genero) {
+        this.genero = genero;
+    }
+
     public String getTelefone() {
         return telefone;
     }
@@ -96,10 +143,10 @@ public abstract class Usuario {
         this.cidade = cidade;
     }
 
-    public String getUF() {
+    public com.recodepro.enxametech.enums.UF getUF() {
         return UF;
     }
-    public void setUF(String UF) {
+    public void setUF(com.recodepro.enxametech.enums.UF UF) {
         this.UF = UF;
     }
 
@@ -110,34 +157,10 @@ public abstract class Usuario {
         this.CEP = CEP;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Usuario usuario)) return false;
-        return Objects.equals(getCPF_usuario(), usuario.getCPF_usuario()) && Objects.equals(getNome(), usuario.getNome()) && Objects.equals(getSobrenome(), usuario.getSobrenome()) && Objects.equals(getData_nascimento(), usuario.getData_nascimento()) && Objects.equals(getEmail(), usuario.getEmail()) && Objects.equals(getSenha(), usuario.getSenha()) && Objects.equals(getTelefone(), usuario.getTelefone()) && Objects.equals(getRua(), usuario.getRua()) && Objects.equals(getNumero(), usuario.getNumero()) && Objects.equals(getBairro(), usuario.getBairro()) && Objects.equals(getCidade(), usuario.getCidade()) && Objects.equals(getUF(), usuario.getUF()) && Objects.equals(getCEP(), usuario.getCEP());
+    public String getCPF() {
+        return CPF;
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getCPF_usuario(), getNome(), getSobrenome(), getData_nascimento(), getEmail(), getSenha(), getTelefone(), getRua(), getNumero(), getBairro(), getCidade(), getUF(), getCEP());
-    }
-
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "CPF_usuario='" + CPF_usuario + '\'' +
-                ", nome='" + nome + '\'' +
-                ", sobrenome='" + sobrenome + '\'' +
-                ", data_nascimento=" + data_nascimento +
-                ", email='" + email + '\'' +
-                ", senha='" + senha + '\'' +
-                ", telefone='" + telefone + '\'' +
-                ", rua='" + rua + '\'' +
-                ", numero='" + numero + '\'' +
-                ", bairro='" + bairro + '\'' +
-                ", cidade='" + cidade + '\'' +
-                ", UF='" + UF + '\'' +
-                ", CEP='" + CEP + '\'' +
-                '}';
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
     }
 }
