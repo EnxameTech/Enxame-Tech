@@ -21,7 +21,6 @@ public class FaleConoscoController {
     public ModelAndView faleConosco(){
         ModelAndView modelAndView = new ModelAndView("faleConosco/formulario");
         modelAndView.addObject("faleConosco", new FaleConosco());
-        modelAndView.addObject("ufs", UF.values());
 
         return modelAndView;
     }

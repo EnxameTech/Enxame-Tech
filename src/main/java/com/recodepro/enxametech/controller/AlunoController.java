@@ -1,5 +1,6 @@
 package com.recodepro.enxametech.controller;
 
+import com.recodepro.enxametech.enums.Genero;
 import com.recodepro.enxametech.enums.UF;
 import com.recodepro.enxametech.model.Aluno;
 import com.recodepro.enxametech.repository.AlunoRepository;
@@ -25,7 +26,7 @@ public class AlunoController {
         return modelAndView;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/detalhar")
     public ModelAndView detalhesAluno( @PathVariable int id){
         ModelAndView modelAndView = new ModelAndView("aluno/detalhes");
         modelAndView.addObject("aluno", alunoRepository.getOne(id));
@@ -36,14 +37,17 @@ public class AlunoController {
     public ModelAndView cadastrarAluno(){
         ModelAndView modelAndView = new ModelAndView("aluno/formulario");
         modelAndView.addObject("aluno", new Aluno());
+        modelAndView.addObject("generos", Genero.values());
+        modelAndView.addObject("ufs", UF.values());
 
         return modelAndView;
     }
 
     @GetMapping("/{id}/editar")
     public ModelAndView editar(@PathVariable int id){
-        ModelAndView modelAndView = new ModelAndView("aluno/formulario");
+        ModelAndView modelAndView = new ModelAndView("aluno/edicao");
         modelAndView.addObject("aluno", alunoRepository.getOne(id));
+        modelAndView.addObject("generos", Genero.values());
         modelAndView.addObject("ufs", UF.values());
 
         return modelAndView;

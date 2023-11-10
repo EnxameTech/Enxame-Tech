@@ -1,5 +1,7 @@
 package com.recodepro.enxametech.controller;
 
+import com.recodepro.enxametech.enums.AreaDeAfinidade;
+import com.recodepro.enxametech.enums.Genero;
 import com.recodepro.enxametech.enums.UF;
 import com.recodepro.enxametech.model.Voluntario;
 import com.recodepro.enxametech.repository.VoluntarioRepository;
@@ -25,7 +27,7 @@ public class VoluntarioController {
         return modelAndView;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/detalhar")
     public ModelAndView detalhesVoluntario( @PathVariable int id){
         ModelAndView modelAndView = new ModelAndView("voluntario/detalhes");
         modelAndView.addObject("voluntario", voluntarioRepository.getOne(id));
@@ -36,14 +38,19 @@ public class VoluntarioController {
     public ModelAndView cadastrarVoluntario(){
         ModelAndView modelAndView = new ModelAndView("voluntario/formulario");
         modelAndView.addObject("voluntario", new Voluntario());
+        modelAndView.addObject("areas", AreaDeAfinidade.values());
+        modelAndView.addObject("generos", Genero.values());
+        modelAndView.addObject("ufs", UF.values());
 
         return modelAndView;
     }
 
     @GetMapping("/{id}/editar")
     public ModelAndView editar(@PathVariable int id){
-        ModelAndView modelAndView = new ModelAndView("voluntario/formulario");
+        ModelAndView modelAndView = new ModelAndView("voluntario/edicao");
         modelAndView.addObject("voluntario", voluntarioRepository.getOne(id));
+        modelAndView.addObject("areas", AreaDeAfinidade.values());
+        modelAndView.addObject("generos", Genero.values());
         modelAndView.addObject("ufs", UF.values());
 
         return modelAndView;

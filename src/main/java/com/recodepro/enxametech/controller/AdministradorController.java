@@ -1,5 +1,6 @@
 package com.recodepro.enxametech.controller;
 
+import com.recodepro.enxametech.enums.Genero;
 import com.recodepro.enxametech.enums.UF;
 import com.recodepro.enxametech.model.Administrador;
 import com.recodepro.enxametech.repository.AdministradorRepository;
@@ -26,7 +27,7 @@ public class AdministradorController {
         return modelAndView;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/detalhar")
     public ModelAndView detalhesAdministrador( @PathVariable int id){
         ModelAndView modelAndView = new ModelAndView("administrador/detalhes");
         modelAndView.addObject("administrador", administradorRepository.getOne(id));
@@ -37,14 +38,17 @@ public class AdministradorController {
     public ModelAndView cadastrarAdminitrador(){
         ModelAndView modelAndView = new ModelAndView("administrador/formulario");
         modelAndView.addObject("administrador", new Administrador());
+        modelAndView.addObject("generos", Genero.values());
+        modelAndView.addObject("ufs", UF.values());
 
         return modelAndView;
     }
 
     @GetMapping("/{id}/editar")
     public ModelAndView editar(@PathVariable int id){
-        ModelAndView modelAndView = new ModelAndView("administrador/formulario");
+        ModelAndView modelAndView = new ModelAndView("administrador/edicao");
         modelAndView.addObject("administrador", administradorRepository.getOne(id));
+        modelAndView.addObject("generos", Genero.values());
         modelAndView.addObject("ufs", UF.values());
 
         return modelAndView;
