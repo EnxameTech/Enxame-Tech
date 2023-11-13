@@ -12,23 +12,23 @@ public class Curso {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_curso;
+    private Long id;
 
-    @Column(name="titulo", nullable = false)
+    @Column(nullable = false)
     private String titulo;
 
-    @Column(name="nome_empresa", nullable = false)
+    @Column(nullable = false)
     private String nome_empresa;
 
-    @Column(name="descricao", nullable = false)
+    @Column(nullable = false)
     private String descricao;
 
-    @Column(name="dataFinal_inscricao")
+    @Column( nullable = false)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date dataFinal_inscricao;
 
-    public Curso(int id_curso, String titulo, String nome_empresa, String descricao, Date dataFinal_inscricao) {
-        this.id_curso = id_curso;
+    public Curso(Long id, String titulo, String nome_empresa, String descricao, Date dataFinal_inscricao) {
+        this.id = id;
         this.titulo = titulo;
         this.nome_empresa = nome_empresa;
         this.descricao = descricao;
@@ -39,8 +39,8 @@ public class Curso {
     }
 
     // GETTERS
-    public int getId_curso() {
-        return id_curso;
+    public Long getId() {
+        return id;
     }
 
     public String getTitulo() {
@@ -60,8 +60,8 @@ public class Curso {
     }
 
     // SETTERS
-    public void setId_curso(int id_curso) {
-        this.id_curso = id_curso;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setTitulo(String titulo) {
@@ -85,11 +85,11 @@ public class Curso {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Curso curso = (Curso) o;
-        return id_curso == curso.id_curso;
+        return id == curso.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_curso);
+        return Objects.hash(id);
     }
 }

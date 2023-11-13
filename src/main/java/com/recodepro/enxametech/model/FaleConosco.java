@@ -7,30 +7,27 @@ public class FaleConosco {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_contato;
+    private Long id_contato;
 
-    @Column(name="nome", nullable = false)
-    private String nome;
+    @Column(nullable = false)
+    private String nome_completo;
 
-    @Column(name="sobrenome", nullable = false)
-    private String sobrenome;
-
-    @Column(name="CPF", nullable = false)
+    @Column(nullable = false)
     private String CPF;
 
-    @Column(name="email", nullable = false)
+    @Column(nullable = false)
     private String email;
 
-    @Column(name="telefone", nullable = false)
+    @Column(nullable = false)
     private String telefone;
 
-    @Column(name="mensagem", nullable = false)
+    @Column(nullable = false)
     private String mensagem;
 
-    public FaleConosco(int id_contato, String nome, String sobrenome, String CPF, String email, String telefone, String mensagem) {
+    public FaleConosco(Long id_contato, String nome_completo, String CPF, String email, String telefone,
+                       String mensagem) {
         this.id_contato = id_contato;
-        this.nome = nome;
-        this.sobrenome = sobrenome;
+        this.nome_completo = nome_completo;
         this.CPF = CPF;
         this.email = email;
         this.telefone = telefone;
@@ -41,25 +38,18 @@ public class FaleConosco {
 
     }
 
-    public int getId_contato() {
+    public Long getId_contato() {
         return id_contato;
     }
-    public void setId_contato(int id_contato) {
+    public void setId_contato(Long id_contato) {
         this.id_contato = id_contato;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNome_completo() {
+        return nome_completo;
     }
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getSobrenome() {
-        return sobrenome;
-    }
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
+    public void setNome_completo(String nome_completo) {
+        this.nome_completo = nome_completo;
     }
 
     public String getCPF() {

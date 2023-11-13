@@ -28,7 +28,7 @@ public class VoluntarioController {
     }
 
     @GetMapping("/{id}/detalhar")
-    public ModelAndView detalhesVoluntario( @PathVariable int id){
+    public ModelAndView detalhesVoluntario( @PathVariable Long id){
         ModelAndView modelAndView = new ModelAndView("voluntario/detalhes");
         modelAndView.addObject("voluntario", voluntarioRepository.getOne(id));
         return modelAndView;
@@ -46,7 +46,7 @@ public class VoluntarioController {
     }
 
     @GetMapping("/{id}/editar")
-    public ModelAndView editar(@PathVariable int id){
+    public ModelAndView editar(@PathVariable Long id){
         ModelAndView modelAndView = new ModelAndView("voluntario/edicao");
         modelAndView.addObject("voluntario", voluntarioRepository.getOne(id));
         modelAndView.addObject("areas", AreaDeAfinidade.values());
@@ -64,7 +64,7 @@ public class VoluntarioController {
     }
 
     @GetMapping("/{id}/excluir")
-    public ModelAndView excluir (@PathVariable int id){
+    public ModelAndView excluir (@PathVariable Long id){
         ModelAndView modelAndView = new ModelAndView("redirect:/voluntario");
         voluntarioRepository.deleteById(id);
         return modelAndView;

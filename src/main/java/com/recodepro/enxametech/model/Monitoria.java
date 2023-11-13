@@ -11,7 +11,7 @@ public class Monitoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_monitoria;
+    private Long id_monitoria;
 
     @ManyToOne
     @JoinColumn(name="id_voluntario", nullable = false)
@@ -32,7 +32,7 @@ public class Monitoria {
     @Column(name="descricao_duvida")
     private String descricao_duvida;
 
-    public Monitoria(int id_monitoria, Voluntario id_voluntario, Aluno id_aluno, LocalDate data_monitoria, Time horario, String descricao_duvida) {
+    public Monitoria(Long id_monitoria, Voluntario id_voluntario, Aluno id_aluno, LocalDate data_monitoria, Time horario, String descricao_duvida) {
         this.id_monitoria = id_monitoria;
         this.id_voluntario = id_voluntario;
         this.id_aluno = id_aluno;
@@ -42,10 +42,10 @@ public class Monitoria {
     }
     public Monitoria(){}
 
-    public int getId_monitoria() {
+    public Long getId_monitoria() {
         return id_monitoria;
     }
-    public void setId_monitoria(int id_monitoria) {
+    public void setId_monitoria(Long id_monitoria) {
         this.id_monitoria = id_monitoria;
     }
 
