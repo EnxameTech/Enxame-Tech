@@ -27,7 +27,7 @@ public class AlunoController {
     }
 
     @GetMapping("/{id}/detalhar")
-    public ModelAndView detalhesAluno( @PathVariable int id){
+    public ModelAndView detalhesAluno( @PathVariable Long id){
         ModelAndView modelAndView = new ModelAndView("aluno/detalhes");
         modelAndView.addObject("aluno", alunoRepository.getOne(id));
         return modelAndView;
@@ -44,7 +44,7 @@ public class AlunoController {
     }
 
     @GetMapping("/{id}/editar")
-    public ModelAndView editar(@PathVariable int id){
+    public ModelAndView editar(@PathVariable Long id){
         ModelAndView modelAndView = new ModelAndView("aluno/edicao");
         modelAndView.addObject("aluno", alunoRepository.getOne(id));
         modelAndView.addObject("generos", Genero.values());
@@ -61,7 +61,7 @@ public class AlunoController {
     }
 
     @GetMapping("/{id}/excluir")
-    public ModelAndView excluir (@PathVariable int id){
+    public ModelAndView excluir (@PathVariable Long id){
         ModelAndView modelAndView = new ModelAndView("redirect:/aluno");
         alunoRepository.deleteById(id);
         return modelAndView;

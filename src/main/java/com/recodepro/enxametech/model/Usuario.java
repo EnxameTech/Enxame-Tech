@@ -12,72 +12,62 @@ public abstract class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
-    @Column(name="nome", nullable = false)
-    private String nome;
+    @Column(nullable = false)
+    private String nome_completo;
 
-    @Column(name="sobrenome", nullable = false)
-    private String sobrenome;
-
-    @Column(name = "data_nascimento", nullable = false)
+    @Column(nullable = false)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate data_nascimento;
 
-    @Column(name="email", nullable = false, unique = true)
+    @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(name="senha", nullable = false)
+    @Column(nullable = false)
     private String senha;
 
-    @Column(name="genero", nullable = false)
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Genero genero;
 
-    @Column(name="telefone", nullable = false)
+    @Column(nullable = false)
     private String telefone;
 
-    @Column(name="rua", nullable = false)
+    @Column(nullable = false)
     private String rua;
 
-    @Column(name="numero", nullable = false)
+    @Column(nullable = false)
     private String numero;
 
-    @Column(name="bairro", nullable = false)
+    @Column(nullable = false)
     private String bairro;
 
-    @Column(name="cidade", nullable = false)
+    @Column(nullable = false)
     private String cidade;
 
-    @Column(name="UF", nullable = false)
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private UF UF;
 
-    @Column(name="CEP", nullable = false)
+    @Column(nullable = false)
     private String CEP;
 
-    @Column(name="CPF", nullable = false, unique = true)
+    @Column(nullable = false, unique = true)
     private String CPF;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
     public String getNome() {
-        return nome;
+        return nome_completo;
     }
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getSobrenome() {
-        return sobrenome;
-    }
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
+    public void setNome(String nome_completo) {
+        this.nome_completo = nome_completo;
     }
 
     public LocalDate getData_nascimento() {

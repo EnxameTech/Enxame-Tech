@@ -28,7 +28,7 @@ public class AdministradorController {
     }
 
     @GetMapping("/{id}/detalhar")
-    public ModelAndView detalhesAdministrador( @PathVariable int id){
+    public ModelAndView detalhesAdministrador( @PathVariable Long id){
         ModelAndView modelAndView = new ModelAndView("administrador/detalhes");
         modelAndView.addObject("administrador", administradorRepository.getOne(id));
         return modelAndView;
@@ -45,7 +45,7 @@ public class AdministradorController {
     }
 
     @GetMapping("/{id}/editar")
-    public ModelAndView editar(@PathVariable int id){
+    public ModelAndView editar(@PathVariable Long id){
         ModelAndView modelAndView = new ModelAndView("administrador/edicao");
         modelAndView.addObject("administrador", administradorRepository.getOne(id));
         modelAndView.addObject("generos", Genero.values());
@@ -62,7 +62,7 @@ public class AdministradorController {
     }
 
     @GetMapping("/{id}/excluir")
-    public ModelAndView excluir (@PathVariable int id){
+    public ModelAndView excluir (@PathVariable Long id){
         ModelAndView modelAndView = new ModelAndView("redirect:/administrador");
         administradorRepository.deleteById(id);
         return modelAndView;
