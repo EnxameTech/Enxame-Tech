@@ -21,21 +21,21 @@ public class AlunoController {
 
     @GetMapping
     public ModelAndView listar(){
-        ModelAndView modelAndView = new ModelAndView("aluno/lista_alunos");
+        ModelAndView modelAndView = new ModelAndView("aluno/listar-alunos");
         modelAndView.addObject("alunos", alunoRepository.findAll());
         return modelAndView;
     }
 
-    @GetMapping("/{id}/detalhar")
-    public ModelAndView detalhesAluno( @PathVariable Long id){
-        ModelAndView modelAndView = new ModelAndView("aluno/detalhes");
-        modelAndView.addObject("aluno", alunoRepository.getOne(id));
-        return modelAndView;
-    }
+//    @GetMapping("/{id}/detalhar")
+//    public ModelAndView detalhesAluno( @PathVariable Long id){
+//        ModelAndView modelAndView = new ModelAndView("aluno/detalhes");
+//        modelAndView.addObject("aluno", alunoRepository.getOne(id));
+//        return modelAndView;
+//    }
 
     @GetMapping("/cadastrar")
     public ModelAndView cadastrarAluno(){
-        ModelAndView modelAndView = new ModelAndView("aluno/formulario");
+        ModelAndView modelAndView = new ModelAndView("aluno/cadastro-aluno");
         modelAndView.addObject("aluno", new Aluno());
         modelAndView.addObject("generos", Genero.values());
         modelAndView.addObject("ufs", UF.values());
@@ -45,7 +45,7 @@ public class AlunoController {
 
     @GetMapping("/{id}/editar")
     public ModelAndView editar(@PathVariable Long id){
-        ModelAndView modelAndView = new ModelAndView("aluno/edicao");
+        ModelAndView modelAndView = new ModelAndView("aluno/editar-aluno");
         modelAndView.addObject("aluno", alunoRepository.getOne(id));
         modelAndView.addObject("generos", Genero.values());
         modelAndView.addObject("ufs", UF.values());
