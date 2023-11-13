@@ -113,7 +113,7 @@
             <tbody>
           <tr th:each="aluno : ${alunos}">
             <td th:text="${aluno.CPF}"></td>
-            <td th:text="${aluno.nome_completo}"></td>
+            <td th:text="${aluno.nome}"></td>
             <td th:text="${aluno.genero.getDescricao()}"></td>
             <td th:text="${aluno.data_nascimento}"></td>
             <td th:text="${aluno.email}"></td>
