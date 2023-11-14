@@ -1,49 +1,37 @@
-const addressForm = document.querySelector("#form")
-const cepInput = document.querySelector("#cep")
-const ruaInput = document.querySelector("#rua")
-const cidadeInput = document.querySelector("#cidade")
-const bairroInput = document.querySelector("#bairro")
-const ufInput = document.querySelector("#uf")
+const addressForm = document.querySelector("#form");
+const cepInput = document.querySelector("#cep");
+const ruaInput = document.querySelector("#rua");
+const cidadeInput = document.querySelector("#cidade");
+const bairroInput = document.querySelector("#bairro");
+const ufInput = document.querySelector("#uf");
 
-const formInput = document.querySelectorAll("[data-input]")
+cepInput.addEventListener("input", async (e) => {
+  const inputValue = e.target.value.replace(/\D/g, ''); // Remover caracteres não numéricos
+  if (inputValue.length === 8) {
+    try {
+      const addressData = await getAdress(inputValue);
+      updateAddressFields(addressData);
+    } catch (error) {
+      // console.error(error);
+    }
+  }
+});
 
-//validação de input
+const getAdress = async (cep) => {
+  const apiURL = `https://viacep.com.br/ws/${cep}/json/`;
+  const response = await fetch(apiURL);
 
-
-cepInput.addEventListener("keypress", (e)=>{
-  const onlyNunbers =/[0-9]/
-  const key = String.fromCharCode(e.keyCode);
-  if(!onlyNunbers.test(key)){
-    e.preventDefault();
-    return
+  if (!response.ok) {
+    throw new Error(`Erro ao obter dados do CEP. Status: ${response.status}`);
   }
 
-})
+  const data = await response.json();
+  return data;
+};
 
-cepInput.addEventListener("keyup",(e) =>{
-  const inputValue = e.target.value
-  if(inputValue.length == 8){
-    getAdress(inputValue)
-  }
-})
-
-const getAdress = async (cep)=>{
-
-
-  cepInput.blur();
-  const apiURL = `https://viacep.com.br/ws/${cep}/json/`
-  const response = await fetch(apiURL)
-
-  const data = await response.json()
-  console.log(data)
-
-  ruaInput.value = data.logradouro
-  bairroInput.value = data.bairro
-  cidadeInput.value = data.localidade
-  ufInput.value = data.uf
-
-
-}
-
-
-
+const updateAddressFields = (addressData) => {
+  ruaInput.value = addressData.logradouro || '';
+  bairroInput.value = addressData.bairro || '';
+  cidadeInput.value = addressData.localidade || '';
+  ufInput.value = addressData.uf || '';
+};

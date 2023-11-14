@@ -284,7 +284,8 @@ input[type="submit"]:hover {
 
   font-size:0.85rem;
 }
-.btn-next, .btn-prev {
+.btn-next, .btn-prev, .cadastro  {
+  text-align: center;
   font-size: 19px;
   margin-left: 14px;
   margin-top: 20px;
@@ -293,17 +294,24 @@ input[type="submit"]:hover {
   background: #e7b315;
   color: black;
   border: none;
-  padding: 13px 24px;
+  padding: 13px 19px;
   cursor: pointer;
   font-weight: 500;
   border-radius: 5px;
 }
-.btn-next:hover{
 
+
+
+.btn-next:hover{
   background:#b9891a;
   color: white;
-
 }
+.cadastro:hover{
+  background:#b9891a;
+  color: white;
+}
+
+
 .btn-prev:hover{
 
   background:#b9891a;

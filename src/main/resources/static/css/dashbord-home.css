@@ -14,7 +14,7 @@ body {
     height: 100vh; /* Defina a altura da tela como 100% da viewport height */
   }
   
-  @media (max-width: 1517px) {
+  @media (max-width: 1409px) {
     body {
       height: 100% !important;
     

@@ -8,13 +8,11 @@ form.addEventListener("submit", (e)=>{
 
 })
 
-// Adcionar erro no input
+
 function setError(index){
  campos[index].style.border = "3px solid #e6363660";
  spans[index].style.display = "block";
 }
-
-// tira erro no input
 
 function removeError(index){
     campos[index].style.border = "";
