@@ -11,15 +11,14 @@ import com.recodepro.enxametech.model.Curso;
 
 import java.util.Optional;
 
-
 @Controller
 public class CursoController {
 
+    @Autowired
     private final CursoRepository cursoRepository;
 
-    @Autowired
-    public CursoController (CursoRepository cursoRepository) {
-        this.cursoRepository =  cursoRepository;
+    public CursoController(CursoRepository cursoRepository) {
+        this.cursoRepository = cursoRepository;
     }
 
     @GetMapping("/cursos")
@@ -38,7 +37,7 @@ public class CursoController {
 
         if (cursoOptional.isPresent()) {
             Curso curso = cursoOptional.get();
-            mv.addObject("curso", cursoOptional.get());
+            mv.addObject("curso", curso.getClass());
         } else {
             return new ModelAndView("cursos/not_found");
         }
@@ -60,7 +59,7 @@ public class CursoController {
         return mv;
     }
 
-    @PostMapping({ "/cursos/cadastrar", "/cursos/{id}/editar"})
+    @PostMapping({ "/cursos/cadastrar", "/cursos/{id}/editar" })
     public String salvar(Curso curso) {
         cursoRepository.save(curso);
         return "redirect:/cursos";

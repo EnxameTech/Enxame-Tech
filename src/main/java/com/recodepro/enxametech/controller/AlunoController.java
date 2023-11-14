@@ -20,21 +20,21 @@ public class AlunoController {
     private AlunoRepository alunoRepository;
 
     @GetMapping
-    public ModelAndView listar(){
+    public ModelAndView listar() {
         ModelAndView modelAndView = new ModelAndView("aluno/listar-alunos");
         modelAndView.addObject("alunos", alunoRepository.findAll());
         return modelAndView;
     }
 
-//    @GetMapping("/{id}/detalhar")
-//    public ModelAndView detalhesAluno( @PathVariable Long id){
-//        ModelAndView modelAndView = new ModelAndView("aluno/detalhes");
-//        modelAndView.addObject("aluno", alunoRepository.getOne(id));
-//        return modelAndView;
-//    }
+    // @GetMapping("/{id}/detalhar")
+    // public ModelAndView detalhesAluno( @PathVariable Long id){
+    // ModelAndView modelAndView = new ModelAndView("aluno/detalhes");
+    // modelAndView.addObject("aluno", alunoRepository.getReferenceById(id));
+    // return modelAndView;
+    // }
 
     @GetMapping("/cadastrar")
-    public ModelAndView cadastrarAluno(){
+    public ModelAndView cadastrarAluno() {
         ModelAndView modelAndView = new ModelAndView("aluno/cadastro-aluno");
         modelAndView.addObject("aluno", new Aluno());
         modelAndView.addObject("generos", Genero.values());
@@ -44,24 +44,24 @@ public class AlunoController {
     }
 
     @GetMapping("/{id}/editar")
-    public ModelAndView editar(@PathVariable Long id){
+    public ModelAndView editar(@PathVariable Long id) {
         ModelAndView modelAndView = new ModelAndView("aluno/editar-aluno");
-        modelAndView.addObject("aluno", alunoRepository.getOne(id));
+        modelAndView.addObject("aluno", alunoRepository.getReferenceById(id));
         modelAndView.addObject("generos", Genero.values());
         modelAndView.addObject("ufs", UF.values());
 
         return modelAndView;
     }
 
-    @PostMapping({"/cadastrar", "/{id}/editar"})
-    public ModelAndView salvar(Aluno aluno){
+    @PostMapping({ "/cadastrar", "/{id}/editar" })
+    public ModelAndView salvar(Aluno aluno) {
         ModelAndView modelAndView = new ModelAndView("redirect:/aluno");
         alunoRepository.save(aluno);
         return modelAndView;
     }
 
     @GetMapping("/{id}/excluir")
-    public ModelAndView excluir (@PathVariable Long id){
+    public ModelAndView excluir(@PathVariable Long id) {
         ModelAndView modelAndView = new ModelAndView("redirect:/aluno");
         alunoRepository.deleteById(id);
         return modelAndView;

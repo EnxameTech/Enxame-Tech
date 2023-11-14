@@ -1,6 +1,5 @@
 package com.recodepro.enxametech.controller;
 
-import com.recodepro.enxametech.enums.UF;
 import com.recodepro.enxametech.model.FaleConosco;
 import com.recodepro.enxametech.repository.FaleConoscoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,7 @@ public class FaleConoscoController {
     private FaleConoscoRepository faleConoscoRepository;
 
     @GetMapping
-    public ModelAndView faleConosco(){
+    public ModelAndView faleConosco() {
         ModelAndView modelAndView = new ModelAndView("faleConosco/formulario");
         modelAndView.addObject("faleConosco", new FaleConosco());
 
@@ -26,8 +25,9 @@ public class FaleConoscoController {
     }
 
     @PostMapping
-    public ModelAndView faleConosco(FaleConosco faleConosco){
-        //'enviado' seria uma página informando ao usuário que a mensagem foi enviada com sucesso
+    public ModelAndView faleConosco(FaleConosco faleConosco) {
+        // 'enviado' seria uma página informando ao usuário que a mensagem foi enviada
+        // com sucesso
         ModelAndView modelAndView = new ModelAndView("faleConosco/enviado");
         faleConoscoRepository.save(faleConosco);
         return modelAndView;
