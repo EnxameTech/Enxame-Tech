@@ -21,21 +21,21 @@ public class AdministradorController {
 
     @GetMapping
     public ModelAndView listar() {
-        ModelAndView modelAndView = new ModelAndView("administrador/lista_administradores");
+        ModelAndView modelAndView = new ModelAndView("admin/listar-admin");
         modelAndView.addObject("administradores", administradorRepository.findAll());
         return modelAndView;
     }
 
-    @GetMapping("/{id}/detalhar")
-    public ModelAndView detalhesAdministrador(@PathVariable Long id) {
-        ModelAndView modelAndView = new ModelAndView("administrador/detalhes");
-        modelAndView.addObject("administrador", administradorRepository.getReferenceById(id));
-        return modelAndView;
-    }
+//    @GetMapping("/{id}/detalhar")
+//    public ModelAndView detalhesAdministrador(@PathVariable Long id) {
+//        ModelAndView modelAndView = new ModelAndView("administrador/detalhes");
+//        modelAndView.addObject("administrador", administradorRepository.getReferenceById(id));
+//        return modelAndView;
+//    }
 
     @GetMapping("/cadastrar")
     public ModelAndView cadastrarAdminitrador() {
-        ModelAndView modelAndView = new ModelAndView("administrador/formulario");
+        ModelAndView modelAndView = new ModelAndView("admin/cadastro-admin");
         modelAndView.addObject("administrador", new Administrador());
         modelAndView.addObject("generos", Genero.values());
         modelAndView.addObject("ufs", UF.values());
@@ -45,7 +45,7 @@ public class AdministradorController {
 
     @GetMapping("/{id}/editar")
     public ModelAndView editar(@PathVariable Long id) {
-        ModelAndView modelAndView = new ModelAndView("administrador/edicao");
+        ModelAndView modelAndView = new ModelAndView("admin/editar-admin");
         modelAndView.addObject("administrador", administradorRepository.getReferenceById(id));
         modelAndView.addObject("generos", Genero.values());
         modelAndView.addObject("ufs", UF.values());

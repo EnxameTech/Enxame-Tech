@@ -102,7 +102,6 @@
               <th>Genero</th>
               <th>Data Nascimento</th>
               <th>E-mail</th>
-              <th>Senha</th>
               <th>Telefone</th>
               <th>Endereço</th>
 
@@ -117,15 +116,15 @@
             <td th:text="${aluno.genero.getDescricao()}"></td>
             <td th:text="${aluno.data_nascimento}"></td>
             <td th:text="${aluno.email}"></td>
-            <td th:text="${aluno.senha}"></td>
             <td th:text="${aluno.telefone}"></td>
             <td th:text="${aluno.rua}"></td>
 
             <td class="align-items-center">
-              <button th:href="@{/aluno/{id}/editar (id=${aluno.id})}"><i class="fas fa-edit "></i></button>
-              <button th:href="@{/aluno/{id}/excluir (id=${aluno.id})}" onclick="return confirm('Tem certeza que deseja excluir o aluno?');">
-                <i class="fas fa-trash-alt "></i>
-              </button>
+              <a th:href="@{/aluno/{id}/editar (id=${aluno.id})}">Editar</a>
+              <a th:href="@{/aluno/{id}/excluir (id=${aluno.id})}"
+                      onclick="return confirm('Tem certeza que deseja excluir o aluno?');">
+                Excluir
+              </a>
             </td>
           </tr>
 
