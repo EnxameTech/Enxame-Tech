@@ -21,21 +21,21 @@ public class VoluntarioController {
     private VoluntarioRepository voluntarioRepository;
 
     @GetMapping
-    public ModelAndView listar(){
+    public ModelAndView listar() {
         ModelAndView modelAndView = new ModelAndView("voluntario/lista_voluntarios");
         modelAndView.addObject("voluntarios", voluntarioRepository.findAll());
         return modelAndView;
     }
 
     @GetMapping("/{id}/detalhar")
-    public ModelAndView detalhesVoluntario( @PathVariable Long id){
+    public ModelAndView detalhesVoluntario(@PathVariable Long id) {
         ModelAndView modelAndView = new ModelAndView("voluntario/detalhes");
-        modelAndView.addObject("voluntario", voluntarioRepository.getOne(id));
+        modelAndView.addObject("voluntario", voluntarioRepository.getReferenceById(id));
         return modelAndView;
     }
 
     @GetMapping("/cadastrar")
-    public ModelAndView cadastrarVoluntario(){
+    public ModelAndView cadastrarVoluntario() {
         ModelAndView modelAndView = new ModelAndView("voluntario/formulario");
         modelAndView.addObject("voluntario", new Voluntario());
         modelAndView.addObject("areas", AreaDeAfinidade.values());
@@ -46,9 +46,9 @@ public class VoluntarioController {
     }
 
     @GetMapping("/{id}/editar")
-    public ModelAndView editar(@PathVariable Long id){
+    public ModelAndView editar(@PathVariable Long id) {
         ModelAndView modelAndView = new ModelAndView("voluntario/edicao");
-        modelAndView.addObject("voluntario", voluntarioRepository.getOne(id));
+        modelAndView.addObject("voluntario", voluntarioRepository.getReferenceById(id));
         modelAndView.addObject("areas", AreaDeAfinidade.values());
         modelAndView.addObject("generos", Genero.values());
         modelAndView.addObject("ufs", UF.values());
@@ -56,15 +56,15 @@ public class VoluntarioController {
         return modelAndView;
     }
 
-    @PostMapping({"/cadastrar", "/{id}/editar"})
-    public ModelAndView salvar(Voluntario voluntario){
+    @PostMapping({ "/cadastrar", "/{id}/editar" })
+    public ModelAndView salvar(Voluntario voluntario) {
         ModelAndView modelAndView = new ModelAndView("redirect:/voluntario");
         voluntarioRepository.save(voluntario);
         return modelAndView;
     }
 
     @GetMapping("/{id}/excluir")
-    public ModelAndView excluir (@PathVariable Long id){
+    public ModelAndView excluir(@PathVariable Long id) {
         ModelAndView modelAndView = new ModelAndView("redirect:/voluntario");
         voluntarioRepository.deleteById(id);
         return modelAndView;
