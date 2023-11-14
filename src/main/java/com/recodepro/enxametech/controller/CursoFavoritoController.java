@@ -1,7 +1,12 @@
 package com.recodepro.enxametech.controller;
 
+import com.recodepro.enxametech.model.Aluno;
+import com.recodepro.enxametech.model.Curso;
 import com.recodepro.enxametech.model.CursoFavorito;
+import com.recodepro.enxametech.repository.AlunoRepository;
 import com.recodepro.enxametech.repository.CursoFavoritoRepository;
+import com.recodepro.enxametech.repository.CursoRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +24,12 @@ public class CursoFavoritoController {
 
     @Autowired
     private CursoFavoritoRepository cursoFavoritoRepository;
+
+    @Autowired
+    private CursoRepository cursoRepository;
+
+    @Autowired
+    private AlunoRepository alunoRepository;
 
     @GetMapping("/cursos-favoritos")
     public String listarTodos(Model model) {
@@ -54,5 +65,29 @@ public class CursoFavoritoController {
     public String excluir(@PathVariable Long id) {
         cursoFavoritoRepository.deleteById(id);
         return "redirect:/cursos-favoritos";
+    }
+
+    @GetMapping("/cursos/{id}/favoritos")
+    public String listarFavoritosPorCurso(@PathVariable Long id, Model model) {
+        Curso curso = cursoRepository.findById(id).orElse(null);
+        if (curso != null) {
+            int qtdFavoritos = cursoFavoritoRepository.findByCursoId(id).size();
+            model.addAttribute("qtdFavoritos", qtdFavoritos);
+            return "cursos-favoritos";
+        } else {
+            return "redirect:/cursos";
+        }
+    }
+
+    @GetMapping("/alunos/{id}/favoritos")
+    public String listarFavoritosPorAluno(@PathVariable Long id, Model model) {
+        Aluno aluno = alunoRepository.findById(id).orElse(null);
+        if (aluno != null) {
+            List<CursoFavorito> cursosFavoritos = cursoFavoritoRepository.findByAlunoId(id);
+            model.addAttribute("cursosFavoritos", cursosFavoritos);
+            return "cursos-favoritos";
+        } else {
+            return "redirect:/alunos";
+        }
     }
 }
