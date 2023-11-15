@@ -26,13 +26,6 @@ public class AlunoController {
         return modelAndView;
     }
 
-    // @GetMapping("/{id}/detalhar")
-    // public ModelAndView detalhesAluno( @PathVariable Long id){
-    // ModelAndView modelAndView = new ModelAndView("aluno/detalhes");
-    // modelAndView.addObject("aluno", alunoRepository.getReferenceById(id));
-    // return modelAndView;
-    // }
-
     @GetMapping("/cadastrar")
     public ModelAndView cadastrarAluno() {
         ModelAndView modelAndView = new ModelAndView("aluno/cadastro-aluno");

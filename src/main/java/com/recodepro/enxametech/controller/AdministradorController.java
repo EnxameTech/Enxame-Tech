@@ -26,13 +26,6 @@ public class AdministradorController {
         return modelAndView;
     }
 
-//    @GetMapping("/{id}/detalhar")
-//    public ModelAndView detalhesAdministrador(@PathVariable Long id) {
-//        ModelAndView modelAndView = new ModelAndView("administrador/detalhes");
-//        modelAndView.addObject("administrador", administradorRepository.getReferenceById(id));
-//        return modelAndView;
-//    }
-
     @GetMapping("/cadastrar")
     public ModelAndView cadastrarAdminitrador() {
         ModelAndView modelAndView = new ModelAndView("admin/cadastro-admin");

@@ -29,22 +29,6 @@ public class CursoController {
         return mv;
     }
 
-    @GetMapping("/cursos/{id}")
-    public ModelAndView detalhesCurso(@PathVariable Long id) {
-        ModelAndView mv = new ModelAndView("cursos/detalhes");
-
-        Optional<Curso> cursoOptional = cursoRepository.findById(id);
-
-        if (cursoOptional.isPresent()) {
-            Curso curso = cursoOptional.get();
-            mv.addObject("curso", curso.getClass());
-        } else {
-            return new ModelAndView("cursos/not_found");
-        }
-
-        return mv;
-    }
-
     @GetMapping("/cursos/cadastrarCurso")
     public ModelAndView cadastrarCurso() {
         ModelAndView mv = new ModelAndView("cursos/formulario");

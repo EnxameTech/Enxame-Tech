@@ -38,7 +38,7 @@
             </a>
           </li>
           <li>
-            <a href="./listar-mentor.html">
+            <a href="./listar-voluntarios.html">
               <i class="fas fa-user"></i>
               <span>Cadastrar Aluno</span>
             </a>
@@ -82,10 +82,10 @@
 
       <div class="section--container">
         <div class="header-container">
-          <h3 class="main--title">Listar Mentores</h3>
+          <h3 class="main--title">Lista de voluntários</h3>
 
-          <a href="cadastro-mentor.html" class="btn-cadastrar mb-3">
-            Cadastrar Novo Mentor
+          <a th:href="@{/voluntario/cadastrar}" class="btn-cadastrar mb-3">
+            Cadastrar Novo Voluntário
             <i class="fas fa-plus"></i>
           </a>
 
@@ -101,89 +101,31 @@
               <th>Genero</th>
               <th>Data Nascimento</th>
               <th>E-mail</th>
-              <th>Senha</th>
               <th>Telefone</th>
               <th>Endereço</th>
 
               <th class="action">Ações</th>
-            </thead>
             </tr>
+          </thead>
+
             <tbody>
-          <tr>
-            <td>399.858.443-40</td>
-            <td>Allan</td>
-            <td>Tavares</td>
-            <td>03/05/1996</td>
-            <td>Allan@allan</td>
-            <td>12345</td>
-            <td>(11)95555-5555</td>
-            <td>Rua dos Bobos  0</td>
-            <td>
-              <a href="editar-mentor.html">
-                <button><i class="fas fa-edit"></i></button>
-              </a>
+          <tr th:each="voluntario : ${voluntarios}">
+            <td th:text="${voluntario.CPF}"></td>
+            <td th:text="${voluntario.nome}"></td>
+            <td th:text="${voluntario.genero.getDescricao()}"></td>
+            <td th:text="${voluntario.data_nascimento}"></td>
+            <td th:text="${voluntario.email}"></td>
+            <td th:text="${voluntario.telefone}"></td>
+            <td th:text="${voluntario.rua}"></td>
 
-              <button><i class="fas fa-trash-alt"></i></button>
-            </td>
-
-          </tr>
-          <tr>
-            <td>399.858.443-40</td>
-            <td>Allan</td>
-            <td>Tavares</td>
-            <td>03/05/1996</td>
-            <td>Allan@allan</td>
-            <td>12345</td>
-            <td>(11)95555-5555</td>
-            <td>Rua dos Bobos  0</td>
-            <td>
-              <button><i class="fas fa-edit"></i></button>
-              <button><i class="fas fa-trash-alt"></i></button>
-            </td>
-          </tr>
-          <tr>
-            <td>399.858.443-40</td>
-            <td>Allan</td>
-            <td>Tavares</td>
-            <td>03/05/1996</td>
-            <td>Allan@allan</td>
-            <td>12345</td>
-            <td>(11)95555-5555</td>
-            <td>Rua dos Bobos  0</td>
-            <td>
-              <button><i class="fas fa-edit"></i></button>
-              <button><i class="fas fa-trash-alt"></i></button>
-            </td>
-          </tr>
-          <tr>
-            <td>399.858.443-40</td>
-            <td>Allan</td>
-            <td>Tavares</td>
-            <td>03/05/1996</td>
-            <td>Allan@allan</td>
-            <td>12345</td>
-            <td>(11)95555-5555</td>
-            <td>Rua dos Bobos  0</td>
-            <td>
-              <button><i class="fas fa-edit"></i></button>
-              <button><i class="fas fa-trash-alt"></i></button>
-            </td>
-          </tr>
-          <tr>
-            <td>399.858.443-40</td>
-            <td>Allan</td>
-            <td>Tavares</td>
-            <td>03/05/1996</td>
-            <td>Allan@allan</td>
-            <td>12345</td>
-            <td>(11)95555-5555</td>
-            <td>Rua dos Bobos  0</td>
             <td class="align-items-center">
-              <button><i class="fas fa-edit "></i></button>
-              <button><i class="fas fa-trash-alt "></i></button>
+              <a th:href="@{/voluntario/{id}/editar (id=${voluntario.id})}">Editar</a>
+              <a th:href="@{/voluntario/{id}/excluir (id=${voluntario.id})}"
+                      onclick="return confirm('Tem certeza que deseja excluir o voluntário?');">
+                Excluir
+              </a>
             </td>
           </tr>
-
 
             </tbody>
         </table>

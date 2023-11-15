@@ -22,21 +22,14 @@ public class VoluntarioController {
 
     @GetMapping
     public ModelAndView listar() {
-        ModelAndView modelAndView = new ModelAndView("voluntario/lista_voluntarios");
+        ModelAndView modelAndView = new ModelAndView("voluntario/listar-voluntarios");
         modelAndView.addObject("voluntarios", voluntarioRepository.findAll());
-        return modelAndView;
-    }
-
-    @GetMapping("/{id}/detalhar")
-    public ModelAndView detalhesVoluntario(@PathVariable Long id) {
-        ModelAndView modelAndView = new ModelAndView("voluntario/detalhes");
-        modelAndView.addObject("voluntario", voluntarioRepository.getReferenceById(id));
         return modelAndView;
     }
 
     @GetMapping("/cadastrar")
     public ModelAndView cadastrarVoluntario() {
-        ModelAndView modelAndView = new ModelAndView("voluntario/formulario");
+        ModelAndView modelAndView = new ModelAndView("voluntario/cadastro-voluntario");
         modelAndView.addObject("voluntario", new Voluntario());
         modelAndView.addObject("areas", AreaDeAfinidade.values());
         modelAndView.addObject("generos", Genero.values());
@@ -47,7 +40,7 @@ public class VoluntarioController {
 
     @GetMapping("/{id}/editar")
     public ModelAndView editar(@PathVariable Long id) {
-        ModelAndView modelAndView = new ModelAndView("voluntario/edicao");
+        ModelAndView modelAndView = new ModelAndView("voluntario/editar-voluntario");
         modelAndView.addObject("voluntario", voluntarioRepository.getReferenceById(id));
         modelAndView.addObject("areas", AreaDeAfinidade.values());
         modelAndView.addObject("generos", Genero.values());
