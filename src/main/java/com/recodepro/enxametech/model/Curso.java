@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 
 @Entity
@@ -26,6 +28,9 @@ public class Curso {
     @Column(nullable = false)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date dataFinal_inscricao;
+
+    @ManyToMany(mappedBy = "cursosFavoritos")
+    private Set<Aluno> alunos = new HashSet<>();
 
     public Curso(Long id, String titulo, String nome_empresa, String descricao, Date dataFinal_inscricao) {
         this.id = id;
