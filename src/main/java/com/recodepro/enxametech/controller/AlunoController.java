@@ -4,6 +4,8 @@ import com.recodepro.enxametech.enums.Genero;
 import com.recodepro.enxametech.enums.UF;
 import com.recodepro.enxametech.model.Aluno;
 import com.recodepro.enxametech.repository.AlunoRepository;
+import com.recodepro.enxametech.repository.MonitoriaRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,9 +18,14 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/aluno")
 public class AlunoController {
 
+    // Injeção de dependência
     @Autowired
     private AlunoRepository alunoRepository;
 
+    @Autowired
+    private MonitoriaRepository monitoriaRepository;
+
+    // Alunos
     @GetMapping
     public ModelAndView listar() {
         ModelAndView modelAndView = new ModelAndView("aluno/listar-alunos");
@@ -46,7 +53,7 @@ public class AlunoController {
         return modelAndView;
     }
 
-    @PostMapping({"/cadastrar", "/{id}/editar"})
+    @PostMapping({ "/cadastrar", "/{id}/editar" })
     public ModelAndView salvar(Aluno aluno) {
         ModelAndView modelAndView = new ModelAndView("redirect:/aluno");
         alunoRepository.save(aluno);
@@ -57,6 +64,16 @@ public class AlunoController {
     public ModelAndView excluir(@PathVariable Long id) {
         ModelAndView modelAndView = new ModelAndView("redirect:/aluno");
         alunoRepository.deleteById(id);
+        return modelAndView;
+    }
+
+    // Monitorias
+    @GetMapping("/{id}/monitorias")
+    public ModelAndView listarMonitorias(@PathVariable Long id) {
+        ModelAndView modelAndView = new ModelAndView("aluno/listar-monitorias");
+        modelAndView.addObject("aluno", alunoRepository.findById(id).orElse(null));
+        modelAndView.addObject("monitorias",
+                monitoriaRepository.findByAlunoId(alunoRepository.findById(id).orElse(null)));
         return modelAndView;
     }
 }
