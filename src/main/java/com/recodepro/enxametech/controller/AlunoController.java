@@ -46,7 +46,7 @@ public class AlunoController {
         return modelAndView;
     }
 
-    @PostMapping({ "/cadastrar", "/{id}/editar" })
+    @PostMapping({"/cadastrar", "/{id}/editar"})
     public ModelAndView salvar(Aluno aluno) {
         ModelAndView modelAndView = new ModelAndView("redirect:/aluno");
         alunoRepository.save(aluno);

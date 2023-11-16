@@ -46,7 +46,7 @@ public class AdministradorController {
         return modelAndView;
     }
 
-    @PostMapping({ "/cadastrar", "/{id}/editar" })
+    @PostMapping({"/cadastrar", "/{id}/editar"})
     public ModelAndView salvar(Administrador administrador) {
         ModelAndView modelAndView = new ModelAndView("redirect:/administrador");
         administradorRepository.save(administrador);

@@ -59,6 +59,7 @@ public abstract class Usuario {
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -66,6 +67,7 @@ public abstract class Usuario {
     public String getNome() {
         return nome_completo;
     }
+
     public void setNome(String nome_completo) {
         this.nome_completo = nome_completo;
     }
@@ -73,6 +75,7 @@ public abstract class Usuario {
     public LocalDate getData_nascimento() {
         return data_nascimento;
     }
+
     public void setData_nascimento(LocalDate data_nascimento) {
         this.data_nascimento = data_nascimento;
     }
@@ -80,6 +83,7 @@ public abstract class Usuario {
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -87,6 +91,7 @@ public abstract class Usuario {
     public String getSenha() {
         return senha;
     }
+
     public void setSenha(String senha) {
         this.senha = senha;
     }
@@ -94,6 +99,7 @@ public abstract class Usuario {
     public Genero getGenero() {
         return genero;
     }
+
     public void setGenero(Genero genero) {
         this.genero = genero;
     }
@@ -101,6 +107,7 @@ public abstract class Usuario {
     public String getTelefone() {
         return telefone;
     }
+
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
@@ -108,6 +115,7 @@ public abstract class Usuario {
     public String getRua() {
         return rua;
     }
+
     public void setRua(String rua) {
         this.rua = rua;
     }
@@ -115,6 +123,7 @@ public abstract class Usuario {
     public String getNumero() {
         return numero;
     }
+
     public void setNumero(String numero) {
         this.numero = numero;
     }
@@ -122,6 +131,7 @@ public abstract class Usuario {
     public String getBairro() {
         return bairro;
     }
+
     public void setBairro(String bairro) {
         this.bairro = bairro;
     }
@@ -129,6 +139,7 @@ public abstract class Usuario {
     public String getCidade() {
         return cidade;
     }
+
     public void setCidade(String cidade) {
         this.cidade = cidade;
     }
@@ -136,6 +147,7 @@ public abstract class Usuario {
     public com.recodepro.enxametech.enums.UF getUF() {
         return UF;
     }
+
     public void setUF(com.recodepro.enxametech.enums.UF UF) {
         this.UF = UF;
     }
@@ -143,6 +155,7 @@ public abstract class Usuario {
     public String getCEP() {
         return CEP;
     }
+
     public void setCEP(String CEP) {
         this.CEP = CEP;
     }
@@ -150,6 +163,7 @@ public abstract class Usuario {
     public String getCPF() {
         return CPF;
     }
+
     public void setCPF(String CPF) {
         this.CPF = CPF;
     }

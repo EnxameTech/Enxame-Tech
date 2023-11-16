@@ -23,7 +23,7 @@ public class Curso {
     @Column(nullable = false)
     private String descricao;
 
-    @Column( nullable = false)
+    @Column(nullable = false)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date dataFinal_inscricao;
 

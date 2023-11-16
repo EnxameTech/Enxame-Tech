@@ -43,7 +43,7 @@ public class CursoController {
         return mv;
     }
 
-    @PostMapping({ "/cursos/cadastrar", "/cursos/{id}/editar" })
+    @PostMapping({"/cursos/cadastrar", "/cursos/{id}/editar"})
     public String salvar(Curso curso) {
         cursoRepository.save(curso);
         return "redirect:/cursos";

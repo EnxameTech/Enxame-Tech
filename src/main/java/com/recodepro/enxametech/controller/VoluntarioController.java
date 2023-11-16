@@ -49,7 +49,7 @@ public class VoluntarioController {
         return modelAndView;
     }
 
-    @PostMapping({ "/cadastrar", "/{id}/editar" })
+    @PostMapping({"/cadastrar", "/{id}/editar"})
     public ModelAndView salvar(Voluntario voluntario) {
         ModelAndView modelAndView = new ModelAndView("redirect:/voluntario");
         voluntarioRepository.save(voluntario);

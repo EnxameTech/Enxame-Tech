@@ -26,8 +26,6 @@ public class FaleConoscoController {
 
     @PostMapping
     public ModelAndView faleConosco(FaleConosco faleConosco) {
-        // 'enviado' seria uma página informando ao usuário que a mensagem foi enviada
-        // com sucesso
         ModelAndView modelAndView = new ModelAndView("faleConosco/enviado");
         faleConoscoRepository.save(faleConosco);
         return modelAndView;

@@ -41,6 +41,7 @@ public class FaleConosco {
     public Long getId_contato() {
         return id_contato;
     }
+
     public void setId_contato(Long id_contato) {
         this.id_contato = id_contato;
     }
@@ -48,6 +49,7 @@ public class FaleConosco {
     public String getNome_completo() {
         return nome_completo;
     }
+
     public void setNome_completo(String nome_completo) {
         this.nome_completo = nome_completo;
     }
@@ -55,6 +57,7 @@ public class FaleConosco {
     public String getCPF() {
         return CPF;
     }
+
     public void setCPF(String CPF) {
         this.CPF = CPF;
     }
@@ -62,6 +65,7 @@ public class FaleConosco {
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -69,6 +73,7 @@ public class FaleConosco {
     public String getTelefone() {
         return telefone;
     }
+
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
@@ -76,6 +81,7 @@ public class FaleConosco {
     public String getMensagem() {
         return mensagem;
     }
+
     public void setMensagem(String mensagem) {
         this.mensagem = mensagem;
     }
