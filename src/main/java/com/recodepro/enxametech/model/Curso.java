@@ -3,7 +3,7 @@ package com.recodepro.enxametech.model;
 import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -23,16 +23,16 @@ public class Curso {
     private String nome_empresa;
 
     @Column(nullable = false)
-    private String descricao;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate dataFinal_inscricao;
 
     @Column(nullable = false)
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private Date dataFinal_inscricao;
+    private String descricao;
 
     @ManyToMany(mappedBy = "cursosFavoritos")
     private Set<Aluno> alunos = new HashSet<>();
 
-    public Curso(Long id, String titulo, String nome_empresa, String descricao, Date dataFinal_inscricao) {
+    public Curso(Long id, String titulo, String nome_empresa, String descricao, LocalDate dataFinal_inscricao) {
         this.id = id;
         this.titulo = titulo;
         this.nome_empresa = nome_empresa;
@@ -60,7 +60,7 @@ public class Curso {
         return descricao;
     }
 
-    public Date getDataFinal_inscricao() {
+    public LocalDate getDataFinal_inscricao() {
         return dataFinal_inscricao;
     }
 
@@ -81,7 +81,7 @@ public class Curso {
         this.descricao = descricao;
     }
 
-    public void setDataFinal_inscricao(Date dataFinal_inscricao) {
+    public void setDataFinal_inscricao(LocalDate dataFinal_inscricao) {
         this.dataFinal_inscricao = dataFinal_inscricao;
     }
 

@@ -6,12 +6,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import com.recodepro.enxametech.model.Curso;
 
 import java.util.Optional;
 
 @Controller
+@RequestMapping("/curso")
 public class CursoController {
 
     @Autowired
@@ -21,32 +23,38 @@ public class CursoController {
         this.cursoRepository = cursoRepository;
     }
 
-    @GetMapping("/cursos")
-    public ModelAndView todosCursos() {
-        ModelAndView mv = new ModelAndView("cursos/lista_cursos");
-
-        mv.addObject("curso", cursoRepository.findAll());
+    @GetMapping
+    public ModelAndView listarCursos() {
+        ModelAndView mv = new ModelAndView("curso/listar-cursos");
+        mv.addObject("cursos", cursoRepository.findAll());
         return mv;
     }
 
-    @GetMapping("/cursos/cadastrarCurso")
+    @GetMapping("/cadastrar")
     public ModelAndView cadastrarCurso() {
-        ModelAndView mv = new ModelAndView("cursos/formulario");
+        ModelAndView mv = new ModelAndView("curso/cadastro-curso");
         mv.addObject("curso", new Curso());
         return mv;
     }
 
-    @GetMapping("/cursos/{id}/editar")
+    @GetMapping("/{id}/editar")
     public ModelAndView editar(@PathVariable Long id) {
-        ModelAndView mv = new ModelAndView("cursos/formulario");
+        ModelAndView mv = new ModelAndView("curso/editar-curso");
         mv.addObject("curso", cursoRepository.getReferenceById(id));
         return mv;
     }
 
-    @PostMapping({"/cursos/cadastrar", "/cursos/{id}/editar"})
+    @PostMapping({"/cadastrar", "/{id}/editar"})
     public String salvar(Curso curso) {
         cursoRepository.save(curso);
-        return "redirect:/cursos";
+        return "redirect:/curso";
+    }
+
+    @GetMapping("/{id}/excluir")
+    public ModelAndView excluir(@PathVariable Long id) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/curso");
+        cursoRepository.deleteById(id);
+        return modelAndView;
     }
 
 }

@@ -85,10 +85,4 @@ public class AlunoController {
         return modelAndView;
     }
 
-//    @GetMapping("/monitorias")
-//    public ModelAndView listarMonitorias() {
-//        ModelAndView modelAndView = new ModelAndView("aluno/listar-monitorias");
-//        modelAndView.addObject("monitorias", monitoriaRepository.findAll());
-//        return modelAndView;
-//    }
 }

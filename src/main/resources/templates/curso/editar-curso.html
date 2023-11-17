@@ -72,46 +72,49 @@
     </div>
 
     <div class="section--container">
-        <h3 class="main--title">Dados do Aluno</h3>
-        <div class="row">
-            <h5 th:text="${aluno.nome}"></h5>
-            <div class="form-group col-4">
-                <label for="cpf">CPF</label>
-                <input disabled id="cpf" th:field="*{aluno.CPF}">
-            </div>
-            <div class="form-group col-4">
-                <label for="email">E-mail</label>
-                <input disabled id="email" th:field="*{aluno.email}">
-            </div>
-            <div class="form-group col-4">
-                <label for="genero">Gênero</label>
-                <input disabled id="genero" th:field="*{aluno.genero}">
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-4">
-                <label for="dataNascimento">Data de Nascimento</label>
-                <input disabled type="date" id="dataNascimento" th:field="*{aluno.data_nascimento}">
-                <span class="span-required">Campo obrigátorio</span>
-            </div>
-            <div class="form-group col-4">
-                <label for="cidade">Cidade</label>
-                <input disabled id="cidade" th:field="*{aluno.cidade}">
-            </div>
-            <div class="form-group col-4">
-                <label for="uf">UF</label>
-                <input disabled id="uf" th:field="*{aluno.UF}">
-            </div>
-        </div>
-        <div class="row gap-3 justify-content-center">
-            <a th:href="@{/aluno/{id}/agendar (id=${aluno.id})}" class="col-2 btn btn-success ">
-                Agendar Monitoria
-            </a>
-            <a th:href="@{/aluno/{id}/monitorias (id=${aluno.id})}" class="col-2 btn btn-secondary">
-                Listar Monitorias
-            </a>
-        </div>
+        <h3 class="main--title">Editar Informações do Curso</h3>
+        <div class="card">
+            <form th:object="${curso}" id="form" method="POST">
+                <div class="form-step  form-step-active row ">
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label for="titulo">Título</label>
+                            <input type="text" id="titulo" name="titulo" class="inputs required"
+                                   th:field="*{titulo}">
+                            <span class="span-required">Campo obrigátorio</span>
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="nome_empresa">Empresa</label>
+                            <input type="text" id="nome_empresa" name="nome_empresa" class="inputs required"
+                                   th:field="*{nome_empresa}">
+                            <span class="span-required">Campo obrigátorio</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-4">
+                            <label for="dataFinal_inscricao">Inscrições até</label>
+                            <input type="date" id="dataFinal_inscricao" name="dataFinal_inscricao" class="inputs required"
+                                   th:field="*{dataFinal_inscricao}">
+                            <span class="span-required">Campo obrigátorio</span>
+                        </div>
+                        <div class="form-group col-8">
+                            <label for="descricao">Descrição</label>
+                            <input type="text" id="descricao" name="descricao" class="inputs required"
+                                   th:field="*{descricao}">
+                            <span class="span-required">Campo obrigatório</span>
+                        </div>
+                    </div>
 
+                    <div class="row justify-content-center">
+                        <button type="submit" class="btn col-3 cadastro">Atualizar</button>
+                    </div>
+
+                    <a href="./listar-cursos.html"></a>
+                </div>
+
+            </form>
+
+        </div>
         <footer class="footer">
             <div class="container">
                 <p>&copy; 2023 Seu Nome ou Nome da Empresa</p>

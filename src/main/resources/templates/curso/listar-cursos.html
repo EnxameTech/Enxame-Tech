@@ -87,10 +87,10 @@
 
     <div class="section--container">
         <div class="header-container">
-            <h3 class="main--title">Lista de Administradores</h3>
+            <h3 class="main--title">Lista de Cursos</h3>
 
-            <a th:href="@{/administrador/cadastrar}" class="btn-cadastrar mb-3">
-                Cadastrar Novo Administrador
+            <a th:href="@{/curso/cadastrar}" class="btn-cadastrar mb-3">
+                Cadastrar Novo Curso
                 <i class="fas fa-plus"></i>
             </a>
 
@@ -100,32 +100,23 @@
             <table>
                 <thead>
                 <tr>
-                    <th>CPF</th>
-                    <th>Nome Completo</th>
-                    <th>Gênero</th>
-                    <th>Data Nascimento</th>
-                    <th>E-mail</th>
-                    <th>Telefone</th>
-                    <th>Endereço</th>
-
+                    <th>Título</th>
+                    <th>Empresa</th>
+                    <th>Inscrições até</th>
                     <th class="action">Ações</th>
                 </tr>
                 </thead>
 
                 <tbody>
-                <tr th:each="administrador : ${administradores}">
-                    <td th:text="${administrador.CPF}"></td>
-                    <td th:text="${administrador.nome}"></td>
-                    <td th:text="${administrador.genero.getDescricao()}"></td>
-                    <td th:text="${administrador.data_nascimento}"></td>
-                    <td th:text="${administrador.email}"></td>
-                    <td th:text="${administrador.telefone}"></td>
-                    <td th:text="${administrador.rua}"></td>
+                <tr th:each="curso : ${cursos}">
+                    <td th:text="${curso.titulo}"></td>
+                    <td th:text="${curso.nome_empresa}"></td>
+                    <td th:text="${curso.dataFinal_inscricao}"></td>
 
                     <td class="align-items-center">
-                        <a th:href="@{/administrador/{id}/editar (id=${administrador.id})}"><i class="fas fa-edit"></i></a>
-                        <a th:href="@{/administrador/{id}/excluir (id=${administrador.id})}"
-                           onclick="return confirm('Tem certeza que deseja excluir o aluno?');">
+                        <a th:href="@{/curso/{id}/editar (id=${curso.id})}"><i class="fas fa-edit"></i></a>
+                        <a th:href="@{/curso/{id}/excluir (id=${curso.id})}"
+                           onclick="return confirm('Tem certeza que deseja excluir o curso?');">
                             <i class="fas fa-trash-alt"></i>
                         </a>
                     </td>
