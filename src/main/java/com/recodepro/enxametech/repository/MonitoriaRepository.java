@@ -7,5 +7,5 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MonitoriaRepository extends JpaRepository<Monitoria, Long> {
-    List<Monitoria> findByAlunoId(Aluno alunoId);
+    List<Monitoria> findByAlunoId(Long id);
 }

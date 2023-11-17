@@ -182,11 +182,8 @@
                                 <span class="span-required">Campo obrigátorio</span>
                             </div>
                             <div class="form-group col-4">
-                                <label for="cpf">UF:</label>
-                                <select th:field="*{UF}" class="inputs" style="width: 100%;">
-                                    <option th:each="uf : ${ufs}" th:text="${uf.getDescricao()}"
-                                            th:value="${uf}"></option>
-                                </select>
+                                <label for="uf">UF:</label>
+                                <input type="text" id="uf" name="uf" class="inputs required" th:field="*{UF}">
                                 <span class="span-required">Campo obrigátorio</span>
                             </div>
 

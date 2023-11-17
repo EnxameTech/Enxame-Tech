@@ -1,7 +1,6 @@
 package com.recodepro.enxametech.controller;
 
 import com.recodepro.enxametech.enums.Genero;
-import com.recodepro.enxametech.enums.UF;
 import com.recodepro.enxametech.model.Administrador;
 import com.recodepro.enxametech.repository.AdministradorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +30,6 @@ public class AdministradorController {
         ModelAndView modelAndView = new ModelAndView("admin/cadastro-admin");
         modelAndView.addObject("administrador", new Administrador());
         modelAndView.addObject("generos", Genero.values());
-        modelAndView.addObject("ufs", UF.values());
 
         return modelAndView;
     }
@@ -41,7 +39,6 @@ public class AdministradorController {
         ModelAndView modelAndView = new ModelAndView("admin/editar-admin");
         modelAndView.addObject("administrador", administradorRepository.getReferenceById(id));
         modelAndView.addObject("generos", Genero.values());
-        modelAndView.addObject("ufs", UF.values());
 
         return modelAndView;
     }

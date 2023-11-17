@@ -183,10 +183,7 @@
 
                             <div class="form-group col-4">
                                 <label for="uf">UF:</label>
-                                <select th:field="*{UF}" id="uf" class="form-control select2bs4" style="width: 100%;">
-                                    <option th:each="uf : ${ufs}" th:text="${uf.getDescricao()}"
-                                            th:value="${uf}"></option>
-                                </select>
+                                <input type="text" id="uf" name="uf" class="inputs required" th:field="*{UF}">
                                 <span class="span-required">Campo obrigátorio</span>
                             </div>
 

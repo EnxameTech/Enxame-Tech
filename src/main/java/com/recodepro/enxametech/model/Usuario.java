@@ -1,7 +1,6 @@
 package com.recodepro.enxametech.model;
 
 import com.recodepro.enxametech.enums.Genero;
-import com.recodepro.enxametech.enums.UF;
 import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -47,8 +46,7 @@ public abstract class Usuario {
     private String cidade;
 
     @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private UF UF;
+    private String UF;
 
     @Column(nullable = false)
     private String CEP;
@@ -144,11 +142,10 @@ public abstract class Usuario {
         this.cidade = cidade;
     }
 
-    public com.recodepro.enxametech.enums.UF getUF() {
+    public String getUF() {
         return UF;
     }
-
-    public void setUF(com.recodepro.enxametech.enums.UF UF) {
+    public void setUF(String UF) {
         this.UF = UF;
     }
 

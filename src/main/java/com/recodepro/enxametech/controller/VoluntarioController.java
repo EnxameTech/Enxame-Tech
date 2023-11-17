@@ -2,7 +2,6 @@ package com.recodepro.enxametech.controller;
 
 import com.recodepro.enxametech.enums.AreaDeAfinidade;
 import com.recodepro.enxametech.enums.Genero;
-import com.recodepro.enxametech.enums.UF;
 import com.recodepro.enxametech.model.Voluntario;
 import com.recodepro.enxametech.repository.VoluntarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +32,6 @@ public class VoluntarioController {
         modelAndView.addObject("voluntario", new Voluntario());
         modelAndView.addObject("areas", AreaDeAfinidade.values());
         modelAndView.addObject("generos", Genero.values());
-        modelAndView.addObject("ufs", UF.values());
 
         return modelAndView;
     }
@@ -44,7 +42,6 @@ public class VoluntarioController {
         modelAndView.addObject("voluntario", voluntarioRepository.getReferenceById(id));
         modelAndView.addObject("areas", AreaDeAfinidade.values());
         modelAndView.addObject("generos", Genero.values());
-        modelAndView.addObject("ufs", UF.values());
 
         return modelAndView;
     }
