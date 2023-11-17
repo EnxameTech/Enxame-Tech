@@ -3,6 +3,7 @@ package com.recodepro.enxametech.model;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -19,6 +20,7 @@ public class Aluno extends Usuario {
             joinColumns = @JoinColumn(name = "aluno_id"),
             inverseJoinColumns = @JoinColumn(name = "voluntario_id"))
     private Set<Voluntario> voluntarios = new HashSet<>();
+
 
     @ManyToMany
     @JoinTable(name = "curso_favorito",

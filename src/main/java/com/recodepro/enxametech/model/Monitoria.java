@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 public class Monitoria {
@@ -27,11 +28,12 @@ public class Monitoria {
 
     @Column(nullable = false)
     @Temporal(TemporalType.TIME)
-    private Time horario;
+    private LocalTime horario;
 
     private String descricao_duvida;
 
-    public Monitoria(Long id_monitoria, Voluntario voluntario, Aluno aluno, LocalDate data_monitoria, Time horario, String descricao_duvida) {
+    public Monitoria(Long id_monitoria, Voluntario voluntario, Aluno aluno, LocalDate data_monitoria, LocalTime horario,
+                     String descricao_duvida) {
         this.id_monitoria = id_monitoria;
         this.voluntario = voluntario;
         this.aluno = aluno;
@@ -69,10 +71,10 @@ public class Monitoria {
         this.data_monitoria = data_monitoria;
     }
 
-    public Time getHorario() {
+    public LocalTime getHorario() {
         return horario;
     }
-    public void setHorario(Time horario) {
+    public void setHorario(LocalTime horario) {
         this.horario = horario;
     }
 
