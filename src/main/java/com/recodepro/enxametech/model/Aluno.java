@@ -9,10 +9,10 @@ import java.util.Set;
 @Entity
 public class Aluno extends Usuario {
 
-    @Column(name = "grupo_familiar", nullable = false)
+    @Column(nullable = false)
     private int grupo_familiar;
 
-    @Column(name = "renda_familiar", nullable = false)
+    @Column(nullable = false)
     private double renda_familiar;
 
     @ManyToMany
@@ -27,6 +27,8 @@ public class Aluno extends Usuario {
             joinColumns = @JoinColumn(name = "aluno_id"),
             inverseJoinColumns = @JoinColumn(name = "curso_id"))
     private Set<Curso> cursosFavoritos = new HashSet<>();
+
+    public Aluno() {}
 
     public int getGrupo_familiar() {
         return grupo_familiar;

@@ -9,12 +9,13 @@ import java.util.Set;
 @Entity
 public class Voluntario extends Usuario {
 
-    @Column(name = "area_deAfinidade")
     @Enumerated(EnumType.STRING)
     private AreaDeAfinidade area_deAfinidade;
 
     @ManyToMany(mappedBy = "voluntarios")
     private Set<Aluno> alunos = new HashSet<>();
+
+    public Voluntario(){}
 
     public AreaDeAfinidade getAreaDeAfinidade() {
         return area_deAfinidade;

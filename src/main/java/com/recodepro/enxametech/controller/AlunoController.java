@@ -6,11 +6,9 @@ import com.recodepro.enxametech.model.Monitoria;
 import com.recodepro.enxametech.model.Voluntario;
 import com.recodepro.enxametech.repository.AlunoRepository;
 import com.recodepro.enxametech.repository.MonitoriaRepository;
-
 import com.recodepro.enxametech.repository.VoluntarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,7 +38,7 @@ public class AlunoController {
     }
 
     @GetMapping("/{id}/detalhar")
-    public ModelAndView detalhar(@PathVariable Long id){
+    public ModelAndView detalhar(@PathVariable Long id) {
         ModelAndView modelAndView = new ModelAndView("aluno/detalhar-aluno");
         modelAndView.addObject("aluno", alunoRepository.getReferenceById(id));
         return modelAndView;
@@ -64,7 +62,7 @@ public class AlunoController {
         return modelAndView;
     }
 
-    @PostMapping({ "/cadastrar", "/{id}/editar" })
+    @PostMapping({"/cadastrar", "/{id}/editar"})
     public ModelAndView salvar(Aluno aluno) {
         ModelAndView modelAndView = new ModelAndView("redirect:/aluno");
         alunoRepository.save(aluno);
@@ -89,27 +87,23 @@ public class AlunoController {
     }
 
     @GetMapping("/{id}/agendar")
-    public ModelAndView agendarMonitoria(@PathVariable Long id){
+    public ModelAndView agendarMonitoria(@PathVariable Long id) {
         ModelAndView modelAndView = new ModelAndView("aluno/agendar-monitoria");
         modelAndView.addObject("monitoria", new Monitoria());
-        modelAndView.addObject("aluno", alunoRepository.findById(id).orElse(null));
+        modelAndView.addObject("aluno", alunoRepository.getReferenceById(id));
         modelAndView.addObject("voluntarios", voluntarioRepository.findAll());
         return modelAndView;
     }
 
     @PostMapping("/{id}/agendar")
-    public ModelAndView salvarMonitoria(Monitoria monitoria, @PathVariable Long id){
-        ModelAndView modelAndView = new ModelAndView("redirect:/aluno");
+    public ModelAndView salvarMonitoria(Monitoria monitoria, @PathVariable Long id) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/aluno/{id}/monitorias");
 
-        if (monitoria.getVoluntario() != null) {
-            Voluntario voluntario = voluntarioRepository.findById(monitoria.getVoluntario().getId()).orElse(null);
-            monitoria.setVoluntario(voluntario);
-        }
+        Voluntario voluntario = voluntarioRepository.findById(monitoria.getVoluntario().getId()).orElse(null);
+        monitoria.setVoluntario(voluntario);
 
-        if (monitoria.getAluno() != null) {
-            Aluno aluno = alunoRepository.findById(monitoria.getAluno().getId()).orElse(null);
-            monitoria.setAluno(aluno);
-        }
+        Aluno aluno = alunoRepository.findById(id).orElse(null);
+        monitoria.setAluno(aluno);
 
         monitoriaRepository.save(monitoria);
         return modelAndView;
