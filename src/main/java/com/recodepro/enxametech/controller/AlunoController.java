@@ -3,11 +3,15 @@ package com.recodepro.enxametech.controller;
 import com.recodepro.enxametech.enums.Genero;
 import com.recodepro.enxametech.enums.UF;
 import com.recodepro.enxametech.model.Aluno;
+import com.recodepro.enxametech.model.Monitoria;
+import com.recodepro.enxametech.model.Voluntario;
 import com.recodepro.enxametech.repository.AlunoRepository;
 import com.recodepro.enxametech.repository.MonitoriaRepository;
 
+import com.recodepro.enxametech.repository.VoluntarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,11 +29,21 @@ public class AlunoController {
     @Autowired
     private MonitoriaRepository monitoriaRepository;
 
+    @Autowired
+    private VoluntarioRepository voluntarioRepository;
+
     // Alunos
     @GetMapping
     public ModelAndView listar() {
         ModelAndView modelAndView = new ModelAndView("aluno/listar-alunos");
         modelAndView.addObject("alunos", alunoRepository.findAll());
+        return modelAndView;
+    }
+
+    @GetMapping("/{id}/detalhar")
+    public ModelAndView detalhar(@PathVariable Long id){
+        ModelAndView modelAndView = new ModelAndView("aluno/detalhar-aluno");
+        modelAndView.addObject("aluno", alunoRepository.getReferenceById(id));
         return modelAndView;
     }
 
@@ -68,12 +82,19 @@ public class AlunoController {
     }
 
     // Monitorias
-    @GetMapping("/{id}/monitorias")
-    public ModelAndView listarMonitorias(@PathVariable Long id) {
+//    @GetMapping("/{id}/monitorias")
+//    public ModelAndView listarMonitorias(@PathVariable Long id) {
+//        ModelAndView modelAndView = new ModelAndView("aluno/listar-monitorias");
+//        modelAndView.addObject("aluno", alunoRepository.findById(id).orElse(null));
+//        modelAndView.addObject("monitorias",
+//                monitoriaRepository.findByAlunoId(alunoRepository.findById(id).orElse(null)));
+//        return modelAndView;
+//    }
+
+    @GetMapping("/monitorias")
+    public ModelAndView listarMonitorias() {
         ModelAndView modelAndView = new ModelAndView("aluno/listar-monitorias");
-        modelAndView.addObject("aluno", alunoRepository.findById(id).orElse(null));
-        modelAndView.addObject("monitorias",
-                monitoriaRepository.findByAlunoId(alunoRepository.findById(id).orElse(null)));
+        modelAndView.addObject("monitorias", monitoriaRepository.findAll());
         return modelAndView;
     }
 }

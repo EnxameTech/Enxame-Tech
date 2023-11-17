@@ -118,7 +118,9 @@
                 <tbody>
                 <tr th:each="aluno : ${alunos}">
                     <td th:text="${aluno.CPF}"></td>
-                    <td th:text="${aluno.nome}"></td>
+                    <td >
+                        <a th:text="${aluno.nome}" th:href="@{/aluno/{id}/detalhar (id=${aluno.id})}"></a>
+                    </td>
                     <td th:text="${aluno.genero.getDescricao()}"></td>
                     <td th:text="${aluno.data_nascimento}"></td>
                     <td th:text="${aluno.email}"></td>
