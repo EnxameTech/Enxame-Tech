@@ -88,56 +88,45 @@
 
     <div class="section--container">
         <div class="header-container">
-            <h3 class="main--title">Lista de Alunos</h3>
+            <h3 class="main--title">Cursos Favoritos</h3>
 
-            <a th:href="@{/aluno/cadastrar}" class="btn-cadastrar mb-3">
-                Cadastrar Novo Aluno
-                <i class="fas fa-plus"></i>
-            </a>
+        </div>
 
+        <div th:if="${erro}" class="alert alert-danger" role="alert">
+            <p th:text="${erro}"></p>
         </div>
 
         <div class="table-container">
             <table>
                 <thead>
                 <tr>
-                    <th>CPF</th>
-                    <th>Nome Completo</th>
-
-                    <th>Gênero</th>
-                    <th>Data de Nascimento</th>
-                    <th>E-mail</th>
-                    <th>Telefone</th>
-                    <th>Endereço</th>
-
-                    <th class="action">Ações</th>
+                    <th scope="col">Aluno</th>
+                    <th scope="col">Curso</th>
+                    <th scope="col">Ações</th>
                 </tr>
                 </thead>
 
                 <tbody>
-                <tr th:each="aluno : ${alunos}">
-                    <td th:text="${aluno.CPF}"></td>
-                    <td >
-                        <a th:text="${aluno.nome}" th:href="@{/aluno/{id}/detalhar (id=${aluno.id})}"></a>
-                    </td>
-                    <td th:text="${aluno.genero.getDescricao()}"></td>
-                    <td th:text="${aluno.data_nascimento}"></td>
-                    <td th:text="${aluno.email}"></td>
-                    <td th:text="${aluno.telefone}"></td>
-                    <td th:text="${aluno.rua}"></td>
-
-                    <td class="align-items-center">
-                        <a th:href="@{/aluno/{id}/editar (id=${aluno.id})}"><i class="fas fa-edit"></i></a>
-                        <a th:href="@{/aluno/{id}/excluir (id=${aluno.id})}"
-                           onclick="return confirm('Tem certeza que deseja excluir o aluno?');">
+                <tr th:each="cursoFavorito : ${aluno.cursoFavoritos}">
+                    <td th:text="${aluno.nome}"></td>
+                    <td th:text="${cursoFavorito.curso.titulo}"></td>
+                    <td>
+                        <a th:href="@{'/aluno/' + ${aluno.id} + '/remover-curso-favorito/' + ${cursoFavorito.id}}"
+                           onclick="return confirm('Tem certeza que deseja remover o curso dos favoritados?');">
                             <i class="fas fa-trash-alt"></i>
                         </a>
                     </td>
                 </tr>
-
                 </tbody>
             </table>
         </div>
+
+        <div class="row justify-content-center mt-3">
+            <a th:href="@{/aluno/{id}/detalhar (id=${aluno.id})}" class="col-1 btn btn-primary mb-3">
+                Voltar
+            </a>
+        </div>
+
 
     </div>
     <footer class="footer">

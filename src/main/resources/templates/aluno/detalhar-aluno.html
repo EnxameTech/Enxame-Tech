@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
           integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -103,12 +104,18 @@
                 <input disabled id="uf" th:field="*{aluno.UF}">
             </div>
         </div>
-        <div class="row gap-3 justify-content-center">
+        <div class="row gap-3 justify-content-end mt-5">
             <a th:href="@{/aluno/{id}/agendar (id=${aluno.id})}" class="col-2 btn btn-success ">
                 Agendar Monitoria
             </a>
             <a th:href="@{/aluno/{id}/monitorias (id=${aluno.id})}" class="col-2 btn btn-secondary">
-                Listar Monitorias
+                Monitorias Agendadas
+            </a>
+            <a th:href="@{/aluno/{id}/adicionar-curso-favorito (id=${aluno.id})}" class="col-2 btn btn-primary">
+                Favoritar Cursos
+            </a>
+            <a th:href="@{/aluno/{id}/cursos-favoritos (id=${aluno.id})}" class="col-2 btn btn-dark">
+                Cursos Favoritos
             </a>
         </div>
 

@@ -1,19 +1,15 @@
 package com.recodepro.enxametech.controller;
 
 import com.recodepro.enxametech.enums.Genero;
-import com.recodepro.enxametech.model.Aluno;
-import com.recodepro.enxametech.model.Monitoria;
-import com.recodepro.enxametech.model.Voluntario;
-import com.recodepro.enxametech.repository.AlunoRepository;
-import com.recodepro.enxametech.repository.MonitoriaRepository;
-import com.recodepro.enxametech.repository.VoluntarioRepository;
+import com.recodepro.enxametech.model.*;
+import com.recodepro.enxametech.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/aluno")
@@ -28,6 +24,12 @@ public class AlunoController {
 
     @Autowired
     private VoluntarioRepository voluntarioRepository;
+
+    @Autowired
+    private CursoRepository cursoRepository;
+
+    @Autowired
+    private CursoFavoritoRepository cursoFavoritoRepository;
 
     // Alunos
     @GetMapping
@@ -107,6 +109,108 @@ public class AlunoController {
 
         monitoriaRepository.save(monitoria);
         return modelAndView;
+    }
+
+    // Curso Favorito
+    @GetMapping("/{id}/cursos-favoritos")
+    public ModelAndView listarCursosFavoritos(@PathVariable Long id) {
+        ModelAndView mv = new ModelAndView("aluno/listar-cursos-favoritos");
+
+        Optional<Aluno> alunoOptional = alunoRepository.findById(id);
+        if (alunoOptional.isPresent()) {
+            Aluno aluno = alunoOptional.get();
+            mv.addObject("aluno", aluno);
+            List<Curso> cursosDisponiveis = cursoRepository.findAll();
+            mv.addObject("cursosDisponiveis", cursosDisponiveis);
+            mv.addObject("cursosFavoritos", cursoFavoritoRepository.findByAlunoId(aluno.getId()));
+        } else {
+            mv.addObject("erro", "Aluno não encontrado");
+        }
+        return mv;
+    }
+
+    @GetMapping("/{id}/adicionar-curso-favorito")
+    public ModelAndView adicionarCursoFavorito(@PathVariable Long id) {
+        ModelAndView mv = new ModelAndView("aluno/adicionar-curso-favorito");
+
+        Optional<Aluno> alunoOptional = alunoRepository.findById(id);
+        if (alunoOptional.isPresent()) {
+            Aluno aluno = alunoOptional.get();
+            mv.addObject("aluno", aluno);
+            List<Curso> cursosDisponiveis = cursoRepository.findAll();
+            mv.addObject("cursosDisponiveis", cursosDisponiveis);
+        } else {
+            mv.addObject("erro", "Aluno não encontrado");
+        }
+        return mv;
+    }
+
+    @PostMapping("/{id}/salvar-curso-favorito")
+    public ModelAndView salvarCursoFavorito(@PathVariable Long id, @RequestParam Long cursoFavoritoId) {
+        Optional<Aluno> alunoOptional = alunoRepository.findById(id);
+        if (alunoOptional.isPresent()) {
+            Aluno aluno = alunoOptional.get();
+
+            Curso cursoFavorito = cursoRepository.findById(cursoFavoritoId).orElse(null);
+
+            if (cursoFavorito != null) {
+                CursoFavorito cursoFavoritoObj = new CursoFavorito();
+                cursoFavoritoObj.setCurso(cursoFavorito);
+
+                if (!aluno.getCursoFavoritos().contains(cursoFavoritoObj)) {
+                    aluno.setCursoFavoritos(cursoFavoritoObj);
+                    alunoRepository.save(aluno);
+                } else {
+                    ModelAndView mv = new ModelAndView("aluno/adicionar-curso-favorito");
+                    mv.addObject("erro", "O curso já está na lista de favoritos");
+                    mv.addObject("aluno", aluno);
+                    List<Curso> cursosDisponiveis = cursoRepository.findAll();
+                    mv.addObject("cursosDisponiveis", cursosDisponiveis);
+                    return mv;
+                }
+            } else {
+                ModelAndView mv = new ModelAndView("aluno/adicionar-curso-favorito");
+                mv.addObject("erro", "Curso favorito não encontrado");
+                mv.addObject("aluno", aluno);
+                List<Curso> cursosDisponiveis = cursoRepository.findAll();
+                mv.addObject("cursosDisponiveis", cursosDisponiveis);
+                return mv;
+            }
+        } else {
+            ModelAndView mv = new ModelAndView("aluno/adicionar-curso-favorito");
+            mv.addObject("erro", "Aluno não encontrado");
+            return mv;
+        }
+
+        ModelAndView modelAndView = new ModelAndView("redirect:/aluno/" + id + "/cursos-favoritos");
+        return modelAndView;
+    }
+
+    @GetMapping("/{id}/remover-curso-favorito/{cursoFavoritoId}")
+    public ModelAndView removerCursoFavorito(@PathVariable Long id, @PathVariable Long cursoFavoritoId) {
+        Optional<Aluno> alunoOptional = alunoRepository.findById(id);
+
+        if (alunoOptional.isPresent()) {
+            Aluno aluno = alunoOptional.get();
+
+            CursoFavorito cursoFavorito = cursoFavoritoRepository.findById(cursoFavoritoId).orElse(null);
+
+            if (cursoFavorito != null) {
+                aluno.removeCursoFavorito(cursoFavorito);
+                alunoRepository.save(aluno);
+                return new ModelAndView("redirect:/aluno/" + id + "/cursos-favoritos");
+            } else {
+                ModelAndView mv = new ModelAndView("aluno/listar-cursos-favoritos");
+                mv.addObject("erro", "Curso favorito não encontrado");
+                mv.addObject("aluno", aluno);
+                mv.addObject("cursosFavoritos", cursoFavoritoRepository.findByAlunoId(aluno.getId()));
+                return mv;
+            }
+        } else {
+            ModelAndView mv = new ModelAndView("aluno/listar-cursos-favoritos");
+            mv.addObject("erro", "Aluno não encontrado");
+            return mv;
+        }
     }
 
 }
