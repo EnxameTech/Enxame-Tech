@@ -11,6 +11,7 @@ que o conhecimento é a chave para um futuro mais inclusivo e tecnologicamente c
 Tecnologias Utilizadas: HTML, CSS, JavaScript, Bootstrap, Java e Spring Boot
 
 Sinta-se a vontade para entrar em contato conosco e contribuir com melhorias!
+
 Abaixo segue a modelagem do banco de dados construído a partir da ferramenta BrModelo.
 
 - Conceitual
