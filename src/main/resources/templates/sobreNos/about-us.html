@@ -21,97 +21,97 @@
 
 	<div class="super_container">
 
-			<!-- Header -->
+		<!-- Header -->
 
-	<header class="header d-flex flex-row">
-		<div class="header_content d-flex flex-row align-items-center">
-			<!-- Logo -->
-			<div class="logo_container">
-				<div class="logo">
-					<img src="/img/icon_light.svg" alt="" height="45px">
-					<span>Enxame</span><br>
-					<span style="margin-left: 50px;">Tech</span>
+		<header class="header d-flex flex-row">
+			<div class="header_content d-flex flex-row align-items-center">
+				<!-- Logo -->
+				<div class="logo_container">
+					<div class="logo">
+						<img src="/img/icon_light.svg" alt="" height="45px">
+						<span>Enxame</span><br>
+						<span style="margin-left: 50px;">Tech</span>
+					</div>
 				</div>
+
+				<!-- Main Navigation -->
+				<nav class="main_nav_container">
+					<div class="main_nav">
+						<ul class="main_nav_list">
+							<li class="main_nav_item"><a th:href="@{/}">home</a></li>
+							<li class="main_nav_item"><a th:href="@{/sobre-nos}">Sobre nós</a></li>
+							<li class="main_nav_item"><a th:href="@{/cursos-disponiveis}">Cursos</a></li>
+							<li class="main_nav_item"><a th:href="@{/mentores}">Mentores</a></li>
+							<li class="main_nav_item"><a th:href="@{/fale-conosco}">Contato</a></li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+			<a th:href="@{/login}">
+				<div class="header_side d-flex flex-row justify-content-center align-items-center">
+					<img src="/img/login_icon.png" alt="">
+					<span>Login</span>
+				</div>
+			</a>
+			<!-- Hamburger -->
+			<div class="hamburger_container">
+				<i class="fas fa-bars trans_200"></i>
 			</div>
 
-			<!-- Main Navigation -->
-			<nav class="main_nav_container">
-				<div class="main_nav">
-					<ul class="main_nav_list">
-						<li class="main_nav_item"><a th:href="@{/}">home</a></li>
-						<li class="main_nav_item"><a th:href="@{/sobre-nos}">Sobre nós</a></li>
-						<li class="main_nav_item"><a th:href="@{/cursos-disponiveis}">Cursos</a></li>
-						<li class="main_nav_item"><a th:href="@{/mentores}">Mentores</a></li>
-						<li class="main_nav_item"><a th:href="@{/fale-conosco}">Contato</a></li>
-					</ul>
-				</div>
-			</nav>
-		</div>
-		<a th:href="@{/login}">
-			<div class="header_side d-flex flex-row justify-content-center align-items-center">
-				<img src="/img/login_icon.png" alt="">
-				<span>Login</span>
+		</header>
+
+		<!-- Menu -->
+		<div class="menu_container menu_mm">
+
+			<!-- Menu Close Button -->
+			<div class="menu_close_container">
+				<div class="menu_close"></div>
 			</div>
-		</a>
-		<!-- Hamburger -->
-		<div class="hamburger_container">
-			<i class="fas fa-bars trans_200"></i>
-		</div>
 
-	</header>
-
-	<!-- Menu -->
-	<div class="menu_container menu_mm">
-
-		<!-- Menu Close Button -->
-		<div class="menu_close_container">
-			<div class="menu_close"></div>
-		</div>
-
-		<!-- Menu Items -->
-		<div class="menu_inner menu_mm">
-			<div class="menu menu_mm">
-				<ul class="menu_list menu_mm">
-					<li class="menu_item menu_mm"><a th:href="@{/}">Home</a></li>
-					<li class="menu_item menu_mm"><a th:href="@{/sobre-nos}">Sobre nós</a></li>
-					<li class="menu_item menu_mm"><a th:href="@{/cursos-disponiveis}">Cursos</a></li>
-					<li class="menu_item menu_mm"><a th:href="@{/mentores}">Mentores</a></li>
-					<li class="menu_item menu_mm"><a th:href="@{/fale-conosco}">Contato</a></li>
-					<li class="menu_item menu_mm"><a th:href="@{/login}">Login</a></li>
-
-				</ul>
-
-				<!-- Menu Social -->
-
-				<div class="menu_social_container menu_mm">
-					<ul class="menu_social menu_mm">
-						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-instagram"></i></a></li>
-						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-twitter"></i></a></li>
-						<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-github"></i></a></li>
+			<!-- Menu Items -->
+			<div class="menu_inner menu_mm">
+				<div class="menu menu_mm">
+					<ul class="menu_list menu_mm">
+						<li class="menu_item menu_mm"><a th:href="@{/}">Home</a></li>
+						<li class="menu_item menu_mm"><a th:href="@{/sobre-nos}">Sobre nós</a></li>
+						<li class="menu_item menu_mm"><a th:href="@{/cursos-disponiveis}">Cursos</a></li>
+						<li class="menu_item menu_mm"><a th:href="@{/mentores}">Mentores</a></li>
+						<li class="menu_item menu_mm"><a th:href="@{/fale-conosco}">Contato</a></li>
+						<li class="menu_item menu_mm"><a th:href="@{/login}">Login</a></li>
 
 					</ul>
+
+					<!-- Menu Social -->
+
+					<div class="menu_social_container menu_mm">
+						<ul class="menu_social menu_mm">
+							<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+							<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+							<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-instagram"></i></a></li>
+							<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+							<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-twitter"></i></a></li>
+							<li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-github"></i></a></li>
+
+						</ul>
+					</div>
+
+					<div class="menu_copyright menu_mm">Colorlib All rights reserved</div>
 				</div>
 
-				<div class="menu_copyright menu_mm">Colorlib All rights reserved</div>
 			</div>
 
 		</div>
-
-	</div>
 
 		<!-- Home -->
 
-	<div class="home">
-		<div class="home_background_container prlx_parent">
-			<div class="home_background prlx" style="background-image:url(/img/contact_background.jpg)"></div>
+		<div class="home">
+			<div class="home_background_container prlx_parent">
+				<div class="home_background prlx" style="background-image:url(/img/contact_background.jpg)"></div>
+			</div>
+			<div class="home_content">
+				<h1>Contato</h1>
+			</div>
 		</div>
-		<div class="home_content">
-			<h1>Sobre Nós</h1>
-		</div>
-	</div>
 
 
 
@@ -148,12 +148,12 @@
 							<img src="/img/exam.svg" alt="">
 						</div>
 						<h3>Nossos Valores</h3>
-						<p >
+						<p>
 							Nossa visão é um mundo onde a educação em programação seja
 							acessível a todos, promovendo a inclusão, a diversidade e a
 							igualdade de oportunidades. Nosso compromisso é oferecer
 							recursos abertos, formação de qualidade e mentoria exclusiva (1-1).
-						  </p>
+						</p>
 					</div>
 
 					<div
@@ -162,15 +162,16 @@
 							<img src="/img/books.svg" alt="">
 						</div>
 						<h3>Nossos valores</h3>
-						<p>Priorizamos a diversidade, equidade e colaboração. Valorizamos a adaptação 
-						constante, garantindo um ambiente inclusivo que capacita todos os alunos a prosperar na programação.
+						<p>Priorizamos a diversidade, equidade e colaboração. Valorizamos a adaptação
+							constante, garantindo um ambiente inclusivo que capacita todos os alunos a prosperar na
+							programação.
 						</p>
 					</div>
 
 				</div>
 			</div>
 		</div>
-		
+
 
 		<!-- Testimonials -->
 
@@ -178,136 +179,138 @@
 
 		<!-- Footer -->
 
-	<footer class="footer">
-		<div class="container">
+		<footer class="footer">
+			<div class="container">
 
-			<!-- Newsletter -->
+				<!-- Newsletter -->
 
-			<div class="newsletter">
-				<div class="row">
-					<div class="col">
-						<div class="section_title text-center">
-							<h1>Inscreva-se para receber nossas novidades</h1>
+				<div class="newsletter">
+					<div class="row">
+						<div class="col">
+							<div class="section_title text-center">
+								<h1>Inscreva-se para receber nossas novidades</h1>
+							</div>
 						</div>
 					</div>
+
+					<div class="row">
+						<div class="col text-center">
+							<div class="newsletter_form_container mx-auto">
+								<form action="post">
+									<div
+										class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
+										<input id="newsletter_email" class="newsletter_email" type="email"
+											placeholder="Informe seu e-mail" required="required"
+											data-error="Valid email is required.">
+										<button id="newsletter_submit" type="submit"
+											class="newsletter_submit_btn trans_300" value="Submit">Inscrever</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+
 				</div>
 
-				<div class="row">
-					<div class="col text-center">
-						<div class="newsletter_form_container mx-auto">
-							<form action="post">
-								<div
-									class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
-									<input id="newsletter_email" class="newsletter_email" type="email"
-										placeholder="Informe seu e-mail" required="required"
-										data-error="Valid email is required.">
-									<button id="newsletter_submit" type="submit"
-										class="newsletter_submit_btn trans_300" value="Submit">Inscrever</button>
+				<!-- Footer Content -->
+
+				<div class="footer_content">
+					<div class="row">
+
+						<!-- Footer Column - About -->
+						<div class="col-lg-4 footer_col">
+
+							<!-- Logo -->
+							<div class="logo_container">
+								<div class="logo">
+									<img src="/img/icon_dark.svg" height="60px"
+										alt="logo da enxame tech que lembra o desenho de uma abelha">
+									<span>ENXAME TECH</span>
 								</div>
-							</form>
+							</div>
+
+							<p class="footer_about_text">Fortalecendo comunidades através do conhecimento e colaboração.
+							</p>
+
 						</div>
-					</div>
-				</div>
 
-			</div>
+						<!-- Footer Column - Links Úteis -->
 
-			<!-- Footer Content -->
+						<div class="col-lg-2 footer_col">
+						</div>
 
-			<div class="footer_content">
-				<div class="row">
+						<!-- Footer Column - Menu -->
 
-					<!-- Footer Column - About -->
-					<div class="col-lg-4 footer_col">
-
-						<!-- Logo -->
-						<div class="logo_container">
-							<div class="logo">
-								<img src="/img/icon_dark.svg" height="60px"
-									 alt="logo da enxame tech que lembra o desenho de uma abelha">
-								<span>ENXAME TECH</span>
+						<div class="col-lg-3 footer_col justify-content-lg-end">
+							<div class="footer_column_title">Menu</div>
+							<div class="footer_column_content">
+								<ul>
+									<li class="footer_list_item"><a th:href="@{/}">Página Inicial</a></li>
+									<li class="footer_list_item"><a th:href="@{/sobre-nos}">Sobre Nós</a></li>
+									<li class="footer_list_item"><a th:href="@{/cursos-disponiveis}">Cursos</a></li>
+									<li class="footer_list_item"><a th:href="@{/mentores}">Mentores</a></li>
+									<li class="footer_list_item"><a th:href="@{/fale-conosco}">Contato</a></li>
+								</ul>
 							</div>
 						</div>
 
-						<p class="footer_about_text">Fortalecendo comunidades através do conhecimento e colaboração.</p>
 
-					</div>
 
-					<!-- Footer Column - Links Úteis -->
+						<!-- Footer Column - Contact -->
 
-					<div class="col-lg-2 footer_col">
-					</div>
-					
-					<!-- Footer Column - Menu -->
-
-					<div class="col-lg-3 footer_col justify-content-lg-end">
-						<div class="footer_column_title">Menu</div>
-						<div class="footer_column_content">
-							<ul>
-								<li class="footer_list_item"><a th:href="@{/}">Página Inicial</a></li>
-								<li class="footer_list_item"><a th:href="@{/sobre-nos}">Sobre Nós</a></li>
-								<li class="footer_list_item"><a th:href="@{/cursos-disponiveis}">Cursos</a></li>
-								<li class="footer_list_item"><a th:href="@{/mentores}">Mentores</a></li>
-								<li class="footer_list_item"><a th:href="@{/fale-conosco}">Contato</a></li>
-							</ul>
+						<div class="col-lg-3 footer_col">
+							<div class="footer_column_title">Contato</div>
+							<div class="footer_column_content">
+								<ul>
+									<li class="footer_contact_item">
+										<div class="footer_contact_icon">
+											<img src="/img/placeholder.svg"
+												alt="https://www.flaticon.com/authors/lucy-g">
+										</div>
+										Avenida Paulista, 2300 - Consolação, São Paulo - SP
+									</li>
+									<li class="footer_contact_item">
+										<div class="footer_contact_icon">
+											<img src="/img/smartphone.svg"
+												alt="https://www.flaticon.com/authors/lucy-g">
+										</div>
+										0800 000 1000
+									</li>
+									<li class="footer_contact_item">
+										<div class="footer_contact_icon">
+											<img src="/img/envelope.svg" alt="https://www.flaticon.com/authors/lucy-g">
+										</div>enxame.edtech@gmail.com
+									</li>
+								</ul>
+							</div>
 						</div>
+
 					</div>
+				</div>
 
-					
+				<!-- Footer Copyright -->
 
-					<!-- Footer Column - Contact -->
-
-					<div class="col-lg-3 footer_col">
-						<div class="footer_column_title">Contato</div>
-						<div class="footer_column_content">
-							<ul>
-								<li class="footer_contact_item">
-									<div class="footer_contact_icon">
-										<img src="/img/placeholder.svg"
-											alt="https://www.flaticon.com/authors/lucy-g">
-									</div>
-									Avenida Paulista, 2300 - Consolação, São Paulo - SP
-								</li>
-								<li class="footer_contact_item">
-									<div class="footer_contact_icon">
-										<img src="/img/smartphone.svg"
-											alt="https://www.flaticon.com/authors/lucy-g">
-									</div>
-									0800 000 1000
-								</li>
-								<li class="footer_contact_item">
-									<div class="footer_contact_icon">
-										<img src="/img/envelope.svg"
-											alt="https://www.flaticon.com/authors/lucy-g">
-									</div>enxame.edtech@gmail.com
-								</li>
-							</ul>
-						</div>
+				<div class="footer_bar d-flex flex-column flex-sm-row align-items-center">
+					<div class="footer_copyright">
+						<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+							Copyright &copy;
+							<script>document.write(new Date().getFullYear());</script> All rights reserved | This
+							template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a
+								href="https://colorlib.com" target="_blank">Colorlib.</a> <a> | Utilizado com carinho
+								pela Squad 01 - Enxame Tech.</a>
+							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						</span>
 					</div>
-
+					<div class="footer_social ml-sm-auto">
+						<ul class="menu_social">
+							<li class="menu_social_item"><a href="https://github.com/EnxameTech" target="_blank"><i
+										class="fab fa-github"></i></a></li>
+						</ul>
+					</div>
 				</div>
+
 			</div>
-
-			<!-- Footer Copyright -->
-
-			<div class="footer_bar d-flex flex-column flex-sm-row align-items-center">
-				<div class="footer_copyright">
-					<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						Copyright &copy;
-						<script>document.write(new Date().getFullYear());</script> All rights reserved | This
-						template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a
-							href="https://colorlib.com" target="_blank">Colorlib.</a> <a> | Utilizado com carinho pela Squad 01 - Enxame Tech.</a>
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					</span>
-				</div>
-				<div class="footer_social ml-sm-auto">
-					<ul class="menu_social">
-						<li class="menu_social_item"><a href="https://github.com/EnxameTech" target="_blank"><i class="fab fa-github"></i></a></li>
-					</ul>
-				</div>
-			</div>
-
-		</div>
-	</footer>
+		</footer>
 
 
 	</div>
