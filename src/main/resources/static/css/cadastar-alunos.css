@@ -236,6 +236,11 @@ input[type="submit"]:hover {
   display: flex;
   align-items: center;
   counter-reset: step;
+
+  @media(max-width: 775px){
+    padding: 30px 28%;
+    color: red;
+  }
 }
 .progress-bar::before, .progress{
   content: "";

@@ -34,14 +34,13 @@ body {
     background-color: #1a1a1a;
 
     @media (max-width: 1238px) {
-        height: 155vh;
-    }
-
-    @media (max-width: 772px) {
-        height: 145vh;
+        height: 135vh;
     }
     @media (max-width: 772px) {
         height: 175vh;
+    }
+    @media (max-width: 472px) {
+        height: 165vh;
     }
 
     @media (min-width: 951px) {
@@ -109,7 +108,7 @@ body {
     width: 100%;
     padding: 1rem;
     @media (max-width: 1238px) {
-        height: 155vh;
+        height: 135vh;
     }
     @media (max-width: 772px) {
         height: 175vh;
@@ -281,13 +280,8 @@ body {
     color: #f00;
   }
 
-i {
-    position: relative; /* Certifique-se de que o elemento pai tem uma posição relativa */
-}
 
 i:hover::after {
     content: attr(title);
-    position: absolute;
-    z-index: 9999;
-    color: black;
+
 }
