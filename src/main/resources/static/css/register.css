@@ -296,18 +296,24 @@ font-size: 12px;
   font-size:0.85rem;
 }
 .btn-next, .btn-prev {
-  font-size: 19px;
-  margin-left: 14px;
+  font-size: 15px;
+  margin: 5px ;
+  /* margin-left: 14px;
   margin-top: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 10px; */
   width: 23% !important;
   background: #e7b315;
   color: black;
   border: none;
-  padding: 13px 24px;
+  /* padding: 13px 24px; */
   cursor: pointer;
   font-weight: 500;
   border-radius: 5px;
+
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  white-space:normal;
 }
 .btn-next:hover{
   
