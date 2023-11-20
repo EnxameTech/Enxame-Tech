@@ -21,6 +21,12 @@
     />
     <link
             rel="stylesheet"
+            type="text/css"
+            href="/css/modal.css"
+    />
+
+    <link
+            rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
             integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
             crossorigin="anonymous"
@@ -103,7 +109,6 @@
                 <tr>
                     <th>CPF</th>
                     <th>Nome Completo</th>
-
                     <th>Gênero</th>
                     <th>Data de Nascimento</th>
                     <th>E-mail</th>
@@ -129,7 +134,7 @@
                     <td class="align-items-center">
                         <a th:href="@{/aluno/{id}/editar (id=${aluno.id})}"><i class="fas fa-edit"></i></a>
                         <a th:href="@{/aluno/{id}/excluir (id=${aluno.id})}"
-                           onclick="return confirm('Tem certeza que deseja excluir o aluno?');">
+                           onclick="return confirm('Tem certeza que deseja excluir o voluntário?');">
                             <i class="fas fa-trash-alt"></i>
                         </a>
                     </td>
@@ -138,7 +143,6 @@
                 </tbody>
             </table>
         </div>
-
     </div>
     <footer class="footer">
         <div class="container">
