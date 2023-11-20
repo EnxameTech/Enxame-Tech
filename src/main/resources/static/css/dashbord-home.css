@@ -14,7 +14,7 @@ body {
     height: 100vh; /* Defina a altura da tela como 100% da viewport height */
   }
   
-  @media (max-width: 1409px) {
+  @media (max-width: 1517px) {
     body {
       height: 100% !important;
     
@@ -153,6 +153,7 @@ body {
 .section--container{
    margin-top: 12px;
    padding: 2rem; 
+   height: 83vh;
    background-color: #fff;
    border-radius: 10px;
 }

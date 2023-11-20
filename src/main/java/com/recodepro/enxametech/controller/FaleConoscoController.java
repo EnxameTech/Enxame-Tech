@@ -18,16 +18,16 @@ public class FaleConoscoController {
 
     @GetMapping
     public ModelAndView faleConosco() {
-        ModelAndView modelAndView = new ModelAndView("faleConosco/formulario");
+        ModelAndView modelAndView = new ModelAndView("faleConosco/contact");
         modelAndView.addObject("faleConosco", new FaleConosco());
 
         return modelAndView;
     }
 
-    @PostMapping
-    public ModelAndView faleConosco(FaleConosco faleConosco) {
-        ModelAndView modelAndView = new ModelAndView("faleConosco/enviado");
-        faleConoscoRepository.save(faleConosco);
-        return modelAndView;
-    }
+//    @PostMapping
+//    public ModelAndView faleConosco(FaleConosco faleConosco) {
+//        ModelAndView modelAndView = new ModelAndView("faleConosco/enviado");
+//        faleConoscoRepository.save(faleConosco);
+//        return modelAndView;
+//    }
 }
