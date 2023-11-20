@@ -24,10 +24,10 @@ public class FaleConoscoController {
         return modelAndView;
     }
 
-//    @PostMapping
-//    public ModelAndView faleConosco(FaleConosco faleConosco) {
-//        ModelAndView modelAndView = new ModelAndView("faleConosco/enviado");
-//        faleConoscoRepository.save(faleConosco);
-//        return modelAndView;
-//    }
+    @PostMapping
+    public ModelAndView faleConosco(FaleConosco faleConosco) {
+        ModelAndView modelAndView = new ModelAndView("faleConosco/enviado");
+        faleConoscoRepository.save(faleConosco);
+        return modelAndView;
+    }
 }
