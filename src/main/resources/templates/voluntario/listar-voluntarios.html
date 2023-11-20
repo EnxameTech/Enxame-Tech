@@ -102,7 +102,7 @@
                 <thead>
                 <tr>
                     <th>Nome Completo</th>
-                    <th>Data Nascimento</th>
+                    <th>Área de Afinidade</th>
                     <th>E-mail</th>
                     <th>Telefone</th>
 
@@ -113,7 +113,7 @@
                 <tbody>
                 <tr th:each="voluntario : ${voluntarios}">
                     <td th:text="${voluntario.nome}"></td>
-                    <td th:text="${voluntario.data_nascimento}"></td>
+                    <td th:text="${voluntario.areaDeAfinidade.getDescricao()}"></td>
                     <td th:text="${voluntario.email}"></td>
                     <td th:text="${voluntario.telefone}"></td>
 
