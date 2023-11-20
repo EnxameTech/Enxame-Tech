@@ -101,14 +101,10 @@
             <table>
                 <thead>
                 <tr>
-                    <th>CPF</th>
                     <th>Nome Completo</th>
-
-                    <th>Gênero</th>
                     <th>Data Nascimento</th>
                     <th>E-mail</th>
                     <th>Telefone</th>
-                    <th>Endereço</th>
 
                     <th class="action">Ações</th>
                 </tr>
@@ -116,13 +112,10 @@
 
                 <tbody>
                 <tr th:each="voluntario : ${voluntarios}">
-                    <td th:text="${voluntario.CPF}"></td>
                     <td th:text="${voluntario.nome}"></td>
-                    <td th:text="${voluntario.genero.getDescricao()}"></td>
                     <td th:text="${voluntario.data_nascimento}"></td>
                     <td th:text="${voluntario.email}"></td>
                     <td th:text="${voluntario.telefone}"></td>
-                    <td th:text="${voluntario.rua}"></td>
 
                     <td class="align-items-center">
                         <a th:href="@{/voluntario/{id}/editar (id=${voluntario.id})}"><i class="fas fa-edit"></i></a>
