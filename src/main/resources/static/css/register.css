@@ -16,6 +16,9 @@
     align-items: center;
     width: 50%;
     height: 100%;
+  @media (max-width: 800px) {
+    width: 100%;
+  }
 }
 .progress-bar{
   background-color: transparent;
