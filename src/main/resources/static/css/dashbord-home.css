@@ -9,17 +9,17 @@
     border: none;
     max-width: 20000px;
 }
+
 body {
     display: flex;
-    height: 100vh; /* Defina a altura da tela como 100% da viewport height */
-  }
-  
-  @media (max-width: 1517px) {
-    body {
-      height: 100% !important;
-    
+    margin: 0;
+    height: 100vh !important;
+    @media (max-width: 761px) {
+        height: 100vh !important;
     }
   }
+  
+
 
 .sidebar{
     position: static;
@@ -33,6 +33,12 @@ body {
     overflow: hidden;
     transition: all 0.5s linear;
     background-color: #1a1a1a;
+    @media (max-width: 1238px) {
+        height: 155vh;
+    }
+    @media (max-width: 772px) {
+        height: 145vh;
+    }
 
 }
 
@@ -40,6 +46,7 @@ body {
     width: 35%;
     padding: 16px;
     transition: 0.5s;
+
 
 }
 
@@ -98,6 +105,12 @@ body {
     background-color: #FFD266;
     width: 100%;
     padding: 1rem;
+    @media (max-width: 1238px) {
+        height: 155vh;
+    }
+    @media (max-width: 772px) {
+        height: 145vh;
+    }
 }
 .header--wrapper img{
   width: 50px;
@@ -153,8 +166,8 @@ body {
 
 .section--container{
    margin-top: 12px;
-   padding: 2rem; 
-   height: 83vh;
+   padding: 2rem;
+
    background-color: #fff;
    border-radius: 10px;
 }
@@ -190,7 +203,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     gap: 20px;
+    @media (max-width: 840px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 .card-header{
     display: flex;
