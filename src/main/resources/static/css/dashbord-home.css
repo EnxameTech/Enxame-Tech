@@ -18,36 +18,39 @@ body {
         height: 100vh !important;
     }
   }
-  
 
 
-.sidebar{
+
+.sidebar {
     position: static;
     top: 0;
     left: 0;
     bottom: 0;
     width: 92px;
-   
     padding: -1px 1.7rem;
     color: #fff;
     overflow: hidden;
     transition: all 0.5s linear;
     background-color: #1a1a1a;
+
     @media (max-width: 1238px) {
         height: 155vh;
     }
+
     @media (max-width: 772px) {
         height: 145vh;
     }
+    @media (max-width: 772px) {
+        height: 175vh;
+    }
 
-}
-
-.sidebar:hover{
-    width: 35%;
-    padding: 16px;
-    transition: 0.5s;
-
-
+    @media (min-width: 951px) {
+        &:hover {
+            width: 35%;
+            padding: 16px;
+            transition: 0.5s;
+        }
+    }
 }
 
 .logo{
@@ -109,7 +112,10 @@ body {
         height: 155vh;
     }
     @media (max-width: 772px) {
-        height: 145vh;
+        height: 175vh;
+    }
+    @media (max-width: 472px) {
+        height: 165vh;
     }
 }
 .header--wrapper img{
@@ -274,3 +280,14 @@ body {
   .close:hover {
     color: #f00;
   }
+
+i {
+    position: relative; /* Certifique-se de que o elemento pai tem uma posição relativa */
+}
+
+i:hover::after {
+    content: attr(title);
+    position: absolute;
+    z-index: 9999;
+    color: black;
+}
