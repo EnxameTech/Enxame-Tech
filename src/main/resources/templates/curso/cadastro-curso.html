@@ -78,13 +78,13 @@
             <form th:object="${curso}" id="form" method="POST">
                 <div class="form-step  form-step-active row ">
                     <div class="row">
-                        <div class="form-group col-6">
+                        <div class="form-group col-md-6">
                             <label for="titulo">Título</label>
                             <input type="text" id="titulo" name="titulo" class="inputs required"
                                    th:field="*{titulo}">
                             <span class="span-required">Campo obrigátorio</span>
                         </div>
-                        <div class="form-group col-6">
+                        <div class="form-group col-md-6">
                             <label for="nome_empresa">Empresa</label>
                             <input type="text" id="nome_empresa" name="nome_empresa" class="inputs required"
                                    th:field="*{nome_empresa}">
@@ -92,13 +92,13 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-4">
+                        <div class="form-group col-md-4">
                             <label for="dataFinal_inscricao">Inscrições até</label>
                             <input type="date" id="dataFinal_inscricao" name="dataFinal_inscricao" class="inputs required"
                                    th:field="*{dataFinal_inscricao}">
                             <span class="span-required">Campo obrigátorio</span>
                         </div>
-                        <div class="form-group col-8">
+                        <div class="form-group col-md-8">
                             <label for="descricao">Descrição</label>
                             <input type="text" id="descricao" name="descricao" class="inputs required"
                                    th:field="*{descricao}">
