@@ -33,37 +33,37 @@
     <div class="logo">
         <ul class="menu">
             <li>
-                <a th:href="@{/dashboard}">
+                <a th:href="@{/dashboard}" title="Dashboard">
                     <i class="fas fa-tachometer-alt"></i>
                     <span>Dashboard </span>
                 </a>
             </li>
             <li>
-                <a th:href="@{/aluno}">
+                <a th:href="@{/aluno}" title="Alunos">
                     <i class="fas fa-user"></i>
                     <span>Alunos</span>
                 </a>
             </li>
             <li>
-                <a th:href="@{/voluntario}">
+                <a th:href="@{/voluntario}" title="Voluntários">
                     <i class="fa-solid fa-person-chalkboard"></i>
                     <span>Voluntários</span>
                 </a>
             </li>
             <li>
-                <a th:href="@{/administrador}">
+                <a th:href="@{/administrador}" title="Administradores">
                     <i class="fa-regular fa-address-card"></i>
                     <span>Administradores</span>
                 </a>
             </li>
             <li>
-                <a th:href="@{/curso}">
+                <a th:href="@{/curso}" title="Cursos">
                     <i class="fas fa-book"></i>
                     <span>Cursos</span>
                 </a>
             </li>
             <li class="logout">
-                <a th:href="@{/}">
+                <a th:href="@{/}" title="Sair">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Sair</span>
                 </a>
@@ -101,27 +101,19 @@
             <table>
                 <thead>
                 <tr>
-                    <th>CPF</th>
+
                     <th>Nome Completo</th>
-                    <th>Gênero</th>
-                    <th>Data Nascimento</th>
                     <th>E-mail</th>
                     <th>Telefone</th>
-                    <th>Endereço</th>
-
                     <th class="action">Ações</th>
                 </tr>
                 </thead>
 
                 <tbody>
                 <tr th:each="administrador : ${administradores}">
-                    <td th:text="${administrador.CPF}"></td>
                     <td th:text="${administrador.nome}"></td>
-                    <td th:text="${administrador.genero.getDescricao()}"></td>
-                    <td th:text="${administrador.data_nascimento}"></td>
                     <td th:text="${administrador.email}"></td>
                     <td th:text="${administrador.telefone}"></td>
-                    <td th:text="${administrador.rua}"></td>
 
                     <td class="align-items-center">
                         <a th:href="@{/administrador/{id}/editar (id=${administrador.id})}"><i class="fas fa-edit"></i></a>
