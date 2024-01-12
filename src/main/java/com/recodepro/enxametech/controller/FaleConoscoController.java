@@ -1,33 +1,38 @@
 package com.recodepro.enxametech.controller;
 
 import com.recodepro.enxametech.model.FaleConosco;
-import com.recodepro.enxametech.repository.FaleConoscoRepository;
+import com.recodepro.enxametech.service.FaleConoscoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.List;
+
+@RestController
 @RequestMapping("/fale-conosco")
 public class FaleConoscoController {
 
     @Autowired
-    private FaleConoscoRepository faleConoscoRepository;
+    private FaleConoscoService fcs;
 
-    @GetMapping
-    public ModelAndView faleConosco() {
-        ModelAndView modelAndView = new ModelAndView("faleConosco/contact");
-        modelAndView.addObject("faleConosco", new FaleConosco());
-
-        return modelAndView;
+    @GetMapping("/listar")
+    public List<FaleConosco> listar(){
+        return fcs.getAllFaleConosco();
     }
 
-    @PostMapping
-    public ModelAndView faleConosco(FaleConosco faleConosco) {
-        ModelAndView modelAndView = new ModelAndView("faleConosco/enviado");
-        faleConoscoRepository.save(faleConosco);
-        return modelAndView;
+    @GetMapping("/detalhar/{id}")
+    public ResponseEntity detalhar(@PathVariable Long id){
+        try{
+            FaleConosco faleConosco = fcs.getFaleConoscoById(id);
+            return ResponseEntity.ok(faleConosco);
+        }catch (RuntimeException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Contato não encontrado!");
+        }
+    }
+
+    @PostMapping("/enviar")
+    public FaleConosco enviar(@RequestBody FaleConosco faleConosco){
+        return fcs.saveFaleConosco(faleConosco);
     }
 }

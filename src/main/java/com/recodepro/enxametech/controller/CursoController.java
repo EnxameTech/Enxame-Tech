@@ -1,60 +1,63 @@
 package com.recodepro.enxametech.controller;
 
-import com.recodepro.enxametech.repository.CursoRepository;
+import com.recodepro.enxametech.service.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import com.recodepro.enxametech.model.Curso;
 
-import java.util.Optional;
+import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/curso")
 public class CursoController {
 
     @Autowired
-    private final CursoRepository cursoRepository;
+    private final CursoService cs;
 
-    public CursoController(CursoRepository cursoRepository) {
-        this.cursoRepository = cursoRepository;
+    public CursoController(CursoService cs) {
+        this.cs = cs;
     }
 
-    @GetMapping
-    public ModelAndView listarCursos() {
-        ModelAndView mv = new ModelAndView("curso/listar-cursos");
-        mv.addObject("cursos", cursoRepository.findAll());
-        return mv;
+    @GetMapping("/listar")
+    public List<Curso> listar(){
+        return cs.getAllCursos();
     }
 
-    @GetMapping("/cadastrar")
-    public ModelAndView cadastrarCurso() {
-        ModelAndView mv = new ModelAndView("curso/cadastro-curso");
-        mv.addObject("curso", new Curso());
-        return mv;
+    @PostMapping("/cadastrar")
+    public Curso cadastrar(@RequestBody Curso curso){
+        return cs.saveCurso(curso);
     }
 
-    @GetMapping("/{id}/editar")
-    public ModelAndView editar(@PathVariable Long id) {
-        ModelAndView mv = new ModelAndView("curso/editar-curso");
-        mv.addObject("curso", cursoRepository.getReferenceById(id));
-        return mv;
+    @GetMapping("/detalhar/{id}")
+    public ResponseEntity detalhar(@PathVariable Long id){
+        try{
+            Curso curso = cs.getCursoById(id);
+            return ResponseEntity.ok(curso);
+        }catch (RuntimeException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Curso não encontrado!");
+        }
     }
 
-    @PostMapping({"/cadastrar", "/{id}/editar"})
-    public String salvar(Curso curso) {
-        cursoRepository.save(curso);
-        return "redirect:/curso";
+    @PutMapping("/atualizar/{id}")
+    public ResponseEntity atualizar(@PathVariable Long id, @RequestBody Curso updateCurso){
+        try{
+            Curso curso = cs.updateCurso(id, updateCurso);
+            return ResponseEntity.ok(curso);
+        }catch (RuntimeException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Curso não encontrado!");
+        }
     }
 
-    @GetMapping("/{id}/excluir")
-    public ModelAndView excluir(@PathVariable Long id) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/curso");
-        cursoRepository.deleteById(id);
-        return modelAndView;
+    @DeleteMapping("/deletar/{id}")
+    public ResponseEntity deletarCurso(@PathVariable Long id){
+        try {
+            cs.deleteById(id);
+            return ResponseEntity.ok("Curso deletado!");
+        }catch (RuntimeException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Curso não encontrado!");
+        }
     }
 
 }

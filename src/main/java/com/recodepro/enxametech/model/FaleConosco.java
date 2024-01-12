@@ -13,7 +13,7 @@ public class FaleConosco {
     private String nome_completo;
 
     @Column(nullable = false)
-    private String CPF;
+    private String cpf;
 
     @Column(nullable = false)
     private String email;
@@ -24,11 +24,10 @@ public class FaleConosco {
     @Column(nullable = false)
     private String mensagem;
 
-    public FaleConosco(Long id_contato, String nome_completo, String CPF, String email, String telefone,
+    public FaleConosco(String nome_completo, String cpf, String email, String telefone,
                        String mensagem) {
-        this.id_contato = id_contato;
         this.nome_completo = nome_completo;
-        this.CPF = CPF;
+        this.cpf = cpf;
         this.email = email;
         this.telefone = telefone;
         this.mensagem = mensagem;
@@ -54,12 +53,12 @@ public class FaleConosco {
         this.nome_completo = nome_completo;
     }
 
-    public String getCPF() {
-        return CPF;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getEmail() {
