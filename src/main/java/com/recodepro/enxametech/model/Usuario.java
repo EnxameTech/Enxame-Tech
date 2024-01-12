@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
+@Entity
 @MappedSuperclass
 public abstract class Usuario {
 
@@ -35,45 +36,45 @@ public abstract class Usuario {
 
     @Column(nullable = false)
     private String rua;
-
+    
     @Column(nullable = false)
     private String numero;
-
+    
     @Column(nullable = false)
     private String bairro;
-
+    
     @Column(nullable = false)
     private String cidade;
-
+    
     @Column(nullable = false)
     private String UF;
-
+    
     @Column(nullable = false)
     private String CEP;
 
     @Column(nullable = false, unique = true)
     private String CPF;
-
+    
     public Long getId() {
         return id;
     }
-
+    
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getNome() {
+    public String getNome_completo() {
         return nome_completo;
     }
 
-    public void setNome(String nome_completo) {
+    public void setNome_completo(String nome_completo) {
         this.nome_completo = nome_completo;
     }
-
+    
     public LocalDate getData_nascimento() {
         return data_nascimento;
     }
-
+    
     public void setData_nascimento(LocalDate data_nascimento) {
         this.data_nascimento = data_nascimento;
     }
@@ -164,4 +165,5 @@ public abstract class Usuario {
     public void setCPF(String CPF) {
         this.CPF = CPF;
     }
+
 }

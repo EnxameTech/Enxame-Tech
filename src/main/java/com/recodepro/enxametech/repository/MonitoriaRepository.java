@@ -1,6 +1,5 @@
 package com.recodepro.enxametech.repository;
 
-import com.recodepro.enxametech.model.Aluno;
 import com.recodepro.enxametech.model.Monitoria;
 
 import java.util.List;

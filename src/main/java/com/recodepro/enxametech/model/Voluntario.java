@@ -10,7 +10,7 @@ import java.util.Set;
 public class Voluntario extends Usuario {
 
     @Enumerated(EnumType.STRING)
-    private AreaDeAfinidade area_deAfinidade;
+    private AreaDeAfinidade areaDeAfinidade;
 
     @ManyToMany(mappedBy = "voluntarios")
     private Set<Aluno> alunos = new HashSet<>();
@@ -18,10 +18,19 @@ public class Voluntario extends Usuario {
     public Voluntario(){}
 
     public AreaDeAfinidade getAreaDeAfinidade() {
-        return area_deAfinidade;
+        return areaDeAfinidade;
     }
 
     public void setAreaDeAfinidade(AreaDeAfinidade area_deAfinidade) {
-        this.area_deAfinidade = area_deAfinidade;
+        this.areaDeAfinidade = area_deAfinidade;
     }
+
+    public Set<Aluno> getAlunos() {
+        return alunos;
+    }
+
+    public void setAlunos(Set<Aluno> alunos) {
+        this.alunos = alunos;
+    }
+
 }

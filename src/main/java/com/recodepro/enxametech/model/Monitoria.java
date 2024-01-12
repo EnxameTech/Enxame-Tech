@@ -3,7 +3,6 @@ package com.recodepro.enxametech.model;
 import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
