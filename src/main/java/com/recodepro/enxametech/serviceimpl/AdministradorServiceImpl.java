@@ -30,7 +30,22 @@ public class AdministradorServiceImpl implements AdministradorService {
 
     @Override
     public Administrador updateAdm(Long id, Administrador updateAdm) {
-        return null;
+        Administrador adm = ar.findById(id).orElseThrow(()-> new RuntimeException());
+        adm.setNome_completo(updateAdm.getNome_completo());
+        adm.setData_nascimento(updateAdm.getData_nascimento());
+        adm.setEmail(updateAdm.getEmail());
+        adm.setSenha(updateAdm.getSenha());
+        adm.setGenero(updateAdm.getGenero());
+        adm.setTelefone(updateAdm.getTelefone());
+        adm.setRua(updateAdm.getRua());
+        adm.setNumero(updateAdm.getNumero());
+        adm.setBairro(updateAdm.getBairro());
+        adm.setCidade(updateAdm.getCidade());
+        adm.setUF(updateAdm.getUF());
+        adm.setCEP(updateAdm.getCEP());
+        adm.setCPF(updateAdm.getCPF());
+
+        return ar.save(adm);
     }
 
     @Override
