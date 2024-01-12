@@ -3,20 +3,18 @@ package com.recodepro.enxametech.controller;
 import com.recodepro.enxametech.enums.Genero;
 import com.recodepro.enxametech.model.Administrador;
 import com.recodepro.enxametech.repository.AdministradorRepository;
+import com.recodepro.enxametech.service.AdministradorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+@RestController
 @RequestMapping("/administrador")
 public class AdministradorController {
 
     @Autowired
-    private AdministradorRepository administradorRepository;
+    private AdministradorService as;
 
     @GetMapping
     public ModelAndView listar() {

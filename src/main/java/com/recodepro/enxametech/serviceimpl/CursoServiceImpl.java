@@ -40,9 +40,8 @@ public class CursoServiceImpl implements CursoService {
     }
 
     @Override
-    public Curso deleteById(Long id) {
-        Curso curso = cr.findById(id). orElseThrow(()-> new RuntimeException());
+    public void deleteById(Long id) {
+        Curso curso = cr.findById(id).orElseThrow(()-> new RuntimeException());
         cr.deleteById(curso.getId());
-        return curso;
     }
 }
