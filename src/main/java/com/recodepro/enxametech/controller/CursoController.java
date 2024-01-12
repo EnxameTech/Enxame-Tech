@@ -14,11 +14,7 @@ import java.util.List;
 public class CursoController {
 
     @Autowired
-    private final CursoService cs;
-
-    public CursoController(CursoService cs) {
-        this.cs = cs;
-    }
+    private CursoService cs;
 
     @GetMapping("/listar")
     public List<Curso> listar(){
