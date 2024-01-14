@@ -49,17 +49,34 @@ public class Aluno extends Usuario {
         this.renda_familiar = renda_familiar;
     }
 
+    public Set<Voluntario> getVoluntarios() {
+        return voluntarios;
+    }
+
+    public void setVoluntarios(Set<Voluntario> voluntarios) {
+        this.voluntarios = voluntarios;
+    }
+
+    public Set<Curso> getCursosFavoritos() {
+        return cursosFavoritos;
+    }
+
+    public void setCursosFavoritos(Set<Curso> cursosFavoritos) {
+        this.cursosFavoritos = cursosFavoritos;
+    }
+
     public List<CursoFavorito> getCursoFavoritos() {
         return cursoFavoritos;
     }
 
-    public void setCursoFavoritos(CursoFavorito cursoFavorito) {
-        cursoFavoritos.add(cursoFavorito);
-        cursoFavorito.setAluno(this);
+    public void setCursoFavoritos(List<CursoFavorito> cursoFavoritos) {
+        this.cursoFavoritos = cursoFavoritos;
     }
 
-    public void removeCursoFavorito(CursoFavorito cursoFavorito) {
-        cursoFavoritos.remove(cursoFavorito);
-        cursoFavorito.setAluno(null);
+    @Override
+    public String toString() {
+        return "Aluno [grupo_familiar=" + grupo_familiar + ", renda_familiar=" + renda_familiar + ", voluntarios="
+                + voluntarios + ", cursosFavoritos=" + cursosFavoritos + ", cursoFavoritos=" + cursoFavoritos + "]";
     }
+
 }
