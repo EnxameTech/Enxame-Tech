@@ -3,11 +3,14 @@ package com.recodepro.enxametech.serviceimpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.recodepro.enxametech.model.Voluntario;
 import com.recodepro.enxametech.repository.VoluntarioRepository;
 import com.recodepro.enxametech.service.VoluntarioService;
 
+
+@Service
 public class VoluntarioServiceImpl implements VoluntarioService {
 
     @Autowired
