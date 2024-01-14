@@ -1,7 +1,7 @@
 package com.recodepro.enxametech.controller;
 
 import com.recodepro.enxametech.model.Voluntario;
-import com.recodepro.enxametech.serviceimpl.VoluntarioServiceImpl;
+import com.recodepro.enxametech.service.VoluntarioService;
 
 import java.util.List;
 
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class VoluntarioController {
 
     @Autowired
-    private VoluntarioServiceImpl vs;
+    private VoluntarioService vs;
 
     @GetMapping("/listar")
     public List<Voluntario> listar() {
@@ -28,7 +29,7 @@ public class VoluntarioController {
     }
 
     @PostMapping("/cadastrar")
-    public ResponseEntity<Voluntario> cadastrar(Voluntario voluntario) {
+    public ResponseEntity<Voluntario> cadastrar(@RequestBody Voluntario voluntario) {
         try {
             Voluntario novoVoluntario = vs.saveVoluntario(voluntario);
             return ResponseEntity.ok(novoVoluntario);
@@ -48,7 +49,7 @@ public class VoluntarioController {
     }
 
     @PutMapping("/atualizar/{id}")
-    public ResponseEntity<Voluntario> atualizar(@PathVariable Long id, Voluntario updateVoluntario) {
+    public ResponseEntity<Voluntario> atualizar(@PathVariable Long id, @RequestBody Voluntario updateVoluntario) {
         try {
             Voluntario voluntario = vs.updateVoluntarioById(id, updateVoluntario);
             return ResponseEntity.ok(voluntario);
