@@ -1,62 +1,69 @@
 package com.recodepro.enxametech.controller;
 
-import com.recodepro.enxametech.enums.AreaDeAfinidade;
-import com.recodepro.enxametech.enums.Genero;
 import com.recodepro.enxametech.model.Voluntario;
-import com.recodepro.enxametech.repository.VoluntarioRepository;
+import com.recodepro.enxametech.serviceimpl.VoluntarioServiceImpl;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping("/voluntario")
 public class VoluntarioController {
 
     @Autowired
-    private VoluntarioRepository voluntarioRepository;
+    private VoluntarioServiceImpl vs;
 
-    @GetMapping
-    public ModelAndView listar() {
-        ModelAndView modelAndView = new ModelAndView("voluntario/listar-voluntarios");
-        modelAndView.addObject("voluntarios", voluntarioRepository.findAll());
-        return modelAndView;
+    @GetMapping("/listar")
+    public List<Voluntario> listar() {
+        return vs.getAllVoluntarios();
     }
 
-    @GetMapping("/cadastrar")
-    public ModelAndView cadastrarVoluntario() {
-        ModelAndView modelAndView = new ModelAndView("voluntario/cadastro-voluntario");
-        modelAndView.addObject("voluntario", new Voluntario());
-        modelAndView.addObject("areas", AreaDeAfinidade.values());
-        modelAndView.addObject("generos", Genero.values());
-
-        return modelAndView;
+    @PostMapping("/cadastrar")
+    public ResponseEntity<Voluntario> cadastrar(Voluntario voluntario) {
+        try {
+            Voluntario novoVoluntario = vs.saveVoluntario(voluntario);
+            return ResponseEntity.ok(novoVoluntario);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 
-    @GetMapping("/{id}/editar")
-    public ModelAndView editar(@PathVariable Long id) {
-        ModelAndView modelAndView = new ModelAndView("voluntario/editar-voluntario");
-        modelAndView.addObject("voluntario", voluntarioRepository.getReferenceById(id));
-        modelAndView.addObject("areas", AreaDeAfinidade.values());
-        modelAndView.addObject("generos", Genero.values());
-
-        return modelAndView;
+    @GetMapping("/detalhar/{id}")
+    public ResponseEntity<Voluntario> detalhar(@PathVariable Long id) {
+        try {
+            Voluntario voluntario = vs.getVoluntarioById(id);
+            return ResponseEntity.ok(voluntario);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
-    @PostMapping({"/cadastrar", "/{id}/editar"})
-    public ModelAndView salvar(Voluntario voluntario) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/voluntario");
-        voluntarioRepository.save(voluntario);
-        return modelAndView;
+    @PutMapping("/atualizar/{id}")
+    public ResponseEntity<Voluntario> atualizar(@PathVariable Long id, Voluntario updateVoluntario) {
+        try {
+            Voluntario voluntario = vs.updateVoluntarioById(id, updateVoluntario);
+            return ResponseEntity.ok(voluntario);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
-    @GetMapping("/{id}/excluir")
-    public ModelAndView excluir(@PathVariable Long id) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/voluntario");
-        voluntarioRepository.deleteById(id);
-        return modelAndView;
+    @DeleteMapping("/deletar/{id}")
+    public ResponseEntity<Voluntario> deletarVoluntario(@PathVariable Long id) {
+        try {
+            vs.deleteVoluntarioById(id);
+            return ResponseEntity.ok().build();
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
