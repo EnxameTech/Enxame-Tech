@@ -4,6 +4,7 @@ import com.recodepro.enxametech.model.Aluno;
 import com.recodepro.enxametech.service.AlunoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +24,7 @@ public class AlunoController {
     @Autowired
     private AlunoService as;
 
-    @GetMapping
+    @GetMapping("/listar")
     public List<Aluno> listar() {
         return as.getAllAlunos();
     }
@@ -34,32 +35,32 @@ public class AlunoController {
     }
 
     @GetMapping("/detalhar/{id}")
-    public ResponseEntity<Aluno> detalhar(@PathVariable Long id) {
+    public ResponseEntity detalhar(@PathVariable Long id) {
         try {
             Aluno aluno = as.getAlunoById(id);
             return ResponseEntity.ok(aluno);
         } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Aluno não encontrado!");
         }
     }
 
     @PutMapping("/atualizar/{id}")
-    public ResponseEntity<Aluno> atualizar(@PathVariable Long id, @RequestBody Aluno updateAluno) {
+    public ResponseEntity atualizar(@PathVariable Long id, @RequestBody Aluno updateAluno) {
         try {
             Aluno aluno = as.updateAluno(id, updateAluno);
             return ResponseEntity.ok(aluno);
         } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Aluno não encontrado!");
         }
     }
 
     @DeleteMapping("/deletar/{id}")
-    public ResponseEntity<Aluno> deletarAluno(@PathVariable Long id) {
+    public ResponseEntity deletarAluno(@PathVariable Long id) {
         try {
             as.deleteById(id);
             return ResponseEntity.ok().build();
         } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Aluno não encontrado!");
         }
     }
 

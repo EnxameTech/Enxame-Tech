@@ -6,6 +6,7 @@ import com.recodepro.enxametech.service.VoluntarioService;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,32 +40,32 @@ public class VoluntarioController {
     }
 
     @GetMapping("/detalhar/{id}")
-    public ResponseEntity<Voluntario> detalhar(@PathVariable Long id) {
+    public ResponseEntity detalhar(@PathVariable Long id) {
         try {
             Voluntario voluntario = vs.getVoluntarioById(id);
             return ResponseEntity.ok(voluntario);
         } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Voluntário não encontrado!");
         }
     }
 
     @PutMapping("/atualizar/{id}")
-    public ResponseEntity<Voluntario> atualizar(@PathVariable Long id, @RequestBody Voluntario updateVoluntario) {
+    public ResponseEntity atualizar(@PathVariable Long id, @RequestBody Voluntario updateVoluntario) {
         try {
             Voluntario voluntario = vs.updateVoluntarioById(id, updateVoluntario);
             return ResponseEntity.ok(voluntario);
         } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Voluntário não encontrado!");
         }
     }
 
     @DeleteMapping("/deletar/{id}")
-    public ResponseEntity<Voluntario> deletarVoluntario(@PathVariable Long id) {
+    public ResponseEntity deletarVoluntario(@PathVariable Long id) {
         try {
             vs.deleteVoluntarioById(id);
             return ResponseEntity.ok().build();
         } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Voluntário não encontrado!");
         }
     }
 }
