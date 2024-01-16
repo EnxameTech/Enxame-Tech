@@ -2,15 +2,11 @@ package com.recodepro.enxametech.serviceimpl;
 
 import java.util.List;
 
-import com.recodepro.enxametech.model.AlunoMonitoriaDTO;
-import com.recodepro.enxametech.model.Monitoria;
-import com.recodepro.enxametech.repository.MonitoriaRepository;
-import com.recodepro.enxametech.repository.VoluntarioRepository;
+import com.recodepro.enxametech.model.*;
+import com.recodepro.enxametech.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.recodepro.enxametech.model.Aluno;
-import com.recodepro.enxametech.repository.AlunoRepository;
 import com.recodepro.enxametech.service.AlunoService;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -25,6 +21,12 @@ public class AlunoServiceImpl implements AlunoService {
 
     @Autowired
     private MonitoriaRepository mr;
+
+    @Autowired
+    private CursoRepository cr;
+
+    @Autowired
+    private CursoFavoritoRepository cfr;
 
     @Override
     public List<Aluno> getAllAlunos() {
@@ -74,6 +76,8 @@ public class AlunoServiceImpl implements AlunoService {
         ar.deleteById(aluno.getId());
     }
 
+
+    //Monitoria
     @Override
     public List<Object[]> getMonitoriasAluno(Long id) {
         Aluno aluno = ar.findById(id).orElseThrow(()-> new RuntimeException());
@@ -83,7 +87,7 @@ public class AlunoServiceImpl implements AlunoService {
     }
 
     @Override
-    public Monitoria saveMonitoria(@RequestBody AlunoMonitoriaDTO amDTO) {
+    public Monitoria saveMonitoria(AlunoMonitoriaDTO amDTO) {
         Monitoria monitoria = new Monitoria();
         monitoria.setAluno(ar.findById(amDTO.getAluno_id()).orElseThrow(()-> new RuntimeException()));
         monitoria.setVoluntario(vr.findById(amDTO.getVoluntario_id()).orElseThrow(()-> new RuntimeException()));
@@ -94,4 +98,22 @@ public class AlunoServiceImpl implements AlunoService {
         return mr.save(monitoria);
     }
 
+
+    //Curso Favorito
+    @Override
+    public List<Object[]> getCursosFavAluno(Long id) {
+        Aluno aluno = ar.findById(id).orElseThrow(()-> new RuntimeException());
+        List<Object[]> cursosFavs = ar.getCursoFavAluno(aluno.getId());
+
+        return cursosFavs;
+    }
+
+    @Override
+    public CursoFavorito saveCursoFav(AlunoCursoFavDTO acfDTO) {
+        CursoFavorito cursoFav = new CursoFavorito();
+        cursoFav.setAluno(ar.findById(acfDTO.getAluno_id()).orElseThrow(()-> new RuntimeException()));
+        cursoFav.setCurso(cr.findById(acfDTO.getCurso_id()).orElseThrow(()-> new RuntimeException()));
+
+        return cfr.save(cursoFav);
+    }
 }

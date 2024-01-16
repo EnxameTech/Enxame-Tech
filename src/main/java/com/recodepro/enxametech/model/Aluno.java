@@ -25,6 +25,7 @@ public class Aluno extends Usuario {
     private Set<Voluntario> voluntarios = new HashSet<>();
 
     @ManyToMany
+    @JsonIgnore
     @JoinTable(name = "curso_favorito",
             joinColumns = @JoinColumn(name = "aluno_id"),
             inverseJoinColumns = @JoinColumn(name = "curso_id"))

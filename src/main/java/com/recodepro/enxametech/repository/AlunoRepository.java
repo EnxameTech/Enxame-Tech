@@ -18,4 +18,10 @@ public interface AlunoRepository extends JpaRepository<Aluno, Long> {
             "monitoria.descricao_duvida, monitoria.data_monitoria,monitoria.horario  from aluno, voluntario, monitoria \n" +
             "where aluno.id=monitoria.aluno_id and voluntario.id=monitoria.voluntario_id and aluno_id= :id")
     List<Object[]> getMonitoriasAluno(@Param("id") Long id);
+
+    @Transactional
+    @Modifying
+    @Query(nativeQuery = true, value = "select aluno.nome_completo, curso.titulo from aluno, curso, curso_favorito \n" +
+            "where aluno.id=curso_favorito.aluno_id and curso.id=curso_favorito.curso_id and aluno_id = :id")
+    List<Object[]> getCursoFavAluno(@Param("id") Long id);
 }
