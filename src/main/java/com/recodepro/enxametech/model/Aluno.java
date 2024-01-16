@@ -1,5 +1,6 @@
 package com.recodepro.enxametech.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class Aluno extends Usuario {
     private double renda_familiar;
 
     @ManyToMany
+    @JsonIgnore
     @JoinTable(name = "monitoria",
             joinColumns = @JoinColumn(name = "aluno_id"),
             inverseJoinColumns = @JoinColumn(name = "voluntario_id"))
@@ -29,6 +31,7 @@ public class Aluno extends Usuario {
     private Set<Curso> cursosFavoritos = new HashSet<>();
 
     @OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<CursoFavorito> cursoFavoritos = new ArrayList<>();
 
     public Aluno() {}

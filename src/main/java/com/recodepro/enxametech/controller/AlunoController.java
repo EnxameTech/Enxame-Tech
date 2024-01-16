@@ -1,6 +1,8 @@
 package com.recodepro.enxametech.controller;
 
 import com.recodepro.enxametech.model.Aluno;
+import com.recodepro.enxametech.model.AlunoMonitoriaDTO;
+import com.recodepro.enxametech.model.Monitoria;
 import com.recodepro.enxametech.service.AlunoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,8 +72,29 @@ public class AlunoController {
     }
 
 
-    // TODO: Implementar endpoints relacionados a Monitorias e Cursos Favoritos
     // Monitorias
+    @GetMapping("/{id}/monitorias-agendadas")
+    public ResponseEntity alunoMonitorias(@PathVariable Long id) {
+        try {
+            List<Object[]> monitoriasAluno = as.getMonitoriasAluno(id);
+            return ResponseEntity.ok(monitoriasAluno);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping("/{id}/agendar-monitoria")
+    public ResponseEntity<Monitoria> agendarMonitoria(@PathVariable Long id, @RequestBody AlunoMonitoriaDTO amDTO){
+        try{
+            amDTO.setAluno_id(id);
+            Monitoria novaMonitoria = as.saveMonitoria(amDTO);
+            return ResponseEntity.ok(novaMonitoria);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+
     // @GetMapping("/{id}/monitorias")
     // public ModelAndView listarMonitorias(@PathVariable Long id) {
     //     ModelAndView modelAndView = new ModelAndView("aluno/listar-monitorias");

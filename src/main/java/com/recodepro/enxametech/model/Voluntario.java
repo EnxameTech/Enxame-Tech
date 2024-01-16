@@ -1,5 +1,6 @@
 package com.recodepro.enxametech.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.recodepro.enxametech.enums.AreaDeAfinidade;
 import jakarta.persistence.*;
 
@@ -13,6 +14,7 @@ public class Voluntario extends Usuario {
     private AreaDeAfinidade areaDeAfinidade;
 
     @ManyToMany(mappedBy = "voluntarios")
+    @JsonIgnore
     private Set<Aluno> alunos = new HashSet<>();
 
     public Voluntario(){}

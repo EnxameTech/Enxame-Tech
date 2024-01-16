@@ -4,7 +4,8 @@ import com.recodepro.enxametech.model.Monitoria;
 
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface MonitoriaRepository extends JpaRepository<Monitoria, Long> {
-    List<Monitoria> findByAlunoId(Long id);
 }

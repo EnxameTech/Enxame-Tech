@@ -29,6 +29,7 @@ public class Monitoria {
     @Temporal(TemporalType.TIME)
     private LocalTime horario;
 
+    @Column(nullable = false)
     private String descricao_duvida;
 
     public Monitoria(Long id_monitoria, Voluntario voluntario, Aluno aluno, LocalDate data_monitoria, LocalTime horario,

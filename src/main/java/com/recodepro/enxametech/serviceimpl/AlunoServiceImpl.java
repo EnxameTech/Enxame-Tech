@@ -2,18 +2,29 @@ package com.recodepro.enxametech.serviceimpl;
 
 import java.util.List;
 
+import com.recodepro.enxametech.model.AlunoMonitoriaDTO;
+import com.recodepro.enxametech.model.Monitoria;
+import com.recodepro.enxametech.repository.MonitoriaRepository;
+import com.recodepro.enxametech.repository.VoluntarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.recodepro.enxametech.model.Aluno;
 import com.recodepro.enxametech.repository.AlunoRepository;
 import com.recodepro.enxametech.service.AlunoService;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class AlunoServiceImpl implements AlunoService {
 
     @Autowired
     private AlunoRepository ar;
+
+    @Autowired
+    private VoluntarioRepository vr;
+
+    @Autowired
+    private MonitoriaRepository mr;
 
     @Override
     public List<Aluno> getAllAlunos() {
@@ -62,5 +73,25 @@ public class AlunoServiceImpl implements AlunoService {
         Aluno aluno = ar.findById(id).orElseThrow(()-> new RuntimeException());
         ar.deleteById(aluno.getId());
     }
-    
+
+    @Override
+    public List<Object[]> getMonitoriasAluno(Long id) {
+        Aluno aluno = ar.findById(id).orElseThrow(()-> new RuntimeException());
+        List<Object[]> monitorias = ar.getMonitoriasAluno(aluno.getId());
+
+        return monitorias;
+    }
+
+    @Override
+    public Monitoria saveMonitoria(@RequestBody AlunoMonitoriaDTO amDTO) {
+        Monitoria monitoria = new Monitoria();
+        monitoria.setAluno(ar.findById(amDTO.getAluno_id()).orElseThrow(()-> new RuntimeException()));
+        monitoria.setVoluntario(vr.findById(amDTO.getVoluntario_id()).orElseThrow(()-> new RuntimeException()));
+        monitoria.setDescricao_duvida(amDTO.getDescricao_duvida());
+        monitoria.setData_monitoria(amDTO.getData_monitoria());
+        monitoria.setHorario(amDTO.getHorario());
+
+        return mr.save(monitoria);
+    }
+
 }
