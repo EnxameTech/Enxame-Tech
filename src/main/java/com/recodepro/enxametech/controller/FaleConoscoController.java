@@ -3,7 +3,6 @@ package com.recodepro.enxametech.controller;
 import com.recodepro.enxametech.model.FaleConosco;
 import com.recodepro.enxametech.service.FaleConoscoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,17 +21,22 @@ public class FaleConoscoController {
     }
 
     @GetMapping("/detalhar/{id}")
-    public ResponseEntity detalhar(@PathVariable Long id){
+    public ResponseEntity<FaleConosco> detalhar(@PathVariable Long id){
         try{
             FaleConosco faleConosco = fcs.getFaleConoscoById(id);
             return ResponseEntity.ok(faleConosco);
         }catch (RuntimeException e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Contato não encontrado!");
+            return ResponseEntity.notFound().build();
         }
     }
 
     @PostMapping("/enviar")
-    public FaleConosco enviar(@RequestBody FaleConosco faleConosco){
-        return fcs.saveFaleConosco(faleConosco);
+    public ResponseEntity<FaleConosco> enviar(@RequestBody FaleConosco faleConosco){
+        try {
+            FaleConosco novoFaleConosco = fcs.saveFaleConosco(faleConosco);
+            return ResponseEntity.ok(novoFaleConosco);
+        }catch (RuntimeException e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 }

@@ -4,7 +4,6 @@ import com.recodepro.enxametech.model.Aluno;
 import com.recodepro.enxametech.service.AlunoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,37 +29,43 @@ public class AlunoController {
     }
 
     @PostMapping("/cadastrar")
-    public Aluno cadastrar(@RequestBody Aluno aluno) {
-        return as.saveAluno(aluno);
+    public ResponseEntity<Aluno> cadastrar(@RequestBody Aluno aluno) {
+
+        try{
+            Aluno novoAluno = as.saveAluno(aluno);
+            return ResponseEntity.ok(novoAluno);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 
     @GetMapping("/detalhar/{id}")
-    public ResponseEntity detalhar(@PathVariable Long id) {
+    public ResponseEntity<Aluno> detalhar(@PathVariable Long id) {
         try {
             Aluno aluno = as.getAlunoById(id);
             return ResponseEntity.ok(aluno);
         } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Aluno não encontrado!");
+            return ResponseEntity.notFound().build();
         }
     }
 
     @PutMapping("/atualizar/{id}")
-    public ResponseEntity atualizar(@PathVariable Long id, @RequestBody Aluno updateAluno) {
+    public ResponseEntity<Aluno> atualizar(@PathVariable Long id, @RequestBody Aluno updateAluno) {
         try {
             Aluno aluno = as.updateAluno(id, updateAluno);
             return ResponseEntity.ok(aluno);
         } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Aluno não encontrado!");
+            return ResponseEntity.notFound().build();
         }
     }
 
     @DeleteMapping("/deletar/{id}")
-    public ResponseEntity deletarAluno(@PathVariable Long id) {
+    public ResponseEntity<Aluno> deletarAluno(@PathVariable Long id) {
         try {
             as.deleteById(id);
             return ResponseEntity.ok().build();
         } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Aluno não encontrado!");
+            return ResponseEntity.notFound().build();
         }
     }
 
