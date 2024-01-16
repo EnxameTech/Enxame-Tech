@@ -67,4 +67,15 @@ public class VoluntarioController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    //Monitoria
+    @GetMapping("/{id}/monitorias-agendadas")
+    public ResponseEntity<List<Object[]>> voluntarioMonitorias (@PathVariable Long id){
+        try{
+            List<Object[]> monitoriasVoluntario = vs.getMonitoriasVoluntario(id);
+            return ResponseEntity.ok(monitoriasVoluntario);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

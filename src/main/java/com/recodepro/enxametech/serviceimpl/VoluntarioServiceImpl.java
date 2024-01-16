@@ -60,6 +60,15 @@ public class VoluntarioServiceImpl implements VoluntarioService {
         Voluntario vol = vr.findById(id).orElseThrow(()-> new RuntimeException());
         vr.deleteById(vol.getId());
     }
-    
-    
+
+    //Monitoria
+    @Override
+    public List<Object[]> getMonitoriasVoluntario(Long id) {
+        Voluntario voluntario = vr.findById(id).orElseThrow(()-> new RuntimeException());
+        List<Object[]> monitorias = vr.getMonitoriasVoluntario(voluntario.getId());
+
+        return monitorias;
+    }
+
+
 }

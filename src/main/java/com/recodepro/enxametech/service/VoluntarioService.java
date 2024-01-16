@@ -10,4 +10,8 @@ public interface VoluntarioService {
     Voluntario getVoluntarioById(long id);
     Voluntario updateVoluntarioById(long id, Voluntario voluntario);
     void deleteVoluntarioById(long id);
+
+    //Monitoria
+    List<Object[]> getMonitoriasVoluntario(Long id);
+
 }
