@@ -24,7 +24,8 @@ public class RotasController {
     }
 
     @GetMapping("/cadastrar-admin")
-    public String cadastrarAdmin() {
+    public String cadastrarAdmin(Model model) {
+        model.addAttribute("generos", Genero.values());
         return "admin/cadastro-admin";
     }
 
@@ -98,13 +99,7 @@ public class RotasController {
         return "voluntario/editar-voluntario";
     }
 
-    @GetMapping("/form-administrador")
-    public String formAdm(Model model) {
 
-        model.addAttribute("generos", Genero.values());
-        return "admin/cadastro-admin"; // Isso corresponde ao nome do seu arquivo HTML (index.html)
-
-    }
 
 
 }
