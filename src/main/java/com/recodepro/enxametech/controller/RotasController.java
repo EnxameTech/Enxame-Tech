@@ -1,12 +1,8 @@
 package com.recodepro.enxametech.controller;
 
-<<<<<<< HEAD
 import com.recodepro.enxametech.enums.Genero;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-=======
-import org.springframework.stereotype.Controller;
->>>>>>> e0ab8d189aae9e052f6a408a197ed34635bd7efc
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -28,7 +24,8 @@ public class RotasController {
     }
 
     @GetMapping("/cadastrar-admin")
-    public String cadastrarAdmin() {
+    public String cadastrarAdmin(Model model) {
+        model.addAttribute("generos", Genero.values());
         return "admin/cadastro-admin";
     }
 
@@ -102,13 +99,7 @@ public class RotasController {
         return "voluntario/editar-voluntario";
     }
 
-    @GetMapping("/form-administrador")
-    public String formAdm(Model model) {
 
-        model.addAttribute("generos", Genero.values());
-        return "admin/cadastro-admin"; // Isso corresponde ao nome do seu arquivo HTML (index.html)
-
-    }
 
 
 }
