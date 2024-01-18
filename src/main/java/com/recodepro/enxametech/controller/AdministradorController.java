@@ -21,6 +21,7 @@ public class AdministradorController {
     }
 
     @PostMapping("/cadastrar")
+    @ResponseBody
     public ResponseEntity<Administrador> cadastrar(@RequestBody Administrador adm){
         try {
             Administrador novoAdm = as.saveAdm(adm);
