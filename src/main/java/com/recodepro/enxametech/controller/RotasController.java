@@ -1,12 +1,8 @@
 package com.recodepro.enxametech.controller;
 
-<<<<<<< HEAD
 import com.recodepro.enxametech.enums.Genero;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-=======
-import org.springframework.stereotype.Controller;
->>>>>>> e0ab8d189aae9e052f6a408a197ed34635bd7efc
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
