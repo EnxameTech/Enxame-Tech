@@ -18,11 +18,13 @@ O projeto Enxame Tech utiliza as seguintes tecnologias:
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
 
-Agradecemos seu envolvimento e contribuições para melhorar o projeto Enxame Tech. Se você tiver alguma dúvida ou quiser saber mais, não hesite em entrar em contato conosco em:
+Abaixo segue a modelagem do banco de dados construído a partir da ferramenta BrModelo.
 
-E-mail: enxame.edtech@gmail.com
+- Conceitual
+  ![modeloConceitual](https://github.com/EnxameTech/Enxame-Tech/assets/102906471/0bbad050-da1c-45ac-99d9-721d9586ffdb)
 
-**Juntos, vamos fazer a diferença no mundo da educação e da tecnologia!**
+- Lógico
+  ![modeloLogico](https://github.com/EnxameTech/Enxame-Tech/assets/102906471/ba39cbfa-32c8-40cd-bd2c-189887d343c8)
 
 ## Contribuidores:
 
@@ -42,11 +44,8 @@ E-mail: enxame.edtech@gmail.com
 - LinkedIn:
 - E-mail: alessandralp1@yahoo.com.br
 
+Agradecemos seu envolvimento e contribuições para melhorar o projeto Enxame Tech. Se você tiver alguma dúvida ou quiser saber mais, não hesite em entrar em contato conosco em:
 
-Abaixo segue a modelagem do banco de dados construído a partir da ferramenta BrModelo.
+E-mail: enxame.edtech@gmail.com
 
-- Conceitual
-  ![modeloConceitual](https://github.com/EnxameTech/Enxame-Tech/assets/102906471/0bbad050-da1c-45ac-99d9-721d9586ffdb)
-
-- Lógico
-  ![modeloLogico](https://github.com/EnxameTech/Enxame-Tech/assets/102906471/ba39cbfa-32c8-40cd-bd2c-189887d343c8)
+**Juntos, vamos fazer a diferença no mundo da educação e da tecnologia!**
