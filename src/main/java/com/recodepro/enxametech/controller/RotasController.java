@@ -35,7 +35,8 @@ public class RotasController {
     }
 
     @GetMapping("/editar-admin")
-    public String editarAdmin() {
+    public String editarAdmin(Model model) {
+        model.addAttribute("generos", Genero.values());
         return "admin/editar-admin";
     }
 

@@ -32,6 +32,7 @@ public class AdministradorController {
     }
 
     @GetMapping("/detalhar/{id}")
+    @ResponseBody
     public ResponseEntity<Administrador> detalhar(@PathVariable Long id){
         try{
             Administrador adm = as.getAdmById(id);
@@ -42,6 +43,7 @@ public class AdministradorController {
     }
 
     @PutMapping("/atualizar/{id}")
+    @ResponseBody
     public ResponseEntity<Administrador> atualizar(@PathVariable Long id, @RequestBody Administrador updateAdm){
         try{
             Administrador adm = as.updateAdm(id, updateAdm);

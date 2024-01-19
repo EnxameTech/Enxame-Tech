@@ -312,24 +312,18 @@
   <script type="text/javascript">
     async function cadastrar() {
       try {
-        // Use o método serializeArray para obter os dados do formulário como array
         const formDataArray = $("#form").serializeArray();
 
-        // Converta o array de objetos em um objeto simples
         const formData = {};
         formDataArray.forEach((item) => {
           formData[item.name] = item.value;
         });
 
-        // Faça a solicitação Axios
         const response = await axios.post("/aluno/cadastrar", formData);
 
-        console.log("Aluno adicionado:", response.data);
-        // Atualize conforme necessário
         alert("Aluno adicionado com sucesso!");
         window.location.href = "/listar-alunos";
       } catch (error) {
-        console.error("Erro ao adicionar Aluno:", error.response.data);
         alert("Erro ao cadastrar: " + error.response.data);
       }
     }

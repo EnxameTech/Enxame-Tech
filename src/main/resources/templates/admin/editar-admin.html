@@ -76,126 +76,188 @@
         <h3 class="main--title">Editar Dados do Administrador</h3>
         <div class="card">
             <div class="progress-bar">
-                <div class="progress" id="progress">
-                </div>
+                <div class="progress" id="progress"></div>
                 <div class="progress-content">
-                    <div class="progress-step progress-step-active" data-title="Dados Pessoais"></div>
-                    <div class="progress-step " data-title="Endereço"></div>
+                    <div
+                            class="progress-step progress-step-active"
+                            data-title="Dados Pessoais"
+                    ></div>
+                    <div class="progress-step" data-title="Endereço"></div>
                 </div>
             </div>
-            <form th:object="${administrador}" id="form" method="POST">
-                <div class="form-step  form-step-active row ">
+            <form id="form">
+                <div class="form-step form-step-active row">
                     <div class="row">
                         <div class="form-group col-md-4">
                             <label for="cpf">CPF</label>
-                            <input type="text" id="cpf" name="cpf" class="inputs required" oninput="cpfValidate()"
-                                   th:field="*{CPF}">
+                            <input
+                                    class="inputs required"
+                                    id="cpf"
+                                    name="cpf"
+                                    oninput="cpfValidate()"
+                                    type="text"
+                            />
                             <span class="span-required">Campo obrigátorio</span>
                         </div>
                         <div class="form-group col-md-8">
-                            <label for="nome">Nome</label>
-                            <input type="text" id="nome" name="nome" class="inputs required" oninput="nomeValidate()"
-                                   th:field="*{nome}">
+                            <label for="nome_completo">Nome</label>
+                            <input
+                                    class="inputs required"
+                                    id="nome_completo"
+                                    name="nome_completo"
+                                    oninput="nomeValidate()"
+                                    type="text"
+                            />
                             <span class="span-required">Campo obrigátorio</span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-4">
-                            <label for="dataNascimento">Data de Nascimento</label>
-                            <input type="date" id="dataNascimento" name="dataNascimento" class="inputs required"
-                                   th:field="*{data_nascimento}">
+                            <label for="data_nascimento">Data de Nascimento:</label>
+                            <input
+                                    class="inputs required"
+                                    id="data_nascimento"
+                                    name="data_nascimento"
+                                    type="date"
+                            />
                             <span class="span-required">Campo obrigátorio</span>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="email">E-mail</label>
-                            <input type="email" id="email" name="email" class="inputs required" oninput="emailCheck()"
-                                   th:field="*{email}">
+                            <input
+                                    class="inputs required"
+                                    id="email"
+                                    name="email"
+                                    oninput="emailCheck()"
+                                    type="email"
+                            />
                             <span class="span-required">Digite um e-mail valido</span>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="senha">Senha</label>
-                            <input type="text" id="senha" name="senha" class="inputs required" oninput="password()"
-                                   th:field="*{senha}">
+                            <input
+                                    class="inputs required"
+                                    id="senha"
+                                    name="senha"
+                                    oninput="password()"
+                                    type="text"
+                            />
                             <span class="span-required">Minimo caracteres</span>
                         </div>
                     </div>
-                    <div class="row ">
+                    <div class="row">
                         <div class="form-group col-md-6">
                             <label for="genero">Gênero</label>
-                            <select th:field="*{genero}" id="genero" name="genero" class="inputs required">
-                                <option th:each="genero : ${generos}" th:text="${genero.getDescricao()}"
-                                        th:value="${genero}">
-                                </option>
+                            <select class="inputs required" id="genero" name="genero">
+                                <option
+                                        th:each="genero : ${generos}"
+                                        th:text="${genero.getDescricao()}"
+                                        th:value="${genero}"
+                                ></option>
                             </select>
                             <span class="span-required">Campo obrigátorio</span>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="telefone">Telefone</label>
-                            <input type="tel" id="telefone" name="telefone" class="inputs required" oninput="tel()"
-                                   th:field="*{telefone}">
+                            <input
+                                    class="inputs required"
+                                    id="telefone"
+                                    name="telefone"
+                                    oninput="tel()"
+                                    type="tel"
+                            />
                             <span class="span-required">Campo obrigátorio</span>
                         </div>
-
                     </div>
 
                     <div class="row justify-content-center">
-                        <input href="#" class="col-2 btn-next" value="Proximo">
+                        <input class="col-2 btn-next" href="#" value="Proximo" />
                     </div>
                 </div>
 
-                <div class="row form-step ">
-
+                <div class="row form-step">
                     <div class="row">
                         <div class="form-group col-md-4">
-                            <label for="cep">CEP</label>
-                            <input type="text" id="cep" name="cep" class="inputs required" th:field="*{CEP}">
+                            <label for="cep">CEP:</label>
+                            <input
+                                    class="inputs required"
+                                    id="cep"
+                                    name="cep"
+                                    type="text"
+                            />
                             <span class="span-required">Campo obrigátorio</span>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="rua">Rua</label>
-                            <input type="text" id="rua" name="rua" class="inputs required" th:field="*{rua}">
+                            <input
+                                    class="inputs required"
+                                    id="rua"
+                                    name="rua"
+                                    type="text"
+                            />
                             <span class="span-required">Campo obrigátorio</span>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="numero">Número</label>
-                            <input type="text" id="numero" name="numero" class="inputs required" th:field="*{numero}">
+                            <input
+                                    class="inputs required"
+                                    id="numero"
+                                    name="numero"
+                                    type="text"
+                            />
                             <span class="span-required">Campo obrigátorio</span>
                         </div>
-
 
                         <div class="row">
                             <div class="form-group col-md-4">
                                 <label for="bairro">Bairro</label>
-                                <input type="text" id="bairro" name="bairro" class="inputs required"
-                                       th:field="*{bairro}">
+                                <input
+                                        class="inputs required"
+                                        id="bairro"
+                                        name="bairro"
+                                        type="text"
+                                />
                                 <span class="span-required">Campo obrigátorio</span>
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="cidade">Cidade</label>
-                                <input type="text" id="cidade" name="cidade" class="inputs required"
-                                       th:field="*{cidade}">
+                                <input
+                                        class="inputs required"
+                                        id="cidade"
+                                        name="cidade"
+                                        type="text"
+                                />
                                 <span class="span-required">Campo obrigátorio</span>
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="uf">UF</label>
-                                <input type="text" id="uf" name="uf" class="inputs required" th:field="*{UF}">
+                                <input
+                                        class="inputs required"
+                                        id="uf"
+                                        name="uf"
+                                        type="text"
+                                />
                                 <span class="span-required">Campo obrigátorio</span>
                             </div>
-
                         </div>
                     </div>
 
                     <div class="row justify-content-center">
-                        <input href="#" class="col-2 btn-prev" value="Voltar">
-                        <button type="submit" class="btn col-3 cadastro">Atualizar</button>
+                        <input class="col-2 btn-prev" href="#" value="Voltar" />
+                        <button
+                                class="btn col-3 cadastro"
+                                type="button"
+                                onclick="atualizar()"
+                        >
+                            Atualizar
+                        </button>
+                        <a class="btn col-3 cadastro" th:href="@{/listar-admin}"> Cancelar </a>
                     </div>
 
-                    <a href="./listar-admin.html"></a>
                 </div>
-
             </form>
         </div>
         <footer class="footer">
@@ -205,6 +267,79 @@
         </footer>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script type="text/javascript">
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        let urlParams = new URLSearchParams(window.location.search);
+        let id = urlParams.get('id');
+
+        if (id) {
+            carregarDados(id);
+        }
+    });
+
+    function carregarDados(id) {
+        axios.get("/administrador/detalhar/" + id)
+            .then(function (response) {
+                preencherForm(response.data);
+            })
+            .catch(function (error) {
+                console.error("Erro ao obter dados do administrador:", error);
+            });
+    }
+
+    function preencherForm(administrador) {
+
+        //dados pessoais
+        document.getElementById('cpf').value = administrador.cpf;
+        document.getElementById('nome_completo').value = administrador.nome_completo;
+        document.getElementById('data_nascimento').value = administrador.data_nascimento;
+        document.getElementById('email').value = administrador.email;
+        document.getElementById('senha').value = administrador.senha;
+        document.getElementById('genero').value = administrador.genero;
+        document.getElementById('telefone').value = administrador.telefone;
+
+        //endereço
+        document.getElementById('cep').value = administrador.cep;
+        document.getElementById('rua').value = administrador.rua;
+        document.getElementById('numero').value = administrador.numero;
+        document.getElementById('bairro').value = administrador.bairro;
+        document.getElementById('cidade').value = administrador.cidade;
+        document.getElementById('uf').value = administrador.uf;
+    }
+
+    function atualizar() {
+
+        let urlParams = new URLSearchParams(window.location.search);
+        let id = urlParams.get('id');
+
+        try{
+            const formDataArray = $("#form").serializeArray();
+
+            const formData = {};
+            formDataArray.forEach((item) => {
+                formData[item.name] = item.value;
+            });
+
+            axios.put("/administrador/atualizar/" + id, formData)
+                .then(() => {
+                    alert("Administrador atualizado com sucesso.");
+                    window.location.href = "/listar-admin";
+                })
+                .catch((error) => {
+                    alert("Erro ao atualizar administrador: " + error.message);
+                });
+
+        }catch (error) {
+            alert("Erro ao atualizar administrador:", error);;
+        }
+    }
+</script>
+
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
 <script src="/js/input-validation-cadastar-aluno.js"></script>

@@ -280,24 +280,17 @@
   <script type="text/javascript">
     async function cadastrar() {
       try {
-        // Use o método serializeArray para obter os dados do formulário como array
         const formDataArray = $("#form").serializeArray();
 
-        // Converta o array de objetos em um objeto simples
         const formData = {};
         formDataArray.forEach((item) => {
           formData[item.name] = item.value;
         });
 
-        // Faça a solicitação Axios
-        const response = await axios.post("/administrador/cadastrar", formData);
-
-        console.log("Administrador adicionado:", response.data);
-        // Atualize conforme necessário
+        await axios.post("/administrador/cadastrar", formData);
         alert("Administrador adicionado com sucesso!");
         window.location.href = "/listar-admin";
       } catch (error) {
-        console.error("Erro ao adicionar administrador:", error.response.data);
         alert("Erro ao cadastrar: " + error.response.data);
       }
     }

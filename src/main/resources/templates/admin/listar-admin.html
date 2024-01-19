@@ -90,7 +90,7 @@
         <div class="header-container">
             <h3 class="main--title">Lista de Administradores</h3>
 
-            <a th:href="@{/administrador/cadastrar}" class="btn-cadastrar mb-3">
+            <a th:href="@{/cadastrar-admin}" class="btn-cadastrar mb-3">
                 Cadastrar Novo Administrador
                 <i class="fas fa-plus"></i>
             </a>
@@ -109,22 +109,7 @@
                 </tr>
                 </thead>
 
-                <tbody>
-                <tr th:each="administrador : ${administradores}">
-                    <td th:text="${administrador.nome}"></td>
-                    <td th:text="${administrador.email}"></td>
-                    <td th:text="${administrador.telefone}"></td>
-
-                    <td class="align-items-center">
-                        <a th:href="@{/administrador/{id}/editar (id=${administrador.id})}"><i class="fas fa-edit"></i></a>
-                        <a th:href="@{/administrador/{id}/excluir (id=${administrador.id})}"
-                           onclick="return confirm('Tem certeza que deseja excluir o aluno?');">
-                            <i class="fas fa-trash-alt"></i>
-                        </a>
-                    </td>
-                </tr>
-
-                </tbody>
+                <tbody id="listTable"></tbody>
             </table>
         </div>
 
@@ -135,6 +120,68 @@
         </div>
     </footer>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script type="text/javascript">
+
+    document.addEventListener("DOMContentLoaded", function () {
+        carregar();
+
+    });
+
+    function carregar() {
+        axios.get("/administrador/listar")
+            .then(function (response) {
+                exibir(response.data);
+            })
+            .catch(function (error) {
+                console.error("Erro ao obter administradores:", error);
+            });
+    }
+
+    function exibir(administradores) {
+        let listTable = document.getElementById("listTable");
+
+        listTable.innerHTML = "";
+
+        administradores.forEach(function (administrador) {
+            let tr = document.createElement("tr");
+
+            let tdNome = document.createElement("td");
+            tdNome.textContent = administrador.nome_completo;
+            tr.appendChild(tdNome);
+
+            let tdEmail = document.createElement("td");
+            tdEmail.textContent = administrador.email;
+            tr.appendChild(tdEmail);
+
+            let tdTelefone = document.createElement("td");
+            tdTelefone.textContent = administrador.telefone;
+            tr.appendChild(tdTelefone);
+
+            let tdAcoes = document.createElement("td");
+            tdAcoes.className = "align-items-center";
+
+            let linkEditar = document.createElement("a");
+            linkEditar.href ="/editar-admin?id=" + administrador.id;
+            linkEditar.innerHTML = '<i class="fas fa-edit"></i>';
+            tdAcoes.appendChild(linkEditar);
+
+            let linkExcluir = document.createElement("a");
+            linkExcluir.href = "/administrador/" + administrador.id + "/excluir";
+            linkExcluir.onclick = function () {
+                return confirm('Tem certeza que deseja excluir o administrador?');
+            };
+            linkExcluir.innerHTML = '<i class="fas fa-trash-alt"></i>';
+            tdAcoes.appendChild(linkExcluir);
+
+            tr.appendChild(tdAcoes);
+
+            listTable.appendChild(tr);
+        })
+    }
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
