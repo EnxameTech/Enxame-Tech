@@ -39,25 +39,25 @@
                 </a>
             </li>
             <li>
-                <a th:href="@{/aluno}" title="Alunos">
+                <a th:href="@{/listar-alunos}" title="Alunos">
                     <i class="fas fa-user"></i>
                     <span>Alunos</span>
                 </a>
             </li>
             <li>
-                <a th:href="@{/voluntario}" title="Voluntários">
+                <a th:href="@{/listar-voluntarios}" title="Voluntários">
                     <i class="fa-solid fa-person-chalkboard"></i>
                     <span>Voluntários</span>
                 </a>
             </li>
             <li>
-                <a th:href="@{/administrador}" title="Administradores">
+                <a th:href="@{/listar-admin}" title="Administradores">
                     <i class="fa-regular fa-address-card"></i>
                     <span>Administradores</span>
                 </a>
             </li>
             <li>
-                <a th:href="@{/curso}" title="Cursos">
+                <a th:href="@{/listar-cursos}" title="Cursos">
                     <i class="fas fa-book"></i>
                     <span>Cursos</span>
                 </a>
@@ -169,10 +169,10 @@
             tdAcoes.appendChild(linkEditar);
 
             let linkExcluir = document.createElement("a");
-            linkExcluir.href = "/administrador/" + administrador.id + "/excluir";
-            linkExcluir.onclick = function () {
-                return confirm('Tem certeza que deseja excluir o administrador?');
-            };
+            linkExcluir.href = "javascript:void(0);";
+            linkExcluir.onclick = function (){
+                deletar(administrador.id);
+            }
             linkExcluir.innerHTML = '<i class="fas fa-trash-alt"></i>';
             tdAcoes.appendChild(linkExcluir);
 
@@ -180,6 +180,18 @@
 
             listTable.appendChild(tr);
         })
+    }
+
+    function deletar(id) {
+        if (confirm('Tem certeza que deseja excluir o administrador?')) {
+            axios.delete(`/administrador/deletar/${id}`)
+                .then(function (response) {
+                    carregar();
+                })
+                .catch(function (error) {
+                    console.error("Erro ao excluir administrador:", error);
+                });
+        }
     }
 </script>
 

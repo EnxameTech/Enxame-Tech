@@ -18,8 +18,9 @@ public class RotasController {
         return "login/login";
     }
 
-    @GetMapping("/cadastro")
-    public String cadastro() {
+    @GetMapping("/registrar")
+    public String cadastro(Model model) {
+        model.addAttribute("generos", Genero.values());
         return "login/register";
     }
 
@@ -101,7 +102,7 @@ public class RotasController {
         return "sobreNos/about-us";
     }
 
-    @GetMapping("/voluntarios")
+    @GetMapping("/listar-voluntarios")
     public String voluntarios() {
         return "voluntario/listar-voluntarios";
     }
@@ -115,5 +116,11 @@ public class RotasController {
     public String editarVoluntario() {
         return "voluntario/editar-voluntario";
     }
+
+    @GetMapping("/cursos-disponiveis")
+    public String cursosCards() {
+        return "cursos-cards/courses";
+    }
+
 
 }

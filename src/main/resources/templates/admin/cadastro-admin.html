@@ -22,48 +22,48 @@
 </head>
 
 <body>
-  <nav class="sidebar">
-    <div class="logo">
-      <ul class="menu">
-        <li>
-          <a th:href="@{/dashboard}" title="Dashboard">
-            <i class="fas fa-tachometer-alt"></i>
-            <span>Dashboard </span>
-          </a>
-        </li>
-        <li>
-          <a th:href="@{/aluno}" title="Alunos">
-            <i class="fas fa-user"></i>
-            <span>Alunos</span>
-          </a>
-        </li>
-        <li>
-          <a th:href="@{/voluntario}" title="Voluntários">
-            <i class="fa-solid fa-person-chalkboard"></i>
-            <span>Voluntários</span>
-          </a>
-        </li>
-        <li>
-          <a th:href="@{/administrador}" title="Administradores">
-            <i class="fa-regular fa-address-card"></i>
-            <span>Administradores</span>
-          </a>
-        </li>
-        <li>
-          <a th:href="@{/curso}" title="Cursos">
-            <i class="fas fa-book"></i>
-            <span>Cursos</span>
-          </a>
-        </li>
-        <li class="logout">
-          <a th:href="@{/}" title="Sair">
-            <i class="fas fa-sign-out-alt"></i>
-            <span>Sair</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+<nav class="sidebar">
+  <div class="logo">
+    <ul class="menu">
+      <li>
+        <a th:href="@{/dashboard}" title="Dashboard">
+          <i class="fas fa-tachometer-alt"></i>
+          <span>Dashboard </span>
+        </a>
+      </li>
+      <li>
+        <a th:href="@{/listar-alunos}" title="Alunos">
+          <i class="fas fa-user"></i>
+          <span>Alunos</span>
+        </a>
+      </li>
+      <li>
+        <a th:href="@{/listar-voluntarios}" title="Voluntários">
+          <i class="fa-solid fa-person-chalkboard"></i>
+          <span>Voluntários</span>
+        </a>
+      </li>
+      <li>
+        <a th:href="@{/listar-admin}" title="Administradores">
+          <i class="fa-regular fa-address-card"></i>
+          <span>Administradores</span>
+        </a>
+      </li>
+      <li>
+        <a th:href="@{/listar-cursos}" title="Cursos">
+          <i class="fas fa-book"></i>
+          <span>Cursos</span>
+        </a>
+      </li>
+      <li class="logout">
+        <a th:href="@{/}" title="Sair">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Sair</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
   <div class="main--content">
     <div class="header--wrapper">
