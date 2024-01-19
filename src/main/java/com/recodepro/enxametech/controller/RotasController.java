@@ -39,6 +39,22 @@ public class RotasController {
         return "admin/editar-admin";
     }
 
+    @GetMapping("/cadastrar-aluno")
+    public String cadastrarAluno(Model model) {
+        model.addAttribute("generos", Genero.values());
+        return "aluno/cadastro-aluno";
+    }
+
+    @GetMapping("/listar-alunos")
+    public String listarAlunos() {
+        return "aluno/listar-alunos";
+    }
+
+    @GetMapping("/editar-aluno")
+    public String editarAluno() {
+        return "aluno/editar-aluno";
+    }
+
     @GetMapping("/cadastrar-curso")
     public String cadastrarCurso() {
         return "curso/cadastro-curso";
@@ -98,8 +114,5 @@ public class RotasController {
     public String editarVoluntario() {
         return "voluntario/editar-voluntario";
     }
-
-
-
 
 }
