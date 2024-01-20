@@ -24,7 +24,6 @@ public class AlunoController {
     @PostMapping("/cadastrar")
     @ResponseBody
     public ResponseEntity<Aluno> cadastrar(@RequestBody Aluno aluno) {
-
         try{
             Aluno novoAluno = as.saveAluno(aluno);
             return ResponseEntity.ok(novoAluno);
