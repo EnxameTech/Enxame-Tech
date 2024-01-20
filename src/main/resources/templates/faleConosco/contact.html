@@ -424,7 +424,7 @@
     <script type="text/javascript">
       async function cadastrar(formId, event) {
         try {
-          event.preventDefault(); // Evita o envio tradicional do formulário
+          event.preventDefault();
 
           const formData = {
             nome_completo: $("#nome_completo").val(),
@@ -437,7 +437,7 @@
           const response = await axios.post("/fale-conosco/enviar", formData);
 
           alert("Mensagem enviada com sucesso!");
-          // Adicione aqui qualquer redirecionamento ou lógica adicional após o envio bem-sucedido
+          window.location.href = "/fale-conosco/enviado";
         } catch (error) {
           if (error.response && error.response.data) {
             alert("Erro ao cadastrar: " + error.response.data);
