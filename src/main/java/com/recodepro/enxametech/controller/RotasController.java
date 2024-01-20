@@ -1,5 +1,6 @@
 package com.recodepro.enxametech.controller;
 
+import com.recodepro.enxametech.enums.AreaDeAfinidade;
 import com.recodepro.enxametech.enums.Genero;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,7 +54,8 @@ public class RotasController {
     }
 
     @GetMapping("/editar-aluno")
-    public String editarAluno() {
+    public String editarAluno(Model model) {
+        model.addAttribute("generos", Genero.values());
         return "aluno/editar-aluno";
     }
 
@@ -108,12 +110,16 @@ public class RotasController {
     }
 
     @GetMapping("/cadastrar-voluntario")
-    public String cadastrarVoluntario() {
+    public String cadastrarVoluntario(Model model) {
+        model.addAttribute("generos", Genero.values());
+        model.addAttribute("areas", AreaDeAfinidade.values());
         return "voluntario/cadastro-voluntario";
     }
 
     @GetMapping("/editar-voluntario")
-    public String editarVoluntario() {
+    public String editarVoluntario(Model model) {
+        model.addAttribute("generos", Genero.values());
+        model.addAttribute("areas", AreaDeAfinidade.values());
         return "voluntario/editar-voluntario";
     }
 
@@ -121,6 +127,4 @@ public class RotasController {
     public String cursosCards() {
         return "cursos-cards/courses";
     }
-
-
 }
