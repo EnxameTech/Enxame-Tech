@@ -1,205 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EnxameTech</title>
 
     <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-            rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
     />
+    <link rel="stylesheet" type="text/css" href="/css/dashbord-home.css" />
+    <link rel="stylesheet" type="text/css" href="/css/cadastar-alunos.css" />
     <link
-            rel="stylesheet"
-            type="text/css"
-            href="/css/dashbord-home.css"
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
-    <link
-            rel="stylesheet"
-            type="text/css"
-            href="/css/cadastar-alunos.css"
-    />
-    <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-    />
-    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
-</head>
-<body>
-<nav class="sidebar">
-    <div class="logo">
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <nav class="sidebar">
+      <div class="logo">
         <ul class="menu">
-            <li>
-                <a th:href="@{/dashboard}" title="Dashboard">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span>Dashboard </span>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/listar-alunos}" title="Alunos">
-                    <i class="fas fa-user"></i>
-                    <span>Alunos</span>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/listar-voluntarios}" title="Voluntários">
-                    <i class="fa-solid fa-person-chalkboard"></i>
-                    <span>Voluntários</span>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/listar-admin}" title="Administradores">
-                    <i class="fa-regular fa-address-card"></i>
-                    <span>Administradores</span>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/listar-cursos}" title="Cursos">
-                    <i class="fas fa-book"></i>
-                    <span>Cursos</span>
-                </a>
-            </li>
-            <li class="logout">
-                <a th:href="@{/}" title="Sair">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span>Sair</span>
-                </a>
-            </li>
+          <li>
+            <a th:href="@{/dashboard}" title="Dashboard">
+              <i class="fas fa-tachometer-alt"></i>
+              <span>Dashboard </span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/listar-alunos}" title="Alunos">
+              <i class="fas fa-user"></i>
+              <span>Alunos</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/listar-voluntarios}" title="Voluntários">
+              <i class="fa-solid fa-person-chalkboard"></i>
+              <span>Voluntários</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/listar-admin}" title="Administradores">
+              <i class="fa-regular fa-address-card"></i>
+              <span>Administradores</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/listar-cursos}" title="Cursos">
+              <i class="fas fa-book"></i>
+              <span>Cursos</span>
+            </a>
+          </li>
+          <li class="logout">
+            <a th:href="@{/}" title="Sair">
+              <i class="fas fa-sign-out-alt"></i>
+              <span>Sair</span>
+            </a>
+          </li>
         </ul>
-    </div>
-</nav>
+      </div>
+    </nav>
 
-<div class="main--content">
-    <div class="header--wrapper">
+    <div class="main--content">
+      <div class="header--wrapper">
         <div class="header--title">
-            <h2>EnxameTech</h2>
+          <h2>EnxameTech</h2>
         </div>
         <div class="user--info">
-            <div class="searh--box">
-                <i class="fa-solid fa-search"></i>
-                <input type="text" placeholder="Search"/>
-            </div>
-            <img src="/img/depoimento_aluno3.png" alt="foto de  uma pessoa"/>
+          <div class="searh--box">
+            <i class="fa-solid fa-search"></i>
+            <input type="text" placeholder="Search" />
+          </div>
+          <img src="/img/depoimento_aluno3.png" alt="foto de  uma pessoa" />
         </div>
-    </div>
+      </div>
 
-    <div class="section--container">
+      <div class="section--container">
         <div class="header-container">
-            <h3 class="main--title">Lista de Voluntários</h3>
+          <h3 class="main--title">Lista de Voluntários</h3>
 
-            <a th:href="@{/cadastrar-voluntario}" class="btn-cadastrar mb-3">
-                Cadastrar Novo Voluntário
-                <i class="fas fa-plus"></i>
-            </a>
-
+          <a th:href="@{/cadastrar-voluntario}" class="btn-cadastrar mb-3">
+            Cadastrar Novo Voluntário
+            <i class="fas fa-plus"></i>
+          </a>
         </div>
 
         <div class="table-container">
-            <table>
-                <thead>
-                <tr>
-                    <th>Nome Completo</th>
-                    <th>Área de Afinidade</th>
-                    <th>E-mail</th>
-                    <th>Telefone</th>
+          <table>
+            <thead>
+              <tr>
+                <th>Nome Completo</th>
+                <th>Área de Afinidade</th>
+                <th>E-mail</th>
+                <th>Telefone</th>
 
-                    <th class="action">Ações</th>
-                </tr>
-                </thead>
+                <th class="action">Ações</th>
+              </tr>
+            </thead>
 
-                <tbody id="listTable"></tbody>
-            </table>
+            <tbody id="listTable"></tbody>
+          </table>
         </div>
-
-    </div>
-    <footer class="footer">
+      </div>
+      <footer class="footer">
         <div class="container">
-            <p>&copy; 2023 Enxame Tech</p>
+          <p>&copy; 2023 Enxame Tech</p>
         </div>
-    </footer>
-</div>
+      </footer>
+    </div>
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-<script type="text/javascript">
-
-    document.addEventListener("DOMContentLoaded", function () {
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function () {
         carregar();
+      });
 
-    });
+      function carregar() {
+        axios
+          .get("/voluntario/listar")
+          .then(function (response) {
+            exibir(response.data);
+          })
+          .catch(function (error) {
+            console.error("Erro ao obter voluntários:", error);
+          });
+      }
 
-    function carregar() {
-        axios.get("/voluntario/listar")
-            .then(function (response) {
-                exibir(response.data);
-            })
-            .catch(function (error) {
-                console.error("Erro ao obter voluntários:", error);
-            });
-    }
-
-    function exibir(voluntario) {
+      function exibir(voluntario) {
         let listTable = document.getElementById("listTable");
 
         listTable.innerHTML = "";
 
         voluntario.forEach(function (voluntario) {
-            let tr = document.createElement("tr");
+          let tr = document.createElement("tr");
 
-            let tdNome = document.createElement("td");
-            tdNome.textContent = voluntario.nome_completo;
-            tr.appendChild(tdNome);
+          let tdNome = document.createElement("td");
+          tdNome.textContent = voluntario.nome_completo;
+          tr.appendChild(tdNome);
 
-            let tdArea = document.createElement("td");
-            tdArea.textContent = voluntario.areas;
-            tr.appendChild(tdArea);
+          let tdArea = document.createElement("td");
+          tdArea.textContent = voluntario.areas;
+          tr.appendChild(tdArea);
 
-            let tdEmail = document.createElement("td");
-            tdEmail.textContent = voluntario.email;
-            tr.appendChild(tdEmail);
+          let tdEmail = document.createElement("td");
+          tdEmail.textContent = voluntario.email;
+          tr.appendChild(tdEmail);
 
-            let tdTelefone = document.createElement("td");
-            tdTelefone.textContent = voluntario.telefone;
-            tr.appendChild(tdTelefone);
+          let tdTelefone = document.createElement("td");
+          tdTelefone.textContent = voluntario.telefone;
+          tr.appendChild(tdTelefone);
 
-            let tdAcoes = document.createElement("td");
-            tdAcoes.className = "align-items-center";
+          let tdAcoes = document.createElement("td");
+          tdAcoes.className = "align-items-center";
 
-            let linkEditar = document.createElement("a");
-            linkEditar.href ="/editar-voluntario?id=" + voluntario.id;
-            linkEditar.innerHTML = '<i class="fas fa-edit"></i>';
-            tdAcoes.appendChild(linkEditar);
+          let linkEditar = document.createElement("a");
+          linkEditar.href = "/editar-voluntario?id=" + voluntario.id;
+          linkEditar.innerHTML = '<i class="fas fa-edit"></i>';
+          tdAcoes.appendChild(linkEditar);
 
-            let linkExcluir = document.createElement("a");
-            linkExcluir.href = "javascript:void(0);";
-            linkExcluir.onclick = function (){
-                deletar(voluntario.id);
-            }
-            linkExcluir.innerHTML = '<i class="fas fa-trash-alt"></i>';
-            tdAcoes.appendChild(linkExcluir);
+          let linkExcluir = document.createElement("a");
+          linkExcluir.href = "javascript:void(0);";
+          linkExcluir.onclick = function () {
+            deletar(voluntario.id);
+          };
+          linkExcluir.innerHTML = '<i class="fas fa-trash-alt"></i>';
+          tdAcoes.appendChild(linkExcluir);
 
-            tr.appendChild(tdAcoes);
+          tr.appendChild(tdAcoes);
 
-            listTable.appendChild(tr);
-        })
-    }
+          listTable.appendChild(tr);
+        });
+      }
 
-    function deletar(id) {
-        if (confirm('Tem certeza que deseja excluir o voluntário?')) {
-            axios.delete(`/voluntario/deletar/${id}`)
-                .then(function (response) {
-                    carregar();
-                })
-                .catch(function (error) {
-                    console.error("Erro ao excluir voluntário:", error);
-                });
+      function deletar(id) {
+        if (confirm("Tem certeza que deseja excluir o voluntário?")) {
+          axios
+            .delete(`/voluntario/deletar/${id}`)
+            .then(function (response) {
+              carregar();
+            })
+            .catch(function (error) {
+              console.error("Erro ao excluir voluntário:", error);
+            });
         }
-    }
-</script>
+      }
+    </script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>

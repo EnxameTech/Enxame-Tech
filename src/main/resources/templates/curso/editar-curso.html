@@ -150,6 +150,70 @@
       </footer>
     </div>
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+      let urlParams = new URLSearchParams(window.location.search);
+      let id = urlParams.get("id");
+
+      if (id) {
+        carregarDados(id);
+      }
+    });
+
+    function carregarDados(id) {
+      axios
+        .get("/curso/detalhar/" + id)
+        .then(function (response) {
+          preencherForm(response.data);
+        })
+        .catch(function (error) {
+          console.error("Erro ao obter dados do curso:", error);
+        });
+    }
+
+    function preencherForm(curso) {
+      // Informações do curso
+      document.getElementById("nome_curso").value = curso.nome_curso;
+      document.getElementById("descricao").value = curso.descricao;
+      document.getElementById("carga_horaria").value = curso.carga_horaria;
+      document.getElementById("preco").value = curso.preco;
+
+      // Outras informações relevantes do curso
+      document.getElementById("area").value = curso.area;
+      document.getElementById("modalidade").value = curso.modalidade;
+      document.getElementById("nivel").value = curso.nivel;
+    }
+
+    function atualizar() {
+      let urlParams = new URLSearchParams(window.location.search);
+      let id = urlParams.get("id");
+
+      try {
+        const formDataArray = $("#form").serializeArray();
+
+        const formData = {};
+        formDataArray.forEach((item) => {
+          formData[item.name] = item.value;
+        });
+
+        axios
+          .put("/curso/atualizar/" + id, formData)
+          .then(() => {
+            alert("Curso atualizado com sucesso.");
+            window.location.href = "/listar-cursos";
+          })
+          .catch((error) => {
+            alert("Erro ao atualizar curso: " + error.message);
+          });
+      } catch (error) {
+        alert("Erro ao atualizar curso:", error);
+      }
+    }
+  </script>
+
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
   <!--<script src="/js/input-validation-cadastar-aluno.js"></script>-->
