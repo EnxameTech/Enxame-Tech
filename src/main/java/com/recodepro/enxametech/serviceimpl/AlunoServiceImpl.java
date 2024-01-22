@@ -59,12 +59,8 @@ public class AlunoServiceImpl implements AlunoService {
         aluno.setUF(updateAluno.getUF());
         aluno.setCEP(updateAluno.getCEP());
         aluno.setCPF(updateAluno.getCPF());
-
-        //TODO: aluno.setCursosFavoritos(updateAluno.getCursosFavoritos());
-        aluno.setCursoFavoritos(updateAluno.getCursoFavoritos());
         aluno.setGrupo_familiar(updateAluno.getGrupo_familiar());
         aluno.setRenda_familiar(updateAluno.getRenda_familiar());
-        aluno.setVoluntarios(updateAluno.getVoluntarios());
 
         return ar.save(aluno);
     }
