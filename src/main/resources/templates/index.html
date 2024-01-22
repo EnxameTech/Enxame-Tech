@@ -667,7 +667,7 @@
 				<div class="row">
 					<div class="col text-center">
 						<div class="newsletter_form_container mx-auto">
-							<form action="post">
+							<form action="post" id="formNews">
 								<div
 									class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
 									<input id="newsletter_email" class="newsletter_email" type="email"
@@ -782,6 +782,19 @@
 	</footer>
 
 	</div>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			let inputEmail = document.getElementById("newsletter_email");
+			document.getElementById('formNews').addEventListener('submit', function (event) {
+				event.preventDefault();
+
+				alert('E-mail cadastrado com sucesso!');
+
+				inputEmail.value = "";
+			});
+		});
+	</script>
 
 	<script src="/js/jquery-3.2.1.min.js"></script>
 	<script src="/css/bootstrap4/popper.js"></script>
