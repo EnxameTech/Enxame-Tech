@@ -81,7 +81,7 @@
                 <div class="progress-content">
                     <div class="progress-step progress-step-active" data-title="Dados Pessoais"></div>
                     <div class="progress-step " data-title="Endereço"></div>
-                    <div class="progress-step " data-title="Socio econômico"></div>
+                    <div class="progress-step " data-title="Área de Afinidade"></div>
                 </div>
             </div>
             <form id="form">
@@ -119,7 +119,7 @@
                     <div class="row ">
                         <div class="form-group col-md-6">
                             <label for="genero">Gênero</label>
-                            <select th:field="*{generos}" id="genero" name="genero" class="input">
+                            <select id="genero" name="genero" class="input">
                                 <option th:each="genero : ${generos}" th:text="${genero.getDescricao()}"
                                         th:value="${genero}">
                                 </option>
@@ -190,8 +190,8 @@
                 <div class="row form-step ">
                     <div class="row justify-content-center">
                         <div class="form-group col-6 ">
-                            <label for="areas">Área de Afinidade</label>
-                            <select th:field="*{areas}" id="areas" class="form-control select2bs4" style="width:
+                            <label for="areaDeAfinidade">Área de Afinidade</label>
+                            <select id="areaDeAfinidade" name="areaDeAfinidade" class="form-control select2bs4" style="width:
                     100%;">
                                 <option th:each="area : ${areas}" th:text="${area.getDescricao()}"
                                         th:value="${area}"></option>
@@ -267,7 +267,7 @@
         document.getElementById('uf').value = voluntario.uf;
 
         //área de afinidade
-        document.getElementById('areas').value = voluntario.areas;
+        document.getElementById('areaDeAfinidade').value = voluntario.areaDeAfinidade;
     }
 
     function atualizar() {

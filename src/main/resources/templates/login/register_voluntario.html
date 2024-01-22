@@ -67,18 +67,21 @@
               </div> 
             </div>
 
-            <form id="form" method="POST">
+            <form id="form">
 
              <!-- step-1 -->
               <div class="form-step  form-step-active row ">
                   <div class="form-group col-12">
                     <label for="cpf">CPF</label>
-                    <input type="text" id="cpf"   class="inputs required cpf" oninput="cpfValidate()" placeholder="Somente números">
+                    <input type="text" id="cpf" name="cpf" class="inputs required cpf" oninput="cpfValidate()"
+                           placeholder="Somente números">
                     <span class="span-required">Campo obrigátorio</span>
                   </div>
                   <div class="form-group col-12">
-                    <label for="nome">Nome Completo</label>
-                    <input type="text" id="nome" name="nome"  class="inputs required" oninput="nomeValidate()" placeholder="Nome">
+                    <label for="nome_completo">Nome Completo</label>
+                    <input type="text" id="nome_completo" name="nome_completo"  class="inputs required"
+                           oninput="nomeValidate()"
+                           placeholder="Nome">
                     <span class="span-required">Campo obrigátorio</span>
                   </div>
 
@@ -92,8 +95,8 @@
              <!-- step-3 -->
               <div class="row form-step ">
                 <div class="form-group col-12">
-                  <label for="dataNascimento">Data de Nascimento</label>
-                  <input type="date" id="dataNascimento" name="dataNascimento"  class="inputs required">
+                  <label for="data_nascimento">Data de Nascimento</label>
+                  <input type="date" id="data_nascimento" name="data_nascimento"  class="inputs required">
                   <span class="span-required">Campo obrigátorio</span>
                 </div>
                 <div class="form-group col-12">
@@ -117,7 +120,7 @@
               <div class="row form-step ">
                 <div class="form-group col-12">
                   <label for="genero">Gênero</label>
-                  <select th:field="*{generos}" id="genero" name="genero" class="input">
+                  <select id="genero" name="genero" class="input">
                     <option th:each="genero : ${generos}" th:text="${genero.getDescricao()}"
                             th:value="${genero}">
                     </option>
@@ -157,12 +160,12 @@
                 <div class="row">
                   <div class="form-group col-3">
                     <label for="numero">Número</label>
-                    <input type="text" id="numero" name="numeor" class="inputs required" placeholder="nº">
+                    <input type="text" id="numero" name="numero" class="inputs required" placeholder="nº">
                     <span class="span-required">Campo obrigátorio</span>
                   </div>
 
                   <div class="form-group col-9">
-                    <label for="cpf">Bairro</label>
+                    <label for="bairro">Bairro</label>
                     <input type="text" id="bairro" name="bairro"  class="inputs required" >
                     <span class="span-required">Campo obrigátorio</span>
                   </div>
@@ -181,7 +184,7 @@
                   </div>
                 
                   <div class="form-group col-5">
-                    <label for="cpf">UF:</label>
+                    <label for="uf">UF:</label>
                     <input type="text" id="uf" name="uf"  class="inputs required">
                     <span class="span-required">Campo obrigátorio</span>
                   </div>
@@ -198,8 +201,8 @@
                
                
                   <div class="form-group col-12">
-                    <label for="area_afinidade">Área de Afinidade</label>
-                    <select th:field="*{areas}" id="areas" class="form-control select2bs4" style="width:100%;">
+                    <label for="areas">Área de Afinidade</label>
+                    <select id="areas" name="areas" class="form-control select2bs4" style="width:100%;">
                       <option th:each="area : ${areas}" th:text="${area.getDescricao()}"
                               th:value="${area}"></option>
                     </select>
@@ -209,7 +212,7 @@
     
                 <div class="row justify-content-center">
                   <input href="#" class="col-4 btn-prev" value="Voltar">
-                  <button type="submit" class="btn-prev col-4  cadastro">Cadastrar</button>
+                  <button type="button" class="btn-prev col-4 cadastro" onclick="cadastrar()">Cadastrar</button>
                 </div>
               </div>
 
@@ -223,7 +226,28 @@
       </div>
       
     </div>
-//após cadastro redirecionar para dashboard
+
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+      <script type="text/javascript">
+          async function cadastrar() {
+              try {
+                  const formDataArray = $("#form").serializeArray();
+
+                  const formData = {};
+                  formDataArray.forEach((item) => {
+                      formData[item.name] = item.value;
+                  });
+
+                  await axios.post("/voluntario/cadastrar", formData);
+                  alert("Voluntário adicionado com sucesso!");
+                  window.location.href = "/dashboard";
+              } catch (error) {
+                  alert("Erro ao cadastrar: " + error.response.data);
+              }
+          }
+      </script>
+
       <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
       <script src="/js/input-validation-cadastar-aluno.js"></script>

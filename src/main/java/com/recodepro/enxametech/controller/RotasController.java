@@ -25,6 +25,13 @@ public class RotasController {
         return "login/register";
     }
 
+    @GetMapping("/registrar-voluntario")
+    public String cadastroVoluntario(Model model) {
+        model.addAttribute("generos", Genero.values());
+        model.addAttribute("areas", AreaDeAfinidade.values());
+        return "login/register_voluntario";
+    }
+
     @GetMapping("/cadastrar-admin")
     public String cadastrarAdmin(Model model) {
         model.addAttribute("generos", Genero.values());
