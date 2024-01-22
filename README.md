@@ -32,17 +32,18 @@ Abaixo segue a modelagem do banco de dados construído a partir da ferramenta Br
 - LinkedIn: https://www.linkedin.com/in/airaarima/
 - E-mail: arimacoelhoaira@gmail.com
 
+**_Alessandra Rodrigues_**
+- LinkedIn: https://www.linkedin.com/in/aledelucarodrigues/
+- E-mail: alessandralp1@yahoo.com.br
+
+**_Allan Tavares_**
+- LinkedIn: https://www.linkedin.com/in/allan-tavares-a02070206/
+- E-mail: allan.tavares@estudante.ufla.br
+  
 **_Alysson José_**
 - LinkedIn: https://www.linkedin.com/in/alysson-jos%C3%A9/
 - E-mail:ajsouzapc@gmail.com
 
-**_Allan Tavares_**
-- LinkedIn:
-- E-mail: allan.tavares@estudante.ufla.br
-
-**_Alessandra Rodrigues_**
-- LinkedIn:
-- E-mail: alessandralp1@yahoo.com.br
 
 Agradecemos seu envolvimento e contribuições para melhorar o projeto Enxame Tech. Se você tiver alguma dúvida ou quiser saber mais, não hesite em entrar em contato conosco em:
 
