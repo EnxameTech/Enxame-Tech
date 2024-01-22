@@ -51,12 +51,12 @@
           <img class="icon-enxame"
             src="/img/icon_light.svg"
             alt="ícone enxame tech"
-          img/>
+          />
           <div class="form-box">
             <h2>login</h2>
             <form id="loadim">
               <div class="input-box">
-                <span>Login</span>
+                <span>E-mail</span>
                 <input
                   type="email"
                   placeholder="@mail.com"
@@ -77,8 +77,9 @@
                 />
                 <span class="span-required">Minimo 3 caracteres.</span>
               </div>
-
-              
+              <div class="input-box">
+              <a th:href="@{/registrar}">Esqueci minha senha</a>
+              </div>
               
               
             
@@ -91,14 +92,13 @@
            
             <div class="remenber">
 
-              <a th:href="@{/registrar}">Esqueci minha senha</a>
               <a th:href="@{/registrar}">Cadastro Aluno</a>
               <a th:href="@{/registrar}">Cadastro Mentor</a>
               <a th:href="@{/}">Voltar Home</a>
               
             </div>
 
-             </div>
+          </div>
 
 
         </div>
@@ -106,7 +106,7 @@
 
       </div>
       
-    </div>
+    
 
     <script src="./js/input-validation.js"></script>
     <script src="./js/loading.js"></script>
