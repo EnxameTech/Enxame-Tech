@@ -684,6 +684,7 @@ section
 	-ms-transform: translateY(30px);
 	-o-transform: translateY(30px);
 	transform: translateY(30px);
+	margin-top: -2cm;
 }
 .hero_slide_content h1
 {
