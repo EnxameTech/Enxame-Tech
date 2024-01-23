@@ -893,6 +893,7 @@ section
 {
 	box-shadow: 0px 10px 20px rgba(0,0,0,0.2);
 }
+
 .button a
 {
 	font-size: 14px;
@@ -1133,6 +1134,17 @@ input:last-of-type
 	outline: solid 2px #FFFFFF;
 }
 
+.search_button
+{
+	background: #ffb606;
+	margin-top: 65px;
+	border-color: #ffb606 ;
+}
+.search_button a
+{
+	color: #FFFFFF;
+}
+
 /*********************************
 12. Services
 *********************************/
@@ -1345,10 +1357,7 @@ input:last-of-type
 	margin-top: 21px;
 	margin-bottom: 13px;
 }
-.event_image
-{
 
-}
 .event_image img
 {
 	object-fit: cover;
