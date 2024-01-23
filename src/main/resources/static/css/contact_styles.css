@@ -756,6 +756,14 @@ section
 	font-weight: 500;
 	color: #1a1a1a;
 }
+
+.contact_text
+{
+	font-size: 25px;
+	font-weight: 500;
+	color: #a5a5a5;
+}
+
 .contact_form_container
 {
 	margin-top: 70px;
