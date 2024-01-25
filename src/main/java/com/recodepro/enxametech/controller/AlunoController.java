@@ -105,6 +105,7 @@ public class AlunoController {
             CursoFavorito novoCursoFav = as.saveCursoFav(acfDTO);
             return ResponseEntity.ok(novoCursoFav);
         } catch (RuntimeException e) {
+            e.printStackTrace();
             return ResponseEntity.badRequest().build();
         }
     }

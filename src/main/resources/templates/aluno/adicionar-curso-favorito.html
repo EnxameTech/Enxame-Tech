@@ -82,11 +82,7 @@
     <div class="section--container">
       <h3 class="main--title">Favoritar Cursos</h3>
       <div class="card">
-        <form
-          th:action="@{'/aluno/' + ${aluno.id} + '/salvar-curso-favorito'}"
-          id="form"
-          method="POST"
-        >
+        <form id="form" method="POST">
           <div class="form-step form-step-active row">
             <div class="row justify-content-center">
               <div class="form-group col-4">
@@ -95,20 +91,12 @@
                   id="cursoFavoritoId"
                   name="cursoFavoritoId"
                   class="input"
-                >
-                  <option
-                    th:each="curso : ${cursosDisponiveis}"
-                    th:text="${curso.titulo}"
-                    th:value="${curso.id}"
-                  ></option>
-                </select>
+                ></select>
               </div>
             </div>
 
             <div class="row justify-content-center">
-              <button type="submit" class="btn col-3 cadastro">
-                Favoritar Curso
-              </button>
+              <button class="btn col-3 cadastro">Favoritar Curso</button>
             </div>
           </div>
         </form>
@@ -119,14 +107,72 @@
         <p>&copy; 2023 Enxame Tech</p>
       </div>
     </footer>
-  </div>
 
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
-  <script src="/js/input-validation-cadastar-aluno.js"></script>
-  <script src="/js/cadastra-alunos.js"></script>
-  <script src="/js/maskInput.js"></script>
-  <script src="/js/apiCep.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script type="text/javascript">
+      // obter id do aluno da url
+      function obterIdDoAlunoDaUrl() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get("id");
+      }
+
+      // faz um GET para obter os cursos e preenche o select
+      const selectCursoFavorito = document.getElementById("cursoFavoritoId");
+
+      const url = "http://localhost:8080/curso/listar";
+
+      axios
+        .get(url)
+        .then((response) => {
+          const cursos = response.data;
+          cursos.forEach((curso) => {
+            const option = document.createElement("option");
+            option.value = curso.id;
+            option.text = curso.titulo;
+            selectCursoFavorito.appendChild(option);
+          });
+        })
+        .catch((error) => {
+          console.error("Erro na requisição:", error);
+        });
+
+      // POST para favoritar curso
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("form");
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const cursoFavoritoId =
+            document.getElementById("cursoFavoritoId").value;
+          const alunoId = obterIdDoAlunoDaUrl();
+
+          const url = `http://localhost:8080/aluno/${alunoId}/favoritar`;
+          const data = { aluno_id: alunoId, curso_id: cursoFavoritoId };
+
+          console.log(url);
+          console.log(data);
+          axios
+            .post(url, data)
+            .then((response) => {
+              alert("Curso favoritado com sucesso!");
+              console.log(response);
+            })
+            .catch((error) => {
+              alert("Erro ao favoritar curso: " + error.message);
+            });
+        });
+      });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+    <script src="/js/input-validation-cadastar-aluno.js"></script>
+    <script src="/js/cadastra-alunos.js"></script>
+    <script src="/js/maskInput.js"></script>
+    <script src="/js/apiCep.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </div>
 </body>
