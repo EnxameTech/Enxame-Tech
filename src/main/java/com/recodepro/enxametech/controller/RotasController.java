@@ -68,6 +68,12 @@ public class RotasController {
         return "aluno/editar-aluno";
     }
 
+    @GetMapping("/aluno/detalhar-aluno")
+    public String detalharAluno(Model model) {
+        model.addAttribute("generos", Genero.values());
+        return "aluno/detalhar-aluno";
+    }
+
     // Cursos favoritos
     @GetMapping("/aluno/adicionar-curso-favorito")
     public String adicionarCursoFavorito() {

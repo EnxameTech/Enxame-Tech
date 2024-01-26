@@ -111,4 +111,16 @@ public class AlunoServiceImpl implements AlunoService {
 
         return cfr.save(cursoFav);
     }
+
+    @Override
+    public void deleteCursoFav(Long id, Long idCursoFav) {
+        Aluno aluno = ar.findById(id).orElseThrow(()-> new RuntimeException());
+        CursoFavorito cursoFav = cfr.findById(idCursoFav).orElseThrow(()-> new RuntimeException());
+
+        if (cursoFav.getAluno().getId() == aluno.getId()) {
+            cfr.deleteById(cursoFav.getId());
+        } else {
+            throw new RuntimeException();
+        }
+    }
 }

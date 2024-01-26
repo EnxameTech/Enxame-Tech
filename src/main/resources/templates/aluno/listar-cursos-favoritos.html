@@ -74,17 +74,13 @@
             <i class="fa-solid fa-search"></i>
             <input type="text" placeholder="Search" />
           </div>
-          <img src="/img/author.jpg" alt="foto de  uma pessoa" />
+          <img src="/img/author.jpg" alt="foto de uma pessoa" />
         </div>
       </div>
 
       <div class="section--container">
         <div class="header-container">
           <h3 class="main--title">Cursos Favoritos</h3>
-        </div>
-
-        <div th:if="${erro}" class="alert alert-danger" role="alert">
-          <p th:text="${erro}"></p>
         </div>
 
         <div class="table-container">
@@ -96,15 +92,21 @@
                 <th scope="col">Ações</th>
               </tr>
             </thead>
-
             <tbody>
-              <tr th:each="cursoFavorito : ${aluno.cursoFavoritos}">
-                <td th:text="${aluno.nome}"></td>
-                <td th:text="${cursoFavorito.curso.titulo}"></td>
+              <tr data-id="${cursoFavorito.id}">
+                <td id="alunoNome">
+                  <!-- Replace with actual student name -->
+                </td>
+                <td id="cursoTitulo">
+                  <!-- Replace with actual course title -->
+                </td>
                 <td>
                   <a
-                    th:href="@{'/aluno/' + ${aluno.id} + '/remover-curso-favorito/' + ${cursoFavorito.id}}"
-                    onclick="return confirm('Tem certeza que deseja remover o curso dos favoritados?');"
+                    href="#"
+                    class="remover-curso-favorito"
+                    data-aluno-id="<!-- Replace with actual student id -->"
+                    data-curso-fav-id="<!-- Replace with actual course favorite id -->"
+                    onclick="return confirm('Tem certeza que deseja remover o curso dos favoritados?'); removerCursoFavorito()"
                   >
                     <i class="fas fa-trash-alt"></i>
                   </a>
@@ -115,12 +117,7 @@
         </div>
 
         <div class="row justify-content-center mt-3">
-          <a
-            th:href="@{/aluno/{id}/detalhar (id=${aluno.id})}"
-            class="col-1 btn btn-primary mb-3"
-          >
-            Voltar
-          </a>
+          <a href="#" class="col-1 btn btn-primary mb-3"> Voltar </a>
         </div>
       </div>
       <footer class="footer">
@@ -129,6 +126,69 @@
         </div>
       </footer>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", function () {
+        obterCursosFavoritosDoAluno();
+      });
+
+      function obterIdDoAlunoDaUrl() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get("id");
+      }
+
+      // obter cursos favoritos do aluno
+      function obterCursosFavoritosDoAluno() {
+        const idDoAluno = obterIdDoAlunoDaUrl();
+        const url = `http://localhost:8080/aluno/${idDoAluno}/cursos-favoritados`;
+
+        axios
+          .get(url)
+          .then((response) => {
+            const cursosFavoritos = response.data;
+
+            // Limpa a tabela antes de adicionar novas linhas
+            const tabela = document.querySelector("tbody");
+            tabela.innerHTML = "";
+
+            // Itera sobre os cursos favoritos e adiciona uma linha para cada um
+            cursosFavoritos.forEach((cursoFavorito) => {
+              const [nomeAluno, tituloCurso] = cursoFavorito;
+
+              const novaLinha = tabela.insertRow();
+              const colunaAluno = novaLinha.insertCell(0);
+              const colunaCurso = novaLinha.insertCell(1);
+              const colunaAcoes = novaLinha.insertCell(2);
+
+              colunaAluno.textContent = nomeAluno;
+              colunaCurso.textContent = tituloCurso;
+
+              // Adicione aqui qualquer ação adicional que você deseja para cada linha (por exemplo, um botão de exclusão)
+              colunaAcoes.innerHTML = `<a href="/aluno/${idDoAluno}/remover-curso-favorito/${cursoFavorito.id}" onclick="return confirm('Tem certeza que deseja remover o curso dos favoritados?');"><i class="fas fa-trash-alt"></i></a>`;
+            });
+          })
+          .catch((error) => {
+            console.error("Erro na requisição:", error);
+          });
+      }
+
+      function removerCursoFavorito(cursoFavoritoId) {
+        const alunoId = obterIdDoAlunoDaUrl();
+        const url = `http://localhost:8080/aluno/${alunoId}/remover-curso-favorito/${cursoFavoritoId}`;
+
+        axios
+          .delete(url)
+          .then((response) => {
+            alert("Curso favorito removido com sucesso!");
+            console.log(response);
+          })
+          .catch((error) => {
+            alert("Erro ao remover curso favorito: " + error.message);
+          });
+      }
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>

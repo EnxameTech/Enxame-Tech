@@ -151,13 +151,11 @@
           const url = `http://localhost:8080/aluno/${alunoId}/favoritar`;
           const data = { aluno_id: alunoId, curso_id: cursoFavoritoId };
 
-          console.log(url);
-          console.log(data);
           axios
             .post(url, data)
             .then((response) => {
               alert("Curso favoritado com sucesso!");
-              console.log(response);
+              window.location.href = `/aluno/listar-cursos-favoritos?id=${alunoId}`;
             })
             .catch((error) => {
               alert("Erro ao favoritar curso: " + error.message);
