@@ -80,71 +80,70 @@
     </div>
 
     <div class="section--container">
-        <h3 class="main--title">Dados do Aluno</h3>
-        <div class="row">
-            <h5 id="nome_completo"></h5>
-            <div class="form-group col-4">
-                <label for="cpf">CPF</label>
-                <input disabled id="cpf" >
-            </div>
-            <div class="form-group col-4">
-                <label for="email">E-mail</label>
-                <input disabled id="email" >
-            </div>
-            <div class="form-group col-4">
-                <label for="genero">Gênero</label>
-                <input disabled id="genero">
-            </div>
+      <h3 class="main--title">Dados do Aluno</h3>
+      <div class="row">
+        <h5 id="nome_completo"></h5>
+        <div class="form-group col-4">
+          <label for="cpf">CPF</label>
+          <input disabled id="cpf" />
         </div>
-        <div class="row">
-            <div class="form-group col-4">
-                <label for="data_nascimento">Data de Nascimento</label>
-                <input disabled type="date" id="data_nascimento">
-                <span class="span-required">Campo obrigátorio</span>
-            </div>
-            <div class="form-group col-4">
-                <label for="cidade">Cidade</label>
-                <input disabled id="cidade" >
-            </div>
-            <div class="form-group col-4">
-                <label for="uf">UF</label>
-                <input disabled id="uf" >
-            </div>
+        <div class="form-group col-4">
+          <label for="email">E-mail</label>
+          <input disabled id="email" />
         </div>
-        <div class="row gap-3 justify-content-end mt-5">
-            <a id="linkAgendarMonitoria" class="col-2 btn btn-success ">
-                Agendar Monitoria
-            </a>
-            <a id="linkListarMonitorias" class="col-2 btn btn-secondary">
-                Monitorias Agendadas
-            </a>
-            <a id="linkFavCurso" class="col-2 btn btn-primary">
-                Favoritar Cursos
-            </a>
-            <a  id="linkListarCursosFav" class="col-2 btn btn-dark">
-                Cursos Favoritos
-            </a>
+        <div class="form-group col-4">
+          <label for="genero">Gênero</label>
+          <input disabled id="genero" />
         </div>
       </div>
-
-      <footer class="footer">
-        <div class="container">
-          <p>&copy; 2023 Seu Nome ou Nome da Empresa</p>
+      <div class="row">
+        <div class="form-group col-4">
+          <label for="data_nascimento">Data de Nascimento</label>
+          <input disabled type="date" id="data_nascimento" />
+          <span class="span-required">Campo obrigátorio</span>
         </div>
-      </footer>
+        <div class="form-group col-4">
+          <label for="cidade">Cidade</label>
+          <input disabled id="cidade" />
+        </div>
+        <div class="form-group col-4">
+          <label for="uf">UF</label>
+          <input disabled id="uf" />
+        </div>
+      </div>
+      <div class="row gap-3 justify-content-end mt-5">
+        <a id="linkAgendarMonitoria" class="col-2 btn btn-success ">
+          Agendar Monitoria
+        </a>
+        <a id="linkListarMonitorias" class="col-2 btn btn-secondary">
+          Monitorias Agendadas
+        </a>
+        <a id="linkFavCurso" class="col-2 btn btn-primary">
+          Favoritar Cursos
+        </a>
+        <a  id="linkListarCursosFav" class="col-2 btn btn-dark">
+          Cursos Favoritos
+        </a>
+      </div>
     </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2023 Seu Nome ou Nome da Empresa</p>
+      </div>
+    </footer>
+  </div>
 
-<script type="text/javascript">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <script type="text/javascript">
     let urlParams = new URLSearchParams(window.location.search);
     let id = urlParams.get("id");
 
     document.addEventListener("DOMContentLoaded", function () {
-        if (id) {
-            carregarDados(id);
-        }
+      if (id) {
+        carregarDados(id);
+      }
 
         let linkAgendarMonitoria = document.getElementById("linkAgendarMonitoria");
         linkAgendarMonitoria.addEventListener("click", function () {
@@ -165,36 +164,36 @@
         linkListarCursosFav.addEventListener("click", function () {
             window.location.href = "/aluno/listar-cursos-favoritos?id=" + id;
         });
-    });
 
     function carregarDados(id) {
-        axios.get("/aluno/detalhar/" + id)
-            .then(function (response) {
-                preencher(response.data);
-            })
-            .catch(function (error) {
-                console.error("Erro ao obter dados do aluno:", error);
-            });
+      axios
+        .get("/aluno/detalhar/" + id)
+        .then(function (response) {
+          preencher(response.data);
+        })
+        .catch(function (error) {
+          console.error("Erro ao obter dados do aluno:", error);
+        });
     }
 
     function preencher(aluno) {
-        //dados pessoais
-        document.getElementById("cpf").value = aluno.cpf;
-        document.getElementById("nome_completo").textContent = aluno.nome_completo;
-        document.getElementById("data_nascimento").value = aluno.data_nascimento;
-        document.getElementById("email").value = aluno.email;
-        document.getElementById("genero").value = aluno.genero;
+      //dados pessoais
+      document.getElementById("cpf").value = aluno.cpf;
+      document.getElementById("nome_completo").textContent =
+        aluno.nome_completo;
+      document.getElementById("data_nascimento").value = aluno.data_nascimento;
+      document.getElementById("email").value = aluno.email;
+      document.getElementById("genero").value = aluno.genero;
 
-        //endereço
-        document.getElementById("cidade").value = aluno.cidade;
-        document.getElementById("uf").value = aluno.uf;
+      //endereço
+      document.getElementById("cidade").value = aluno.cidade;
+      document.getElementById("uf").value = aluno.uf;
     }
+  </script>
 
-</script>
-
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
-<!--<script src="/js/input-validation-cadastar-aluno.js"></script>-->
-<script src="/js/cadastra-alunos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+  <!--<script src="/js/input-validation-cadastar-aluno.js"></script>-->
+  <script src="/js/cadastra-alunos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
