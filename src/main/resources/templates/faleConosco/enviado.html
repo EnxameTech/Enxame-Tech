@@ -110,151 +110,226 @@
         </div>
     </div>
 
-    <!-- Contact -->
 
     <div class="contact">
         <div class="container">
-            <div class="row">
-                <h2 class="contact_title">Obrigada pelo contato, a mensagem foi enviada com sucesso! Aguarde nosso
-                    retorno</h2>
+          <div class="row">
+            <div class="col-lg-8">
+              <!-- Formulário de contato -->
+              <div class="contact_form">
+                <div class="contact_title">Obrigada pelo contato, sua mensagem foi enviada com sucesso!</div>
+                <div class="contact_text">Em breve retornaremos.</div>
+              </div>
+            </div>
+                
+            <div class="col-lg-4">
+              <div class="about">
+                <div class="about_title">Contato</div>
+                <p class="about_text">
+                  Sua opinião é valiosa para nós. Compartilhe suas perguntas,
+                  sugestões ou experiências. Estamos aqui para ajudar e
+                  aprimorar sua jornada educacional. Deixe sua mensagem e
+                  faça parte desta conversa. Agradecemos por contribuir para a
+                  construção de uma comunidade educacional ainda mais
+                  envolvente.
+                </p>
+
+                <div class="contact_info">
+                  <ul>
+                    <li class="contact_info_item">
+                      <div class="contact_info_icon">
+                        <img
+                          src="/img/smartphone.svg"
+                          alt="https://www.flaticon.com/authors/lucy-g"
+                        />
+                      </div>
+                      (11) 99999-9999
+                    </li>
+                    <li class="contact_info_item">
+                      <div class="contact_info_icon">
+                        <img
+                          src="/img/envelope.svg"
+                          alt="https://www.flaticon.com/authors/lucy-g"
+                        />
+                      </div>
+                      enxame.edtech@gmail.com
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
+   <!-- Footer -->
 
-    <footer class="footer">
-        <div class="container">
+   <footer class="footer">
+    <div class="container">
+      <!-- Newsletter -->
 
-            <!-- Newsletter -->
-
-            <div class="newsletter">
-                <div class="row">
-                    <div class="col">
-                        <div class="section_title text-center">
-                            <h1>Inscreva-se para receber nossas novidades</h1>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col text-center">
-                        <div class="newsletter_form_container mx-auto">
-                            <form action="post">
-                                <div
-                                        class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center">
-                                    <input id="newsletter_email" class="newsletter_email" type="email"
-                                           placeholder="Informe seu e-mail" required="required"
-                                           data-error="Valid email is required.">
-                                    <button id="newsletter_submit" type="submit"
-                                            class="newsletter_submit_btn trans_300" value="Submit">Inscrever
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
+      <div class="newsletter">
+        <div class="row">
+          <div class="col">
+            <div class="section_title text-center">
+              <h1>Inscreva-se para receber nossas novidades</h1>
             </div>
-
-            <!-- Footer Content -->
-
-            <div class="footer_content">
-                <div class="row">
-
-                    <!-- Footer Column - About -->
-                    <div class="col-lg-4 footer_col">
-
-                        <!-- Logo -->
-                        <div class="logo_container">
-                            <div class="logo">
-                                <img src="/img/icon_dark.svg" height="60px"
-                                     alt="logo da enxame tech que lembra o desenho de uma abelha">
-                                <span>ENXAME TECH</span>
-                            </div>
-                        </div>
-
-                        <p class="footer_about_text">Fortalecendo comunidades através do conhecimento e colaboração.</p>
-
-                    </div>
-
-                    <!-- Footer Column - Links Úteis -->
-
-                    <div class="col-lg-2 footer_col">
-                    </div>
-
-                    <!-- Footer Column - Menu -->
-
-                    <div class="col-lg-3 footer_col justify-content-lg-end">
-                        <div class="footer_column_title">Menu</div>
-                        <div class="footer_column_content">
-                            <ul>
-                                <li class="footer_list_item"><a th:href="@{/}">Página Inicial</a></li>
-                                <li class="footer_list_item"><a th:href="@{/sobre-nos}">Sobre Nós</a></li>
-                                <li class="footer_list_item"><a th:href="@{/cursos-disponiveis}">Cursos</a></li>
-                                <li class="footer_list_item"><a th:href="@{/mentores}">Mentores</a></li>
-                                <li class="footer_list_item"><a th:href="@{/fale-conosco}">Contato</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-
-                    <!-- Footer Column - Contact -->
-
-                    <div class="col-lg-3 footer_col">
-                        <div class="footer_column_title">Contato</div>
-                        <div class="footer_column_content">
-                            <ul>
-                                <li class="footer_contact_item">
-                                    <div class="footer_contact_icon">
-                                        <img src="/img/placeholder.svg"
-                                             alt="https://www.flaticon.com/authors/lucy-g">
-                                    </div>
-                                    Avenida Paulista, 2300 - Consolação, São Paulo - SP
-                                </li>
-                                <li class="footer_contact_item">
-                                    <div class="footer_contact_icon">
-                                        <img src="/img/smartphone.svg"
-                                             alt="https://www.flaticon.com/authors/lucy-g">
-                                    </div>
-                                    0800 000 1000
-                                </li>
-                                <li class="footer_contact_item">
-                                    <div class="footer_contact_icon">
-                                        <img src="/img/envelope.svg"
-                                             alt="https://www.flaticon.com/authors/lucy-g">
-                                    </div>
-                                    enxame.edtech@gmail.com
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Footer Copyright -->
-
-            <div class="footer_bar d-flex flex-column flex-sm-row align-items-center">
-                <div class="footer_copyright">
-					<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						Copyright &copy;
-						<script>document.write(new Date().getFullYear());</script> All rights reserved | This
-						template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a
-                                href="https://colorlib.com" target="_blank">Colorlib.</a> <a> | Utilizado com carinho pela Squad 01 - Enxame Tech.</a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					</span>
-                </div>
-                <div class="footer_social ml-sm-auto">
-                    <ul class="menu_social">
-                        <li class="menu_social_item"><a href="https://github.com/EnxameTech" target="_blank"><i
-                                class="fab fa-github"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-
+          </div>
         </div>
-    </footer>
+
+        <div class="row">
+          <div class="col text-center">
+            <div class="newsletter_form_container mx-auto">
+              <form id="form2" action="POST">
+                <div
+                  class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-center"
+                >
+                  <input
+                    id="newsletter_email"
+                    class="newsletter_email"
+                    type="email"
+                    placeholder="Informe seu e-mail"
+                    required="required"
+                    data-error="Valid email is required."
+                  />
+                  <button
+                    id="newsletter_submit"
+                    type="submit"
+                    class="newsletter_submit_btn trans_300"
+                    value="Submit"
+                  >
+                    Inscrever
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Content -->
+
+      <div class="footer_content">
+        <div class="row">
+          <!-- Footer Column - About -->
+          <div class="col-lg-4 footer_col">
+            <!-- Logo -->
+            <div class="logo_container">
+              <div class="logo">
+                <img
+                  src="/img/icon_dark.svg"
+                  height="60px"
+                  alt="logo da enxame tech que lembra o desenho de uma abelha"
+                />
+                <span>ENXAME TECH</span>
+              </div>
+            </div>
+
+            <p class="footer_about_text">
+              Fortalecendo comunidades através do conhecimento e
+              colaboração.
+            </p>
+          </div>
+
+          <!-- Footer Column - Links Úteis -->
+
+          <div class="col-lg-2 footer_col"></div>
+
+          <!-- Footer Column - Menu -->
+
+          <div class="col-lg-3 footer_col justify-content-lg-end">
+            <div class="footer_column_title">Menu</div>
+            <div class="footer_column_content">
+              <ul>
+                <li class="footer_list_item">
+                  <a th:href="@{/}">Página Inicial</a>
+                </li>
+                <li class="footer_list_item">
+                  <a th:href="@{/sobre-nos}">Sobre Nós</a>
+                </li>
+                <li class="footer_list_item">
+                  <a th:href="@{/cursos-disponiveis}">Cursos</a>
+                </li>
+                <li class="footer_list_item">
+                  <a th:href="@{/mentores}">Mentores</a>
+                </li>
+                <li class="footer_list_item">
+                  <a th:href="@{/fale-conosco}">Contato</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Footer Column - Contact -->
+
+          <div class="col-lg-3 footer_col">
+            <div class="footer_column_title">Contato</div>
+            <div class="footer_column_content">
+              <ul>
+                <li class="footer_contact_item">
+                  <div class="footer_contact_icon">
+                    <img
+                      src="/img/placeholder.svg"
+                      alt="https://www.flaticon.com/authors/lucy-g"
+                    />
+                  </div>
+                  Avenida Paulista, 2300 - Consolação, São Paulo - SP
+                </li>
+                <li class="footer_contact_item">
+                  <div class="footer_contact_icon">
+                    <img
+                      src="/img/smartphone.svg"
+                      alt="https://www.flaticon.com/authors/lucy-g"
+                    />
+                  </div>
+                  0800 000 1000
+                </li>
+                <li class="footer_contact_item">
+                  <div class="footer_contact_icon">
+                    <img
+                      src="/img/envelope.svg"
+                      alt="https://www.flaticon.com/authors/lucy-g"
+                    />
+                  </div>
+                  enxame.edtech@gmail.com
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Copyright -->
+
+      <div
+        class="footer_bar d-flex flex-column flex-sm-row align-items-center"
+      >
+        <div class="footer_copyright">
+          <span
+            ><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+            All rights reserved | This template is made with
+            <i class="fa fa-heart" aria-hidden="true"></i> by
+            <a href="https://colorlib.com" target="_blank">Colorlib.</a>
+            <a> | Utilizado com carinho pela Squad 01 - Enxame Tech.</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          </span>
+        </div>
+        <div class="footer_social ml-sm-auto">
+          <ul class="menu_social">
+            <li class="menu_social_item">
+              <a href="https://github.com/EnxameTech" target="_blank"
+                ><i class="fab fa-github"></i
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 </div>
 

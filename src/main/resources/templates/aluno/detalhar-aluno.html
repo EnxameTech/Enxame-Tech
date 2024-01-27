@@ -1,75 +1,82 @@
 <!DOCTYPE html>
 
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EnxameTech</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="/css/dashbord-home.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/cadastar-alunos.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EnxameTech</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" type="text/css" href="/css/dashbord-home.css" />
+  <link rel="stylesheet" type="text/css" href="/css/cadastar-alunos.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
 </head>
 
 <body>
-<nav class="sidebar">
+  <nav class="sidebar">
     <div class="logo">
-        <ul class="menu">
-            <li>
-                <a th:href="@{/dashboard}" title="Dashboard">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span>Dashboard </span>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/listar-alunos}" title="Alunos">
-                    <i class="fas fa-user"></i>
-                    <span>Alunos</span>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/listar-voluntarios}" title="Voluntários">
-                    <i class="fa-solid fa-person-chalkboard"></i>
-                    <span>Voluntários</span>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/listar-admin}" title="Administradores">
-                    <i class="fa-regular fa-address-card"></i>
-                    <span>Administradores</span>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/listar-cursos}" title="Cursos">
-                    <i class="fas fa-book"></i>
-                    <span>Cursos</span>
-                </a>
-            </li>
-            <li class="logout">
-                <a th:href="@{/}" title="Sair">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span>Sair</span>
-                </a>
-            </li>
-        </ul>
+      <ul class="menu">
+        <li>
+          <a th:href="@{/dashboard}" title="Dashboard">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dashboard </span>
+          </a>
+        </li>
+        <li>
+          <a th:href="@{/listar-alunos}" title="Alunos">
+            <i class="fas fa-user"></i>
+            <span>Alunos</span>
+          </a>
+        </li>
+        <li>
+          <a th:href="@{/listar-voluntarios}" title="Voluntários">
+            <i class="fa-solid fa-person-chalkboard"></i>
+            <span>Voluntários</span>
+          </a>
+        </li>
+        <li>
+          <a th:href="@{/listar-admin}" title="Administradores">
+            <i class="fa-regular fa-address-card"></i>
+            <span>Administradores</span>
+          </a>
+        </li>
+        <li>
+          <a th:href="@{/listar-cursos}" title="Cursos">
+            <i class="fas fa-book"></i>
+            <span>Cursos</span>
+          </a>
+        </li>
+        <li class="logout">
+          <a th:href="@{/}" title="Sair">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Sair</span>
+          </a>
+        </li>
+      </ul>
     </div>
-</nav>
+  </nav>
 
-<div class="main--content">
+  <div class="main--content">
     <div class="header--wrapper">
-        <div class="header--title">
-            <h2>EnxameTech</h2>
+      <div class="header--title">
+        <h2>EnxameTech</h2>
+      </div>
+      <div class="user--info">
+        <div class="searh--box">
+          <i class="fa-solid fa-search"></i>
+          <input type="text" placeholder="Search" />
         </div>
-        <div class="user--info">
-            <div class="searh--box">
-                <i class="fa-solid fa-search"></i>
-                <input type="text" placeholder="Search"/>
-            </div>
-            <img src="/img/author.jpg" alt="foto de  uma pessoa"/>
-        </div>
+        <img src="/img/author.jpg" alt="foto de  uma pessoa" />
+      </div>
     </div>
 
     <div class="section--container">
@@ -118,12 +125,13 @@
                 Cursos Favoritos
             </a>
         </div>
+      </div>
 
-        <footer class="footer">
-            <div class="container">
-                <p>&copy; 2023 Seu Nome ou Nome da Empresa</p>
-            </div>
-        </footer>
+      <footer class="footer">
+        <div class="container">
+          <p>&copy; 2023 Seu Nome ou Nome da Empresa</p>
+        </div>
+      </footer>
     </div>
 </div>
 
@@ -179,6 +187,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
 <!--<script src="/js/input-validation-cadastar-aluno.js"></script>-->
 <script src="/js/cadastra-alunos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

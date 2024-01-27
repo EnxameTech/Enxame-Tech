@@ -1,78 +1,86 @@
 <!DOCTYPE html>
 
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EnxameTech</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="/css/dashbord-home.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/cadastar-alunos.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EnxameTech</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" type="text/css" href="/css/dashbord-home.css" />
+  <link rel="stylesheet" type="text/css" href="/css/cadastar-alunos.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
 </head>
 
 <body>
-<nav class="sidebar">
+  <nav class="sidebar">
     <div class="logo">
-        <ul class="menu">
-            <li>
-                <a th:href="@{/dashboard}" title="Dashboard">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span>Dashboard </span>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/listar-alunos}" title="Alunos">
-                    <i class="fas fa-user"></i>
-                    <span>Alunos</span>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/listar-voluntarios}" title="Voluntários">
-                    <i class="fa-solid fa-person-chalkboard"></i>
-                    <span>Voluntários</span>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/listar-admin}" title="Administradores">
-                    <i class="fa-regular fa-address-card"></i>
-                    <span>Administradores</span>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/listar-cursos}" title="Cursos">
-                    <i class="fas fa-book"></i>
-                    <span>Cursos</span>
-                </a>
-            </li>
-            <li class="logout">
-                <a th:href="@{/}" title="Sair">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span>Sair</span>
-                </a>
-            </li>
-        </ul>
+      <ul class="menu">
+        <li>
+          <a th:href="@{/dashboard}" title="Dashboard">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dashboard </span>
+          </a>
+        </li>
+        <li>
+          <a th:href="@{/listar-alunos}" title="Alunos">
+            <i class="fas fa-user"></i>
+            <span>Alunos</span>
+          </a>
+        </li>
+        <li>
+          <a th:href="@{/listar-voluntarios}" title="Voluntários">
+            <i class="fa-solid fa-person-chalkboard"></i>
+            <span>Voluntários</span>
+          </a>
+        </li>
+        <li>
+          <a th:href="@{/listar-admin}" title="Administradores">
+            <i class="fa-regular fa-address-card"></i>
+            <span>Administradores</span>
+          </a>
+        </li>
+        <li>
+          <a th:href="@{/listar-cursos}" title="Cursos">
+            <i class="fas fa-book"></i>
+            <span>Cursos</span>
+          </a>
+        </li>
+        <li class="logout">
+          <a th:href="@{/}" title="Sair">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Sair</span>
+          </a>
+        </li>
+      </ul>
     </div>
-</nav>
+  </nav>
 
-<div class="main--content">
+  <div class="main--content">
     <div class="header--wrapper">
-        <div class="header--title">
-            <h2>EnxameTech</h2>
+      <div class="header--title">
+        <h2>EnxameTech</h2>
+      </div>
+      <div class="user--info">
+        <div class="searh--box">
+          <i class="fa-solid fa-search"></i>
+          <input type="text" placeholder="Search" />
         </div>
-        <div class="user--info">
-            <div class="searh--box">
-                <i class="fa-solid fa-search"></i>
-                <input type="text" placeholder="Search"/>
-            </div>
-            <img src="/img/author.jpg" alt="foto de  uma pessoa"/>
-        </div>
+        <img src="/img/author.jpg" alt="foto de  uma pessoa" />
+      </div>
     </div>
 
     <div class="section--container">
+<<<<<<< HEAD
         <h3 class="main--title">Agendar Monitoria</h3>
         <div class="card">
             <form id="form">
@@ -113,22 +121,88 @@
                         <button type="button" class="btn col-3 cadastro" onclick="agendar()">Agendar
                         </button>
                     </div>
+=======
+      <h3 class="main--title">Agendar Monitoria</h3>
+      <div class="card">
+        <form th:object="${monitoria}" id="form" method="POST">
+          <div class="form-step form-step-active row">
+            <div class="row">
+              <div class="form-group col-4" th:object="${aluno}">
+                <label for="aluno">Aluno</label>
+                <input
+                  disabled
+                  type="text"
+                  id="aluno"
+                  name="aluno"
+                  th:field="*{nome}"
+                  th:value="${aluno.id}"
+                />
+              </div>
+              <div class="form-group col-4">
+                <label for="data_monitoria">Data</label>
+                <input
+                  type="date"
+                  id="data_monitoria"
+                  name="data_monitoria"
+                  class="inputs required"
+                  th:field="*{data_monitoria}"
+                />
+                <span class="span-required">Campo obrigátorio</span>
+              </div>
+              <div class="form-group col-4">
+                <label for="horario">Horário</label>
+                <input
+                  type="time"
+                  id="horario"
+                  name="horario"
+                  class="inputs required"
+                  th:field="*{horario}"
+                />
+                <span class="span-required">Campo obrigátorio</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-8">
+                <label for="descricao_duvida">Dúvida</label>
+                <input
+                  type="text"
+                  id="descricao_duvida"
+                  name="descricao_duvida"
+                  class="inputs required"
+                  th:field="*{descricao_duvida}"
+                />
+                <span class="span-required">Campo obrigatório</span>
+              </div>
+              <div class="form-group col-4" th:object="${voluntarios}">
+                <label for="voluntario">Voluntário</label>
+                <select id="voluntario" name="voluntario" class="input">
+                  <option
+                    th:each="voluntario : ${voluntarios}"
+                    th:text="${voluntario.getNome()}"
+                    th:value="${voluntario.id}"
+                  ></option>
+                </select>
+              </div>
+            </div>
 
-                    <a href="./listar-cursos.html"></a>
-                </div>
+            <div class="row justify-content-center">
+              <button type="submit" class="btn col-3 cadastro">Agendar</button>
+            </div>
+>>>>>>> 551aa2fb33028817b118b5be98753449af3e9bdf
 
-            </form>
-
-        </div>
+            <a href="./listar-cursos.html"></a>
+          </div>
+        </form>
+      </div>
     </div>
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2023 Enxame Tech</p>
-        </div>
+      <div class="container">
+        <p>&copy; 2023 Enxame Tech</p>
+      </div>
     </footer>
-</div>
-</div>
+  </div>
 
+<<<<<<< HEAD
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script type="text/javascript">
@@ -185,6 +259,5 @@
 <script src="/js/cadastra-alunos.js"></script>
 <script src="/js/maskInput.js"></script>
 <script src="/js/apiCep.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

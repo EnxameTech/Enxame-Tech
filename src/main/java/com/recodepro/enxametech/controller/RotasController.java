@@ -40,6 +40,7 @@ public class RotasController {
         return "login/register_voluntario";
     }
 
+    // Rotas para o admin
     @GetMapping("/cadastrar-admin")
     public String cadastrarAdmin(Model model) {
         model.addAttribute("generos", Genero.values());
@@ -57,6 +58,7 @@ public class RotasController {
         return "admin/editar-admin";
     }
 
+    // Rotas para o aluno
     @GetMapping("/cadastrar-aluno")
     public String cadastrarAluno(Model model) {
         model.addAttribute("generos", Genero.values());
@@ -74,23 +76,36 @@ public class RotasController {
         return "aluno/editar-aluno";
     }
 
-    @GetMapping("/dados-aluno")
-    public String dadosAluno(){
-        return "aluno/detalhar-aluno";
-    }
-
-    @GetMapping("/monitoria")
+    //Monitoria
+    @GetMapping("/aluno/monitoria")
     public String monitoria(Model model){
         List<Voluntario> voluntarios = vs.getAllVoluntarios();
         model.addAttribute("voluntarios", voluntarios);
         return "aluno/agendar-monitoria";
     }
 
-    @GetMapping("/listar-monitorias")
+    @GetMapping("/aluno/listar-monitorias")
     public String listarMonitorias(){
         return "aluno/listar-monitorias";
     }
 
+    @GetMapping("/aluno/detalhar-aluno")
+    public String detalharAluno(Model model) {
+        return "aluno/detalhar-aluno";
+    }
+
+    // Cursos favoritos
+    @GetMapping("/aluno/adicionar-curso-favorito")
+    public String adicionarCursoFavorito() {
+        return "aluno/adicionar-curso-favorito";
+    }
+
+    @GetMapping("/aluno/listar-cursos-favoritos")
+    public String listarCursosFavoritos() {
+        return "aluno/listar-cursos-favoritos";
+    }
+
+    // Rotas para curso
     @GetMapping("/cadastrar-curso")
     public String cadastrarCurso() {
         return "curso/cadastro-curso";
@@ -111,11 +126,18 @@ public class RotasController {
         return "cursos-cards/courses";
     }
 
+    @GetMapping("/cursos-disponiveis")
+    public String cursosCards() {
+        return "cursos-cards/courses";
+    }
+
+    // Rotas para o dashboard
     @GetMapping("/dashboard")
     public String dashboard() {
         return "dashboard/dashboard-home";
     }
 
+    // Rotas para o fale conosco
     @GetMapping("/fale-conosco")
     public String faleConosco() {
         return "faleConosco/contact";
@@ -126,16 +148,19 @@ public class RotasController {
         return "faleConosco/enviado";
     }
 
+    // Rotas para o mentor
     @GetMapping("/mentores")
     public String mentores() {
         return "mentores/teachers";
     }
 
+    // Rotas para o sobre nós
     @GetMapping("/sobre-nos")
     public String sobreNos() {
         return "sobreNos/about-us";
     }
 
+    // Rotas para o voluntário
     @GetMapping("/listar-voluntarios")
     public String voluntarios() {
         return "voluntario/listar-voluntarios";
@@ -153,10 +178,5 @@ public class RotasController {
         model.addAttribute("generos", Genero.values());
         model.addAttribute("areas", AreaDeAfinidade.values());
         return "voluntario/editar-voluntario";
-    }
-
-    @GetMapping("/cursos-disponiveis")
-    public String cursosCards() {
-        return "cursos-cards/courses";
     }
 }

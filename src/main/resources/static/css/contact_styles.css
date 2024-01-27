@@ -333,6 +333,16 @@ section
 	margin-left: 3px;
 }
 
+.img-fluid {
+    max-height: 80px; 
+}
+
+@media (max-width: 767px) {
+    .img-fluid {
+        min-width: 70px; 
+	  }
+}
+
 /*********************************
 3.2 Main Nav
 *********************************/
@@ -756,6 +766,14 @@ section
 	font-weight: 500;
 	color: #1a1a1a;
 }
+
+.contact_text
+{
+	font-size: 25px;
+	font-weight: 500;
+	color: #a5a5a5;
+}
+
 .contact_form_container
 {
 	margin-top: 70px;

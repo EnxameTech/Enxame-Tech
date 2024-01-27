@@ -344,6 +344,16 @@ section
 	margin-left: 3px;
 }
 
+.img-fluid {
+    max-height: 80px; 
+}
+
+@media (max-width: 767px) {
+    .img-fluid {
+        min-width: 70px; 
+	  }
+}
+
 /*********************************
 3.2 Main Nav
 *********************************/
@@ -684,6 +694,7 @@ section
 	-ms-transform: translateY(30px);
 	-o-transform: translateY(30px);
 	transform: translateY(30px);
+	margin-top: -2cm;
 }
 .hero_slide_content h1
 {
@@ -736,7 +747,8 @@ section
 	transform: translateY(calc(-50% + 30px));
 	width: 58px;
 	height: 58px;
-	background: #FFD266;
+	/* background: #FFD266; */
+	background: none;
 	z-index: 9;
 	cursor: pointer;
 }
@@ -892,6 +904,7 @@ section
 {
 	box-shadow: 0px 10px 20px rgba(0,0,0,0.2);
 }
+
 .button a
 {
 	font-size: 14px;
@@ -1132,6 +1145,17 @@ input:last-of-type
 	outline: solid 2px #FFFFFF;
 }
 
+.search_button
+{
+	background: #ffb606;
+	margin-top: 65px;
+	border-color: #ffb606 ;
+}
+.search_button a
+{
+	color: #FFFFFF;
+}
+
 /*********************************
 12. Services
 *********************************/
@@ -1344,10 +1368,7 @@ input:last-of-type
 	margin-top: 21px;
 	margin-bottom: 13px;
 }
-.event_image
-{
 
-}
 .event_image img
 {
 	object-fit: cover;

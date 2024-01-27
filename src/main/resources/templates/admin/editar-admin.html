@@ -1,350 +1,357 @@
 <!DOCTYPE html>
 
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EnxameTech</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="/css/dashbord-home.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/cadastar-alunos.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EnxameTech</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" type="text/css" href="/css/dashbord-home.css" />
+  <link rel="stylesheet" type="text/css" href="/css/cadastar-alunos.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
 </head>
 
 <body>
-<nav class="sidebar">
+  <nav class="sidebar">
     <div class="logo">
-        <ul class="menu">
-            <li>
-                <a th:href="@{/dashboard}" title="Dashboard">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span>Dashboard </span>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/listar-alunos}" title="Alunos">
-                    <i class="fas fa-user"></i>
-                    <span>Alunos</span>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/listar-voluntarios}" title="Voluntários">
-                    <i class="fa-solid fa-person-chalkboard"></i>
-                    <span>Voluntários</span>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/listar-admin}" title="Administradores">
-                    <i class="fa-regular fa-address-card"></i>
-                    <span>Administradores</span>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/listar-cursos}" title="Cursos">
-                    <i class="fas fa-book"></i>
-                    <span>Cursos</span>
-                </a>
-            </li>
-            <li class="logout">
-                <a th:href="@{/}" title="Sair">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span>Sair</span>
-                </a>
-            </li>
-        </ul>
+      <ul class="menu">
+        <li>
+          <a th:href="@{/dashboard}" title="Dashboard">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dashboard </span>
+          </a>
+        </li>
+        <li>
+          <a th:href="@{/listar-alunos}" title="Alunos">
+            <i class="fas fa-user"></i>
+            <span>Alunos</span>
+          </a>
+        </li>
+        <li>
+          <a th:href="@{/listar-voluntarios}" title="Voluntários">
+            <i class="fa-solid fa-person-chalkboard"></i>
+            <span>Voluntários</span>
+          </a>
+        </li>
+        <li>
+          <a th:href="@{/listar-admin}" title="Administradores">
+            <i class="fa-regular fa-address-card"></i>
+            <span>Administradores</span>
+          </a>
+        </li>
+        <li>
+          <a th:href="@{/listar-cursos}" title="Cursos">
+            <i class="fas fa-book"></i>
+            <span>Cursos</span>
+          </a>
+        </li>
+        <li class="logout">
+          <a th:href="@{/}" title="Sair">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Sair</span>
+          </a>
+        </li>
+      </ul>
     </div>
-</nav>
+  </nav>
 
-<div class="main--content">
+  <div class="main--content">
     <div class="header--wrapper">
-        <div class="header--title">
-            <h2>EnxameTech</h2>
+      <div class="header--title">
+        <h2>EnxameTech</h2>
+      </div>
+      <div class="user--info">
+        <div class="searh--box">
+          <i class="fa-solid fa-search"></i>
+          <input type="text" placeholder="Search" />
         </div>
-        <div class="user--info">
-            <div class="searh--box">
-                <i class="fa-solid fa-search"></i>
-                <input type="text" placeholder="Search"/>
-            </div>
-            <img src="/img/author.jpg" alt="foto de  uma pessoa"/>
-        </div>
+        <img src="/img/depoimento_aluno3.png" alt="foto de  uma pessoa" />
+      </div>
     </div>
 
     <div class="section--container">
-        <h3 class="main--title">Editar Dados do Administrador</h3>
-        <div class="card">
-            <div class="progress-bar">
-                <div class="progress" id="progress"></div>
-                <div class="progress-content">
-                    <div
-                            class="progress-step progress-step-active"
-                            data-title="Dados Pessoais"
-                    ></div>
-                    <div class="progress-step" data-title="Endereço"></div>
-                </div>
-            </div>
-            <form id="form">
-                <div class="form-step form-step-active row">
-                    <div class="row">
-                        <div class="form-group col-md-4">
-                            <label for="cpf">CPF</label>
-                            <input
-                                    class="inputs required"
-                                    id="cpf"
-                                    name="cpf"
-                                    oninput="cpfValidate()"
-                                    type="text"
-                            />
-                            <span class="span-required">Campo obrigátorio</span>
-                        </div>
-                        <div class="form-group col-md-8">
-                            <label for="nome_completo">Nome</label>
-                            <input
-                                    class="inputs required"
-                                    id="nome_completo"
-                                    name="nome_completo"
-                                    oninput="nomeValidate()"
-                                    type="text"
-                            />
-                            <span class="span-required">Campo obrigátorio</span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-4">
-                            <label for="data_nascimento">Data de Nascimento:</label>
-                            <input
-                                    class="inputs required"
-                                    id="data_nascimento"
-                                    name="data_nascimento"
-                                    type="date"
-                            />
-                            <span class="span-required">Campo obrigátorio</span>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="email">E-mail</label>
-                            <input
-                                    class="inputs required"
-                                    id="email"
-                                    name="email"
-                                    oninput="emailCheck()"
-                                    type="email"
-                            />
-                            <span class="span-required">Digite um e-mail valido</span>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="senha">Senha</label>
-                            <input
-                                    class="inputs required"
-                                    id="senha"
-                                    name="senha"
-                                    oninput="password()"
-                                    type="text"
-                            />
-                            <span class="span-required">Minimo caracteres</span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label for="genero">Gênero</label>
-                            <select class="inputs required" id="genero" name="genero">
-                                <option
-                                        th:each="genero : ${generos}"
-                                        th:text="${genero.getDescricao()}"
-                                        th:value="${genero}"
-                                ></option>
-                            </select>
-                            <span class="span-required">Campo obrigátorio</span>
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="telefone">Telefone</label>
-                            <input
-                                    class="inputs required"
-                                    id="telefone"
-                                    name="telefone"
-                                    oninput="tel()"
-                                    type="tel"
-                            />
-                            <span class="span-required">Campo obrigátorio</span>
-                        </div>
-                    </div>
-
-                    <div class="row justify-content-center">
-                        <input class="col-2 btn-next" href="#" value="Proximo" />
-                    </div>
-                </div>
-
-                <div class="row form-step">
-                    <div class="row">
-                        <div class="form-group col-md-4">
-                            <label for="cep">CEP:</label>
-                            <input
-                                    class="inputs required"
-                                    id="cep"
-                                    name="cep"
-                                    type="text"
-                            />
-                            <span class="span-required">Campo obrigátorio</span>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="rua">Rua</label>
-                            <input
-                                    class="inputs required"
-                                    id="rua"
-                                    name="rua"
-                                    type="text"
-                            />
-                            <span class="span-required">Campo obrigátorio</span>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="numero">Número</label>
-                            <input
-                                    class="inputs required"
-                                    id="numero"
-                                    name="numero"
-                                    type="text"
-                            />
-                            <span class="span-required">Campo obrigátorio</span>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group col-md-4">
-                                <label for="bairro">Bairro</label>
-                                <input
-                                        class="inputs required"
-                                        id="bairro"
-                                        name="bairro"
-                                        type="text"
-                                />
-                                <span class="span-required">Campo obrigátorio</span>
-                            </div>
-
-                            <div class="form-group col-md-4">
-                                <label for="cidade">Cidade</label>
-                                <input
-                                        class="inputs required"
-                                        id="cidade"
-                                        name="cidade"
-                                        type="text"
-                                />
-                                <span class="span-required">Campo obrigátorio</span>
-                            </div>
-
-                            <div class="form-group col-md-4">
-                                <label for="uf">UF</label>
-                                <input
-                                        class="inputs required"
-                                        id="uf"
-                                        name="uf"
-                                        type="text"
-                                />
-                                <span class="span-required">Campo obrigátorio</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row justify-content-center">
-                        <input class="col-2 btn-prev" href="#" value="Voltar" />
-                        <button
-                                class="btn col-3 cadastro"
-                                type="button"
-                                onclick="atualizar()"
-                        >
-                            Atualizar
-                        </button>
-                        <a class="btn col-3 cadastro" th:href="@{/listar-admin}"> Cancelar </a>
-                    </div>
-
-                </div>
-            </form>
+      <h3 class="main--title">Editar Dados do Administrador</h3>
+      <div class="card">
+        <div class="progress-bar">
+          <div class="progress" id="progress"></div>
+          <div class="progress-content">
+            <div
+              class="progress-step progress-step-active"
+              data-title="Dados Pessoais"
+            ></div>
+            <div class="progress-step" data-title="Endereço"></div>
+          </div>
         </div>
-        <footer class="footer">
-            <div class="container">
-                <p>&copy; 2023 Enxame Tech</p>
+        <form id="form">
+          <div class="form-step form-step-active row">
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label for="cpf">CPF</label>
+                <input
+                  class="inputs required"
+                  id="cpf"
+                  name="cpf"
+                  oninput="cpfValidate()"
+                  type="text"
+                />
+                <span class="span-required">Campo obrigátorio</span>
+              </div>
+              <div class="form-group col-md-8">
+                <label for="nome_completo">Nome</label>
+                <input
+                  class="inputs required"
+                  id="nome_completo"
+                  name="nome_completo"
+                  oninput="nomeValidate()"
+                  type="text"
+                />
+                <span class="span-required">Campo obrigátorio</span>
+              </div>
             </div>
-        </footer>
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label for="data_nascimento">Data de Nascimento:</label>
+                <input
+                  class="inputs required"
+                  id="data_nascimento"
+                  name="data_nascimento"
+                  type="date"
+                />
+                <span class="span-required">Campo obrigátorio</span>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="email">E-mail</label>
+                <input
+                  class="inputs required"
+                  id="email"
+                  name="email"
+                  oninput="emailCheck()"
+                  type="email"
+                />
+                <span class="span-required">Digite um e-mail valido</span>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="senha">Senha</label>
+                <input
+                  class="inputs required"
+                  id="senha"
+                  name="senha"
+                  oninput="password()"
+                  type="text"
+                />
+                <span class="span-required">Minimo caracteres</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="genero">Gênero</label>
+                <select class="inputs required" id="genero" name="genero">
+                  <option
+                    th:each="genero : ${generos}"
+                    th:text="${genero.getDescricao()}"
+                    th:value="${genero}"
+                  ></option>
+                </select>
+                <span class="span-required">Campo obrigátorio</span>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="telefone">Telefone</label>
+                <input
+                  class="inputs required"
+                  id="telefone"
+                  name="telefone"
+                  oninput="tel()"
+                  type="tel"
+                />
+                <span class="span-required">Campo obrigátorio</span>
+              </div>
+            </div>
+
+            <div class="row justify-content-center">
+              <input class="col-2 btn-next" href="#" value="Proximo" />
+            </div>
+          </div>
+
+          <div class="row form-step">
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label for="cep">CEP:</label>
+                <input
+                  class="inputs required"
+                  id="cep"
+                  name="cep"
+                  type="text"
+                />
+                <span class="span-required">Campo obrigátorio</span>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="rua">Rua</label>
+                <input
+                  class="inputs required"
+                  id="rua"
+                  name="rua"
+                  type="text"
+                />
+                <span class="span-required">Campo obrigátorio</span>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="numero">Número</label>
+                <input
+                  class="inputs required"
+                  id="numero"
+                  name="numero"
+                  type="text"
+                />
+                <span class="span-required">Campo obrigátorio</span>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-md-4">
+                  <label for="bairro">Bairro</label>
+                  <input
+                    class="inputs required"
+                    id="bairro"
+                    name="bairro"
+                    type="text"
+                  />
+                  <span class="span-required">Campo obrigátorio</span>
+                </div>
+
+                <div class="form-group col-md-4">
+                  <label for="cidade">Cidade</label>
+                  <input
+                    class="inputs required"
+                    id="cidade"
+                    name="cidade"
+                    type="text"
+                  />
+                  <span class="span-required">Campo obrigátorio</span>
+                </div>
+
+                <div class="form-group col-md-4">
+                  <label for="uf">UF</label>
+                  <input
+                    class="inputs required"
+                    id="uf"
+                    name="uf"
+                    type="text"
+                  />
+                  <span class="span-required">Campo obrigátorio</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="row justify-content-center">
+              <input class="col-2 btn-prev" href="#" value="Voltar" />
+              <button
+                class="btn col-3 cadastro"
+                type="button"
+                onclick="atualizar()"
+              >
+                Atualizar
+              </button>
+              <a class="btn col-3 cadastro" th:href="@{/listar-admin}">
+                Cancelar
+              </a>
+            </div>
+          </div>
+        </form>
+      </div>
+      <footer class="footer">
+        <div class="container">
+          <p>&copy; 2023 Enxame Tech</p>
+        </div>
+      </footer>
     </div>
-</div>
+  </div>
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-<script type="text/javascript">
-
+  <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function () {
+      let urlParams = new URLSearchParams(window.location.search);
+      let id = urlParams.get("id");
 
-        let urlParams = new URLSearchParams(window.location.search);
-        let id = urlParams.get('id');
-
-        if (id) {
-            carregarDados(id);
-        }
+      if (id) {
+        carregarDados(id);
+      }
     });
 
     function carregarDados(id) {
-        axios.get("/administrador/detalhar/" + id)
-            .then(function (response) {
-                preencherForm(response.data);
-            })
-            .catch(function (error) {
-                console.error("Erro ao obter dados do administrador:", error);
-            });
+      axios
+        .get("/administrador/detalhar/" + id)
+        .then(function (response) {
+          preencherForm(response.data);
+        })
+        .catch(function (error) {
+          console.error("Erro ao obter dados do administrador:", error);
+        });
     }
 
     function preencherForm(administrador) {
+      //dados pessoais
+      document.getElementById("cpf").value = administrador.cpf;
+      document.getElementById("nome_completo").value =
+        administrador.nome_completo;
+      document.getElementById("data_nascimento").value =
+        administrador.data_nascimento;
+      document.getElementById("email").value = administrador.email;
+      document.getElementById("senha").value = administrador.senha;
+      document.getElementById("genero").value = administrador.genero;
+      document.getElementById("telefone").value = administrador.telefone;
 
-        //dados pessoais
-        document.getElementById('cpf').value = administrador.cpf;
-        document.getElementById('nome_completo').value = administrador.nome_completo;
-        document.getElementById('data_nascimento').value = administrador.data_nascimento;
-        document.getElementById('email').value = administrador.email;
-        document.getElementById('senha').value = administrador.senha;
-        document.getElementById('genero').value = administrador.genero;
-        document.getElementById('telefone').value = administrador.telefone;
-
-        //endereço
-        document.getElementById('cep').value = administrador.cep;
-        document.getElementById('rua').value = administrador.rua;
-        document.getElementById('numero').value = administrador.numero;
-        document.getElementById('bairro').value = administrador.bairro;
-        document.getElementById('cidade').value = administrador.cidade;
-        document.getElementById('uf').value = administrador.uf;
+      //endereço
+      document.getElementById("cep").value = administrador.cep;
+      document.getElementById("rua").value = administrador.rua;
+      document.getElementById("numero").value = administrador.numero;
+      document.getElementById("bairro").value = administrador.bairro;
+      document.getElementById("cidade").value = administrador.cidade;
+      document.getElementById("uf").value = administrador.uf;
     }
 
     function atualizar() {
+      let urlParams = new URLSearchParams(window.location.search);
+      let id = urlParams.get("id");
 
-        let urlParams = new URLSearchParams(window.location.search);
-        let id = urlParams.get('id');
+      try {
+        const formDataArray = $("#form").serializeArray();
 
-        try{
-            const formDataArray = $("#form").serializeArray();
+        const formData = {};
+        formDataArray.forEach((item) => {
+          formData[item.name] = item.value;
+        });
 
-            const formData = {};
-            formDataArray.forEach((item) => {
-                formData[item.name] = item.value;
-            });
-
-            axios.put("/administrador/atualizar/" + id, formData)
-                .then(() => {
-                    alert("Administrador atualizado com sucesso.");
-                    window.location.href = "/listar-admin";
-                })
-                .catch((error) => {
-                    alert("Erro ao atualizar administrador: " + error.message);
-                });
-
-        }catch (error) {
-            alert("Erro ao atualizar administrador:", error);;
-        }
+        axios
+          .put("/administrador/atualizar/" + id, formData)
+          .then(() => {
+            alert("Administrador atualizado com sucesso.");
+            window.location.href = "/listar-admin";
+          })
+          .catch((error) => {
+            alert("Erro ao atualizar administrador: " + error.message);
+          });
+      } catch (error) {
+        alert("Erro ao atualizar administrador:", error);
+      }
     }
-</script>
+  </script>
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
-<script src="/js/input-validation-cadastar-aluno.js"></script>
-<script src="/js/cadastra-alunos.js"></script>
-<script src="/js/maskInput.js"></script>
-<script src="/js/apiCep.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+  <script src="/js/input-validation-cadastar-aluno.js"></script>
+  <script src="/js/cadastra-alunos.js"></script>
+  <script src="/js/maskInput.js"></script>
+  <script src="/js/apiCep.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -106,7 +106,19 @@ public class AlunoController {
             CursoFavorito novoCursoFav = as.saveCursoFav(acfDTO);
             return ResponseEntity.ok(novoCursoFav);
         } catch (RuntimeException e) {
+            e.printStackTrace();
             return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @DeleteMapping("/{alunoId}/remover-curso-favorito/{cursoFavoritoId}")
+    public ResponseEntity<String> removerCursoFavorito(@PathVariable Long alunoId, @PathVariable Long cursoFavoritoId) {
+        try {
+            as.deleteCursoFav(alunoId, cursoFavoritoId);
+            return ResponseEntity.ok("Curso favorito removido com sucesso.");
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body("Erro ao remover curso favorito: " + e.getMessage());
         }
     }
 }

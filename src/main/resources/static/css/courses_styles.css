@@ -335,6 +335,16 @@ section
 	margin-left: 3px;
 }
 
+.img-fluid {
+    max-height: 80px; 
+}
+
+@media (max-width: 767px) {
+    .img-fluid {
+        min-width: 70px; 
+	  }
+}
+
 /*********************************
 3.2 Main Nav
 *********************************/

@@ -19,4 +19,6 @@ public interface AlunoService {
     //Curso Favorito
     List<Object[]> getCursosFavAluno(Long id);
     CursoFavorito saveCursoFav(AlunoCursoFavDTO acfDTO);
+    void deleteCursoFav(Long id, Long idCursoFav);
+    
 }

@@ -75,7 +75,7 @@
           <i class="fa-solid fa-search"></i>
           <input type="text" placeholder="Search" />
         </div>
-        <img src="/img/author.jpg" alt="foto de  uma pessoa" />
+        <img src="/img/depoimento_aluno3.png" alt="foto de  uma pessoa" />
       </div>
     </div>
 
@@ -93,7 +93,7 @@
                   name="titulo"
                   class="inputs required"
                 />
-                <span class="span-required">Campo obrigátorio</span>
+                <span class="span-required">Campo obrigatório</span>
               </div>
               <div class="form-group col-6">
                 <label for="nome_empresa">Empresa</label>
@@ -103,7 +103,7 @@
                   name="nome_empresa"
                   class="inputs required"
                 />
-                <span class="span-required">Campo obrigátorio</span>
+                <span class="span-required">Campo obrigatório</span>
               </div>
             </div>
             <div class="row">
@@ -115,7 +115,7 @@
                   name="dataFinal_inscricao"
                   class="inputs required"
                 />
-                <span class="span-required">Campo obrigátorio</span>
+                <span class="span-required">Campo obrigatório</span>
               </div>
               <div class="form-group col-8">
                 <label for="descricao">Descrição</label>
@@ -139,8 +139,6 @@
               </button>
               <a class="btn col-3 cadastro" th:href="@{/listar-cursos}"> Cancelar </a>
             </div>
-
-            <a href="./listar-cursos.html"></a>
           </div>
         </form>
       </div>
@@ -162,6 +160,13 @@
       if (id) {
         carregarDados(id);
       }
+
+      // document
+      //   .getElementById("btnAtualizar")
+      //   .addEventListener("click", function (event) {
+      //     event.preventDefault();
+      //     atualizar();
+      //   });
     });
 
     function carregarDados(id) {
@@ -176,6 +181,7 @@
     }
 
     function preencherForm(curso) {
+
       document.getElementById("titulo").value = curso.titulo;
       document.getElementById("nome_empresa").value = curso.nome_empresa;
       document.getElementById("dataFinal_inscricao").value = curso.dataFinal_inscricao;
@@ -185,6 +191,7 @@
     function atualizar() {
       let urlParams = new URLSearchParams(window.location.search);
       let id = urlParams.get("id");
+      console.log(id);
 
       try {
         const formDataArray = $("#form").serializeArray();
@@ -194,6 +201,7 @@
           formData[item.name] = item.value;
         });
 
+        console.log(formData);
         axios
           .put("/curso/atualizar/" + id, formData)
           .then(() => {
