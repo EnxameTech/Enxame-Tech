@@ -83,6 +83,7 @@ public class AlunoController {
             Monitoria novaMonitoria = as.saveMonitoria(amDTO);
             return ResponseEntity.ok(novaMonitoria);
         } catch (RuntimeException e) {
+            System.out.println(e);
             return ResponseEntity.badRequest().build();
         }
     }

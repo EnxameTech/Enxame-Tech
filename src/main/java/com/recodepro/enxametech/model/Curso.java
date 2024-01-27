@@ -1,5 +1,6 @@
 package com.recodepro.enxametech.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -30,6 +31,7 @@ public class Curso {
     private String descricao;
 
     @ManyToMany(mappedBy = "cursosFavoritos")
+    @JsonIgnore
     private Set<Aluno> alunos = new HashSet<>();
 
     public Curso(Long id, String titulo, String nome_empresa, String descricao, LocalDate dataFinal_inscricao) {

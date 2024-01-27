@@ -141,7 +141,10 @@
           let tr = document.createElement("tr");
 
           let tdNome = document.createElement("td");
-          tdNome.textContent = alunos.nome_completo;
+          let linkNome = document.createElement("a");
+          linkNome.href = "/dados-aluno?id=" + alunos.id;
+          linkNome.textContent = alunos.nome_completo;
+          tdNome.appendChild(linkNome);
           tr.appendChild(tdNome);
 
           let tdData = document.createElement("td");

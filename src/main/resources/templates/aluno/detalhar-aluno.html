@@ -75,46 +75,46 @@
     <div class="section--container">
         <h3 class="main--title">Dados do Aluno</h3>
         <div class="row">
-            <h5 th:text="${aluno.nome}"></h5>
+            <h5 id="nome_completo"></h5>
             <div class="form-group col-4">
                 <label for="cpf">CPF</label>
-                <input disabled id="cpf" th:field="*{aluno.CPF}">
+                <input disabled id="cpf" >
             </div>
             <div class="form-group col-4">
                 <label for="email">E-mail</label>
-                <input disabled id="email" th:field="*{aluno.email}">
+                <input disabled id="email" >
             </div>
             <div class="form-group col-4">
                 <label for="genero">Gênero</label>
-                <input disabled id="genero" th:field="*{aluno.genero}">
+                <input disabled id="genero">
             </div>
         </div>
         <div class="row">
             <div class="form-group col-4">
-                <label for="dataNascimento">Data de Nascimento</label>
-                <input disabled type="date" id="dataNascimento" th:field="*{aluno.data_nascimento}">
+                <label for="data_nascimento">Data de Nascimento</label>
+                <input disabled type="date" id="data_nascimento">
                 <span class="span-required">Campo obrigátorio</span>
             </div>
             <div class="form-group col-4">
                 <label for="cidade">Cidade</label>
-                <input disabled id="cidade" th:field="*{aluno.cidade}">
+                <input disabled id="cidade" >
             </div>
             <div class="form-group col-4">
                 <label for="uf">UF</label>
-                <input disabled id="uf" th:field="*{aluno.UF}">
+                <input disabled id="uf" >
             </div>
         </div>
         <div class="row gap-3 justify-content-end mt-5">
-            <a th:href="@{/aluno/{id}/agendar (id=${aluno.id})}" class="col-2 btn btn-success ">
+            <a id="linkAgendarMonitoria" class="col-2 btn btn-success ">
                 Agendar Monitoria
             </a>
-            <a th:href="@{/aluno/{id}/monitorias (id=${aluno.id})}" class="col-2 btn btn-secondary">
+            <a id="linkListarMonitorias" class="col-2 btn btn-secondary">
                 Monitorias Agendadas
             </a>
-            <a th:href="@{/aluno/{id}/adicionar-curso-favorito (id=${aluno.id})}" class="col-2 btn btn-primary">
+            <a class="col-2 btn btn-primary">
                 Favoritar Cursos
             </a>
-            <a th:href="@{/aluno/{id}/cursos-favoritos (id=${aluno.id})}" class="col-2 btn btn-dark">
+            <a  class="col-2 btn btn-dark">
                 Cursos Favoritos
             </a>
         </div>
@@ -126,6 +126,55 @@
         </footer>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script type="text/javascript">
+    let urlParams = new URLSearchParams(window.location.search);
+    let id = urlParams.get("id");
+
+    document.addEventListener("DOMContentLoaded", function () {
+        if (id) {
+            carregarDados(id);
+        }
+
+        let linkAgendarMonitoria = document.getElementById("linkAgendarMonitoria");
+        linkAgendarMonitoria.addEventListener("click", function () {
+            window.location.href = "/monitoria?id=" + id;
+        });
+
+
+        let linkListarMonitorias = document.getElementById("linkListarMonitorias");
+        linkListarMonitorias.addEventListener("click", function () {
+            window.location.href = "/listar-monitorias?id=" + id;
+        });
+    });
+
+    function carregarDados(id) {
+        axios.get("/aluno/detalhar/" + id)
+            .then(function (response) {
+                preencher(response.data);
+            })
+            .catch(function (error) {
+                console.error("Erro ao obter dados do aluno:", error);
+            });
+    }
+
+    function preencher(aluno) {
+        //dados pessoais
+        document.getElementById("cpf").value = aluno.cpf;
+        document.getElementById("nome_completo").textContent = aluno.nome_completo;
+        document.getElementById("data_nascimento").value = aluno.data_nascimento;
+        document.getElementById("email").value = aluno.email;
+        document.getElementById("genero").value = aluno.genero;
+
+        //endereço
+        document.getElementById("cidade").value = aluno.cidade;
+        document.getElementById("uf").value = aluno.uf;
+    }
+
+</script>
+
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
 <!--<script src="/js/input-validation-cadastar-aluno.js"></script>-->

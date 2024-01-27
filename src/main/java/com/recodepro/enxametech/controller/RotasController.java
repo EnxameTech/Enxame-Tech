@@ -2,12 +2,20 @@ package com.recodepro.enxametech.controller;
 
 import com.recodepro.enxametech.enums.AreaDeAfinidade;
 import com.recodepro.enxametech.enums.Genero;
+import com.recodepro.enxametech.model.Voluntario;
+import com.recodepro.enxametech.service.VoluntarioService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.List;
+
 @Controller
 public class RotasController {
+
+    @Autowired
+    private VoluntarioService vs;
 
     @GetMapping("/")
     public String index() {
@@ -64,6 +72,23 @@ public class RotasController {
     public String editarAluno(Model model) {
         model.addAttribute("generos", Genero.values());
         return "aluno/editar-aluno";
+    }
+
+    @GetMapping("/dados-aluno")
+    public String dadosAluno(){
+        return "aluno/detalhar-aluno";
+    }
+
+    @GetMapping("/monitoria")
+    public String monitoria(Model model){
+        List<Voluntario> voluntarios = vs.getAllVoluntarios();
+        model.addAttribute("voluntarios", voluntarios);
+        return "aluno/agendar-monitoria";
+    }
+
+    @GetMapping("/listar-monitorias")
+    public String listarMonitorias(){
+        return "aluno/listar-monitorias";
     }
 
     @GetMapping("/cadastrar-curso")

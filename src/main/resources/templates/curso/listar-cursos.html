@@ -82,7 +82,7 @@
         <div class="header-container">
           <h3 class="main--title">Lista de Cursos</h3>
 
-          <a th:href="@{/curso/cadastrar}" class="btn-cadastrar mb-3">
+          <a th:href="@{/cadastrar-curso}" class="btn-cadastrar mb-3">
             Cadastrar Novo Curso
             <i class="fas fa-plus"></i>
           </a>
@@ -156,7 +156,7 @@
       tdAcoes.className = "align-items-center";
 
       let linkEditar = document.createElement("a");
-      linkEditar.href = "/curso/atualizar/?id=" + curso.id;
+      linkEditar.href = "/editar-curso?id=" + curso.id;
       linkEditar.innerHTML = '<i class="fas fa-edit"></i>';
       tdAcoes.appendChild(linkEditar);
 

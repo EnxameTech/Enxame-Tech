@@ -82,7 +82,7 @@
     <div class="section--container">
       <h3 class="main--title">Editar Informações do Curso</h3>
       <div class="card">
-        <form th:object="${curso}" id="form" method="POST">
+        <form id="form">
           <div class="form-step form-step-active row">
             <div class="row">
               <div class="form-group col-6">
@@ -92,7 +92,6 @@
                   id="titulo"
                   name="titulo"
                   class="inputs required"
-                  th:field="*{titulo}"
                 />
                 <span class="span-required">Campo obrigátorio</span>
               </div>
@@ -103,7 +102,6 @@
                   id="nome_empresa"
                   name="nome_empresa"
                   class="inputs required"
-                  th:field="*{nome_empresa}"
                 />
                 <span class="span-required">Campo obrigátorio</span>
               </div>
@@ -116,7 +114,6 @@
                   id="dataFinal_inscricao"
                   name="dataFinal_inscricao"
                   class="inputs required"
-                  th:field="*{dataFinal_inscricao}"
                 />
                 <span class="span-required">Campo obrigátorio</span>
               </div>
@@ -127,16 +124,20 @@
                   id="descricao"
                   name="descricao"
                   class="inputs required"
-                  th:field="*{descricao}"
                 />
                 <span class="span-required">Campo obrigatório</span>
               </div>
             </div>
 
             <div class="row justify-content-center">
-              <button type="submit" class="btn col-3 cadastro">
+              <button
+                      class="btn col-3 cadastro"
+                      type="button"
+                      onclick="atualizar()"
+              >
                 Atualizar
               </button>
+              <a class="btn col-3 cadastro" th:href="@{/listar-cursos}"> Cancelar </a>
             </div>
 
             <a href="./listar-cursos.html"></a>
@@ -175,16 +176,10 @@
     }
 
     function preencherForm(curso) {
-      // Informações do curso
-      document.getElementById("nome_curso").value = curso.nome_curso;
+      document.getElementById("titulo").value = curso.titulo;
+      document.getElementById("nome_empresa").value = curso.nome_empresa;
+      document.getElementById("dataFinal_inscricao").value = curso.dataFinal_inscricao;
       document.getElementById("descricao").value = curso.descricao;
-      document.getElementById("carga_horaria").value = curso.carga_horaria;
-      document.getElementById("preco").value = curso.preco;
-
-      // Outras informações relevantes do curso
-      document.getElementById("area").value = curso.area;
-      document.getElementById("modalidade").value = curso.modalidade;
-      document.getElementById("nivel").value = curso.nivel;
     }
 
     function atualizar() {

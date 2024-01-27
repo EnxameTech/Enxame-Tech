@@ -75,38 +75,34 @@
     <div class="section--container">
         <h3 class="main--title">Agendar Monitoria</h3>
         <div class="card">
-            <form th:object="${monitoria}" id="form" method="POST">
+            <form id="form">
                 <div class="form-step  form-step-active row ">
                     <div class="row">
-                        <div class="form-group col-4" th:object="${aluno}">
-                            <label for="aluno">Aluno</label>
-                            <input disabled type="text" id="aluno" name="aluno" th:field="*{nome}"
-                                   th:value="${aluno.id}">
+                        <div class="form-group col-4">
+                            <label for="nome_completo">Aluno</label>
+                            <input disabled type="text" id="nome_completo" name="nome_completo">
                         </div>
                         <div class="form-group col-4">
                             <label for="data_monitoria">Data</label>
-                            <input type="date" id="data_monitoria" name="data_monitoria" class="inputs required"
-                                   th:field="*{data_monitoria}">
+                            <input type="date" id="data_monitoria" name="data_monitoria" class="inputs required">
                             <span class="span-required">Campo obrigátorio</span>
                         </div>
                         <div class="form-group col-4">
                             <label for="horario">Horário</label>
-                            <input type="time" id="horario" name="horario" class="inputs required"
-                                   th:field="*{horario}">
+                            <input type="time" id="horario" name="horario" class="inputs required">
                             <span class="span-required">Campo obrigátorio</span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-8">
                             <label for="descricao_duvida">Dúvida</label>
-                            <input type="text" id="descricao_duvida" name="descricao_duvida" class="inputs required"
-                                   th:field="*{descricao_duvida}">
+                            <input type="text" id="descricao_duvida" name="descricao_duvida" class="inputs required">
                             <span class="span-required">Campo obrigatório</span>
                         </div>
-                        <div class="form-group col-4" th:object="${voluntarios}">
+                        <div class="form-group col-4">
                             <label for="voluntario">Voluntário</label>
                             <select id="voluntario" name="voluntario" class="input">
-                                <option th:each="voluntario : ${voluntarios}" th:text="${voluntario.getNome()}"
+                                <option th:each="voluntario : ${voluntarios}" th:text="${voluntario.getNome_completo()}"
                                         th:value="${voluntario.id}">
                                 </option>
                             </select>
@@ -114,7 +110,8 @@
                     </div>
 
                     <div class="row justify-content-center">
-                        <button type="submit" class="btn col-3 cadastro">Agendar</button>
+                        <button type="button" class="btn col-3 cadastro" onclick="agendar()">Agendar
+                        </button>
                     </div>
 
                     <a href="./listar-cursos.html"></a>
@@ -132,6 +129,55 @@
 </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script type="text/javascript">
+
+    document.addEventListener("DOMContentLoaded", function () {
+        let urlParams = new URLSearchParams(window.location.search);
+        let id = parseInt(urlParams.get("id"));
+
+        if (id) {
+            carregarDados(id);
+        }
+    });
+
+    function carregarDados(id) {
+        axios.get("/aluno/detalhar/" + id)
+            .then(function (response) {
+                preencher(response.data);
+            })
+            .catch(function (error) {
+                console.error("Erro ao obter dados do aluno:", error);
+            });
+    }
+
+    function preencher(aluno) {
+        document.getElementById("nome_completo").value = aluno.nome_completo;
+    }
+
+    async function agendar() {
+        let urlParams = new URLSearchParams(window.location.search);
+        let id = parseInt(urlParams.get("id"));
+
+        try {
+            const formDataArray = $("#form").serializeArray();
+
+            const formData = {};
+            formDataArray.forEach((item) => {
+                formData[item.name] = item.value;
+            });
+
+            axios.post("/aluno/"+ id + "/agendar-monitoria", formData);
+            alert("Monitoria agendada com sucesso!");
+            window.location.href = `/dados-aluno?id=${id}`;
+        } catch (error) {
+            alert("Erro ao cadastrar: " + error.response.data);
+        }
+    }
+
+
+</script>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>

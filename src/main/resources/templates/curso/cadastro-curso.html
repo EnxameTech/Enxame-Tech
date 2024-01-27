@@ -82,7 +82,7 @@
     <div class="section--container">
       <h3 class="main--title">Cadastrar Curso</h3>
       <div class="card">
-        <form id="form" method="post" onsubmit="cadastrar()">
+        <form id="form">
           <div class="form-step form-step-active row">
             <div class="row">
               <div class="form-group col-md-6">
@@ -130,7 +130,11 @@
             </div>
 
             <div class="row justify-content-center">
-              <button type="submit" class="btn col-3 cadastro">
+              <button
+                      class="btn col-3 cadastro"
+                      type="button"
+                      onclick="cadastrar()"
+              >
                 Cadastrar
               </button>
             </div>
@@ -159,7 +163,7 @@
           formData[item.name] = item.value;
         });
 
-        const response = await axios.post("/curso/cadastrar", formData);
+        await axios.post("/curso/cadastrar", formData);
 
         alert("Curso adicionado com sucesso!");
         window.location.href = "/listar-cursos";
