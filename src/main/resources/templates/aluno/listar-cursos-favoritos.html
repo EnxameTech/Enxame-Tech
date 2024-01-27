@@ -1,195 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EnxameTech</title>
 
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
     />
     <link rel="stylesheet" type="text/css" href="/css/dashbord-home.css" />
     <link rel="stylesheet" type="text/css" href="/css/cadastar-alunos.css" />
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
     />
     <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
-  </head>
-  <body>
-    <nav class="sidebar">
-      <div class="logo">
+</head>
+<body>
+<nav class="sidebar">
+    <div class="logo">
         <ul class="menu">
-          <li>
-            <a th:href="@{/dashboard}" title="Dashboard">
-              <i class="fas fa-tachometer-alt"></i>
-              <span>Dashboard </span>
-            </a>
-          </li>
-          <li>
-            <a th:href="@{/listar-alunos}" title="Alunos">
-              <i class="fas fa-user"></i>
-              <span>Alunos</span>
-            </a>
-          </li>
-          <li>
-            <a th:href="@{/listar-voluntarios}" title="Voluntários">
-              <i class="fa-solid fa-person-chalkboard"></i>
-              <span>Voluntários</span>
-            </a>
-          </li>
-          <li>
-            <a th:href="@{/listar-admin}" title="Administradores">
-              <i class="fa-regular fa-address-card"></i>
-              <span>Administradores</span>
-            </a>
-          </li>
-          <li>
-            <a th:href="@{/listar-cursos}" title="Cursos">
-              <i class="fas fa-book"></i>
-              <span>Cursos</span>
-            </a>
-          </li>
-          <li class="logout">
-            <a th:href="@{/}" title="Sair">
-              <i class="fas fa-sign-out-alt"></i>
-              <span>Sair</span>
-            </a>
-          </li>
+            <li>
+                <a th:href="@{/dashboard}" title="Dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard </span>
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/listar-alunos}" title="Alunos">
+                    <i class="fas fa-user"></i>
+                    <span>Alunos</span>
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/listar-voluntarios}" title="Voluntários">
+                    <i class="fa-solid fa-person-chalkboard"></i>
+                    <span>Voluntários</span>
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/listar-admin}" title="Administradores">
+                    <i class="fa-regular fa-address-card"></i>
+                    <span>Administradores</span>
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/listar-cursos}" title="Cursos">
+                    <i class="fas fa-book"></i>
+                    <span>Cursos</span>
+                </a>
+            </li>
+            <li class="logout">
+                <a th:href="@{/}" title="Sair">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Sair</span>
+                </a>
+            </li>
         </ul>
-      </div>
-    </nav>
+    </div>
+</nav>
 
-    <div class="main--content">
-      <div class="header--wrapper">
+<div class="main--content">
+    <div class="header--wrapper">
         <div class="header--title">
-          <h2>EnxameTech</h2>
+            <h2>EnxameTech</h2>
         </div>
         <div class="user--info">
-          <div class="searh--box">
-            <i class="fa-solid fa-search"></i>
-            <input type="text" placeholder="Search" />
-          </div>
-          <img src="/img/author.jpg" alt="foto de uma pessoa" />
+            <div class="searh--box">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" placeholder="Search" />
+            </div>
+            <img src="/img/author.jpg" alt="foto de uma pessoa" />
         </div>
-      </div>
+    </div>
 
-      <div class="section--container">
+    <div class="section--container">
         <div class="header-container">
-          <h3 class="main--title">Cursos Favoritos</h3>
+            <h3 class="main--title">Cursos Favoritos</h3>
         </div>
 
         <div class="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">Aluno</th>
-                <th scope="col">Curso</th>
-                <th scope="col">Ações</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr data-id="${cursoFavorito.id}">
-                <td id="alunoNome">
-                  <!-- Replace with actual student name -->
-                </td>
-                <td id="cursoTitulo">
-                  <!-- Replace with actual course title -->
-                </td>
-                <td>
-                  <a
-                    href="#"
-                    class="remover-curso-favorito"
-                    data-aluno-id="<!-- Replace with actual student id -->"
-                    data-curso-fav-id="<!-- Replace with actual course favorite id -->"
-                    onclick="return confirm('Tem certeza que deseja remover o curso dos favoritados?'); removerCursoFavorito()"
-                  >
-                    <i class="fas fa-trash-alt"></i>
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+            <table>
+                <thead>
+                <tr>
+                    <th scope="col">Aluno</th>
+                    <th scope="col">Curso</th>
+                    <th scope="col">Ações</th>
+                </tr>
+                </thead>
+
+                <tbody id="listTable"></tbody>
+
+            </table>
         </div>
 
         <div class="row justify-content-center mt-3">
-          <a href="#" class="col-1 btn btn-primary mb-3"> Voltar </a>
+            <a id="btnVoltar" class="col-1 btn btn-primary mb-3"> Voltar </a>
         </div>
-      </div>
-      <footer class="footer">
-        <div class="container">
-          <p>&copy; 2023 Seu Nome ou Nome da Empresa</p>
-        </div>
-      </footer>
     </div>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 Seu Nome ou Nome da Empresa</p>
+        </div>
+    </footer>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    <script type="text/javascript">
-      document.addEventListener("DOMContentLoaded", function () {
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
         obterCursosFavoritosDoAluno();
-      });
 
-      function obterIdDoAlunoDaUrl() {
+        const botaoVoltar = document.getElementById("btnVoltar");
+
+        botaoVoltar.addEventListener("click", function () {
+            const idDoAluno = obterIdDoAlunoDaUrl();
+
+            window.location.href = `/aluno/detalhar-aluno?id=${idDoAluno}`;
+        });
+    });
+
+    function obterIdDoAlunoDaUrl() {
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get("id");
-      }
+    }
 
-      // obter cursos favoritos do aluno
-      function obterCursosFavoritosDoAluno() {
+    // obter cursos favoritos do aluno
+    function obterCursosFavoritosDoAluno() {
         const idDoAluno = obterIdDoAlunoDaUrl();
-        const url = `http://localhost:8080/aluno/${idDoAluno}/cursos-favoritados`;
 
         axios
-          .get(url)
-          .then((response) => {
-            const cursosFavoritos = response.data;
+            .get(`/aluno/${idDoAluno}/cursos-favoritados`)
+            .then((response) => {
+                const cursosFavoritos = response.data;
 
-            // Limpa a tabela antes de adicionar novas linhas
-            const tabela = document.querySelector("tbody");
-            tabela.innerHTML = "";
+                // Limpa a tabela antes de adicionar novas linhas
+                const tabela = document.querySelector("tbody");
+                tabela.innerHTML = "";
 
-            // Itera sobre os cursos favoritos e adiciona uma linha para cada um
-            cursosFavoritos.forEach((cursoFavorito) => {
-              const [nomeAluno, tituloCurso] = cursoFavorito;
+                // Itera sobre os cursos favoritos e adiciona uma linha para cada um
+                cursosFavoritos.forEach((cursoFavorito) => {
+                    const [nomeAluno, tituloCurso] = cursoFavorito;
 
-              const novaLinha = tabela.insertRow();
-              const colunaAluno = novaLinha.insertCell(0);
-              const colunaCurso = novaLinha.insertCell(1);
-              const colunaAcoes = novaLinha.insertCell(2);
+                    const novaLinha = tabela.insertRow();
+                    const colunaAluno = novaLinha.insertCell(0);
+                    const colunaCurso = novaLinha.insertCell(1);
+                    const colunaAcoes = novaLinha.insertCell(2);
 
-              colunaAluno.textContent = nomeAluno;
-              colunaCurso.textContent = tituloCurso;
+                    colunaAluno.textContent = nomeAluno;
+                    colunaCurso.textContent = tituloCurso;
 
-              // Adicione aqui qualquer ação adicional que você deseja para cada linha (por exemplo, um botão de exclusão)
-              colunaAcoes.innerHTML = `<a href="/aluno/${idDoAluno}/remover-curso-favorito/${cursoFavorito.id}" onclick="return confirm('Tem certeza que deseja remover o curso dos favoritados?');"><i class="fas fa-trash-alt"></i></a>`;
+                    // Adicione aqui qualquer ação adicional que você deseja para cada linha (por exemplo, um botão de exclusão)
+                    colunaAcoes.innerHTML = `<a href="/aluno/${idDoAluno}/remover-curso-favorito/${cursoFavorito.id}" onclick="return confirm('Tem certeza que deseja remover o curso dos favoritados?');"><i class="fas fa-trash-alt"></i></a>`;
+                });
+            })
+            .catch((error) => {
+                console.error("Erro na requisição:", error);
             });
-          })
-          .catch((error) => {
-            console.error("Erro na requisição:", error);
-          });
-      }
+    }
 
-      function removerCursoFavorito(cursoFavoritoId) {
+    function removerCursoFavorito(cursoFavoritoId) {
         const alunoId = obterIdDoAlunoDaUrl();
-        const url = `http://localhost:8080/aluno/${alunoId}/remover-curso-favorito/${cursoFavoritoId}`;
 
         axios
-          .delete(url)
-          .then((response) => {
-            alert("Curso favorito removido com sucesso!");
-            console.log(response);
-          })
-          .catch((error) => {
-            alert("Erro ao remover curso favorito: " + error.message);
-          });
-      }
-    </script>
+            .delete(`/aluno/${alunoId}/remover-curso-favorito/${cursoFavoritoId}`)
+            .then((response) => {
+                alert("Curso favorito removido com sucesso!");
+                console.log(response);
+            })
+            .catch((error) => {
+                alert("Erro ao remover curso favorito: " + error.message);
+            });
+    }
+</script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

@@ -120,10 +120,7 @@
       // faz um GET para obter os cursos e preenche o select
       const selectCursoFavorito = document.getElementById("cursoFavoritoId");
 
-      const url = "http://localhost:8080/curso/listar";
-
-      axios
-        .get(url)
+      axios.get("/curso/listar")
         .then((response) => {
           const cursos = response.data;
           cursos.forEach((curso) => {
@@ -148,11 +145,9 @@
             document.getElementById("cursoFavoritoId").value;
           const alunoId = obterIdDoAlunoDaUrl();
 
-          const url = `http://localhost:8080/aluno/${alunoId}/favoritar`;
           const data = { aluno_id: alunoId, curso_id: cursoFavoritoId };
 
-          axios
-            .post(url, data)
+          axios.post(`/aluno/${alunoId}/favoritar`, data)
             .then((response) => {
               alert("Curso favoritado com sucesso!");
               window.location.href = `/aluno/listar-cursos-favoritos?id=${alunoId}`;

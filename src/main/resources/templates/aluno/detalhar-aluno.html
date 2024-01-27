@@ -118,10 +118,10 @@
             <a id="linkListarMonitorias" class="col-2 btn btn-secondary">
                 Monitorias Agendadas
             </a>
-            <a class="col-2 btn btn-primary">
+            <a id="linkFavCurso" class="col-2 btn btn-primary">
                 Favoritar Cursos
             </a>
-            <a  class="col-2 btn btn-dark">
+            <a  id="linkListarCursosFav" class="col-2 btn btn-dark">
                 Cursos Favoritos
             </a>
         </div>
@@ -148,13 +148,22 @@
 
         let linkAgendarMonitoria = document.getElementById("linkAgendarMonitoria");
         linkAgendarMonitoria.addEventListener("click", function () {
-            window.location.href = "/monitoria?id=" + id;
+            window.location.href = "/aluno/monitoria?id=" + id;
         });
-
 
         let linkListarMonitorias = document.getElementById("linkListarMonitorias");
         linkListarMonitorias.addEventListener("click", function () {
-            window.location.href = "/listar-monitorias?id=" + id;
+            window.location.href = "/aluno/listar-monitorias?id=" + id;
+        });
+
+        let linkFavCurso = document.getElementById("linkFavCurso");
+        linkFavCurso.addEventListener("click", function () {
+            window.location.href = "/aluno/adicionar-curso-favorito?id=" + id;
+        });
+
+        let linkListarCursosFav = document.getElementById("linkListarCursosFav");
+        linkListarCursosFav.addEventListener("click", function () {
+            window.location.href = "/aluno/listar-cursos-favoritos?id=" + id;
         });
     });
 
